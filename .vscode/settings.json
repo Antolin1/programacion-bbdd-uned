@@ -1,0 +1,24 @@
+{
+  // LaTeX Workshop: compila con build.sh (TeX Live en Docker) y muestra el PDF en una pestaña
+  "latex-workshop.latex.recipes": [
+    {
+      "name": "Docker (build.sh)",
+      "tools": ["build-docker"]
+    }
+  ],
+  "latex-workshop.latex.tools": [
+    {
+      "name": "build-docker",
+      "command": "bash",
+      "args": ["%DIR%/build.sh"],
+      "env": {}
+    }
+  ],
+  "latex-workshop.latex.recipe.default": "first",
+  "latex-workshop.latex.autoBuild.run": "onSave",
+  "latex-workshop.latex.rootFile.doNotPrompt": true,
+  "latex-workshop.latex.rootFile.useSubFile": false,
+  "latex-workshop.view.pdf.viewer": "tab",
+  "latex-workshop.view.pdf.tab.editorGroup": "right",
+  "latex-workshop.latex.autoClean.run": "never"
+}

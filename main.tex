@@ -1,0 +1,1099 @@
+\documentclass[11pt,a4paper]{article}
+
+% ---------------------------------------------------------------------
+%  Paquetes
+% ---------------------------------------------------------------------
+\usepackage[utf8]{inputenc}
+\usepackage[T1]{fontenc}
+\usepackage[spanish,es-noshorthands,es-tabla]{babel}
+\usepackage{lmodern}
+\usepackage{microtype}
+\usepackage[margin=2.5cm]{geometry}
+\usepackage[dvipsnames,table]{xcolor}
+\usepackage{amssymb}
+\usepackage{float}
+\usepackage{graphicx}
+\usepackage{booktabs}
+\usepackage{tabularx}
+\usepackage{longtable}
+\usepackage{array}
+\usepackage{enumitem}
+\usepackage{fancyhdr}
+\usepackage{titlesec}
+\usepackage{listings}
+\usepackage[most]{tcolorbox}
+\usepackage{tikz}
+\usetikzlibrary{positioning,arrows.meta,shapes.geometric}
+\usepackage{csquotes}
+\usepackage[backend=biber,style=ieee]{biblatex}
+\addbibresource{bibliografia.bib}
+\usepackage[hidelinks]{hyperref}
+\usepackage{xurl}
+
+\input{datos}
+
+\hypersetup{
+  pdftitle={Misión SQL -- Memoria de la actividad},
+  pdfauthor={\alumno},
+  pdfsubject={\asignatura}
+}
+
+% ---------------------------------------------------------------------
+%  Estilo
+% ---------------------------------------------------------------------
+\definecolor{principal}{HTML}{1F4E79}
+\definecolor{acento}{HTML}{E07A1F}
+\definecolor{fondocodigo}{HTML}{F5F7FA}
+
+\titleformat{\section}{\Large\bfseries\color{principal}}{\thesection.}{0.6em}{}
+\titleformat{\subsection}{\large\bfseries\color{principal}}{\thesubsection.}{0.6em}{}
+\titleformat{\subsubsection}{\normalsize\bfseries\color{principal}}{\thesubsubsection.}{0.6em}{}
+
+\pagestyle{fancy}
+\fancyhf{}
+\fancyhead[L]{\small\color{principal}Misión SQL}
+\fancyhead[R]{\small\color{principal}\asignatura}
+\fancyfoot[C]{\small\thepage}
+\renewcommand{\headrulewidth}{0.4pt}
+
+\setlist{itemsep=2pt,topsep=4pt}
+\renewcommand{\arraystretch}{1.25}
+
+\lstdefinestyle{sql}{
+  language=SQL,
+  basicstyle=\ttfamily\small,
+  keywordstyle=\color{principal}\bfseries,
+  commentstyle=\color{gray}\itshape,
+  stringstyle=\color{acento},
+  backgroundcolor=\color{fondocodigo},
+  frame=single, rulecolor=\color{gray!40},
+  framesep=4pt, xleftmargin=6pt, xrightmargin=6pt,
+  breaklines=true, columns=fullflexible, keepspaces=true,
+  showstringspaces=false, upquote=true,
+  morekeywords={REFERENCES,START,TRANSACTION,COMMIT,ROLLBACK,SAVEPOINT,
+                TRUNCATE,GRANT,REVOKE,LIMIT,IF,EXISTS,CHECK},
+  literate={á}{{\'a}}1 {é}{{\'e}}1 {í}{{\'i}}1 {ó}{{\'o}}1 {ú}{{\'u}}1
+           {Á}{{\'A}}1 {É}{{\'E}}1 {Í}{{\'I}}1 {Ó}{{\'O}}1 {Ú}{{\'U}}1
+           {ñ}{{\~n}}1 {Ñ}{{\~N}}1 {ü}{{\"u}}1 {º}{{\textordmasculine}}1
+}
+\lstset{style=sql}
+
+\newtcolorbox{reto}[1]{enhanced, breakable, colback=white, colframe=principal,
+  coltitle=white, fonttitle=\bfseries, title={#1}, arc=2mm, boxrule=0.8pt}
+\newtcolorbox{solucion}{enhanced, breakable, colback=green!4, colframe=ForestGreen,
+  fonttitle=\bfseries, title={Solución}, arc=2mm, boxrule=0.6pt}
+\newtcolorbox{nota}{enhanced, colback=acento!6, colframe=acento,
+  arc=2mm, boxrule=0.6pt}
+
+% =====================================================================
+\begin{document}
+% =====================================================================
+
+% ---------------------------------------------------------------------
+%  PORTADA
+% ---------------------------------------------------------------------
+\begin{titlepage}
+  \thispagestyle{empty}
+  \begin{tikzpicture}[remember picture,overlay]
+    \fill[principal] (current page.north west) rectangle ([yshift=-6.2cm]current page.north east);
+    \fill[acento] ([yshift=-6.2cm]current page.north west) rectangle ([yshift=-6.5cm]current page.north east);
+  \end{tikzpicture}
+
+  \vspace*{0.2cm}
+  {\color{white}
+    \large\textsc{Universidad Nacional de Educación a Distancia}\\[0.4cm]
+    \Large\bfseries \asignatura\par}
+
+  \vspace{4.2cm}
+  \begin{center}
+    {\Huge\bfseries\color{principal} Misión SQL\par}
+    \vspace{0.3cm}
+    {\Large\color{acento} El enigma de la Cooperativa Huerta de Murcia\par}
+    \vspace{0.6cm}
+    {\large Recurso educativo gamificado: presentación interactiva\\
+     y tres juegos digitales sobre el lenguaje SQL\par}
+  \end{center}
+
+  \vspace{1.2cm}
+  \begin{tcolorbox}[colback=fondocodigo, colframe=principal, arc=2mm, boxrule=0.6pt]
+    \begin{tabularx}{\linewidth}{@{}>{\bfseries}p{4.2cm}X@{}}
+      Actividad        & \actividad \\
+      Bloque temático  & \bloque \\
+      Materia de FP    & \materiaFP \\
+      Contextualización & Comunidad Autónoma de la Región de Murcia \\
+    \end{tabularx}
+  \end{tcolorbox}
+
+  \vfill
+  \begin{tabularx}{\linewidth}{@{}>{\bfseries}p{4.2cm}X@{}}
+    Estudiante      & \alumno \\
+    DNI             & \dni \\
+    Correo electrónico & \href{mailto:\email}{\email} \\
+    Centro asociado & \centro \\
+    Curso académico & \curso \\
+  \end{tabularx}
+\end{titlepage}
+
+\tableofcontents
+\newpage
+
+% =====================================================================
+\section{Planteamiento general}
+% =====================================================================
+
+\subsection{Justificación de la temática}
+
+El lenguaje SQL (\emph{Structured Query Language}) es el lenguaje estándar para definir,
+consultar y manipular la información almacenada en sistemas gestores de bases de datos
+relacionales. Se basa en el modelo relacional propuesto por Codd \cite{codd1970}, nació en
+IBM con el nombre de SEQUEL \cite{chamberlin1974} y está normalizado internacionalmente en
+la serie ISO/IEC~9075 \cite{iso9075}. Es el lenguaje de los SGBD más usados en la industria,
+como MySQL \cite{mysqldoc}, PostgreSQL \cite{postgresdoc} o SQLite \cite{sqlitedoc}, y la
+bibliografía de referencia de la materia lo trata como contenido central
+\cite{silberschatz,elmasri}. Prácticamente cualquier aplicación que desarrolle o administre un técnico
+superior de la familia de Informática y Comunicaciones (aplicaciones web, móviles, de
+escritorio o servicios en red) acaba leyendo y escribiendo datos mediante SQL, por lo que
+su dominio es una competencia transversal y muy demandada por el tejido empresarial. La
+encuesta anual de Stack Overflow lo sitúa de forma constante entre los lenguajes más
+utilizados por los profesionales del desarrollo de software \cite{stackoverflow2025}.
+
+Sin embargo, la investigación sobre la enseñanza de SQL muestra que su aprendizaje presenta
+dificultades recurrentes \cite{taipalus2020}. Los estudios que analizan las consultas
+escritas por estudiantes identifican errores sistemáticos tanto sintácticos como
+semánticos y lógicos \cite{taipalus2018}. Los más frecuentes aparecen en el agrupamiento
+(\texttt{GROUP BY}/\texttt{HAVING}), en las composiciones de varias tablas, en las
+composiciones externas y en las subconsultas \cite{ahadi2016,taipalus2018}. Influyen
+también la naturaleza declarativa del lenguaje, poco intuitiva para un alumnado que empieza a
+programar en lenguajes imperativos, y el hecho de que el orden lógico de evaluación de las
+cláusulas no coincide con el orden en que se escriben \cite{taipalus2018}.
+
+Superar estos errores no depende tanto de memorizar la sintaxis como de escribir muchas
+consultas, comprobar su resultado y corregirlas. El alumnado necesita, por tanto, mucha
+práctica con retroalimentación inmediata sobre cada intento. Mantener la motivación durante
+esa práctica repetida es precisamente lo que busca la \textbf{gamificación}, entendida como
+el uso de elementos de diseño de juegos en contextos que no son lúdicos \cite{deterding2011}.
+Elementos como los retos breves, la retroalimentación inmediata, la puntuación o una
+narrativa que da sentido a las tareas favorecen la implicación del alumnado en la actividad
+\cite{kapp2012,werbach2012}. La revisión de estudios empíricos de Hamari, Koivisto y Sarsa
+concluye que la gamificación tiene, en general, efectos positivos, especialmente en
+contextos educativos, aunque estos dependen del diseño concreto y del perfil de los
+usuarios \cite{hamari2014}. Por eso el recurso combina retos de dificultad creciente con
+corrección automática de las respuestas.
+
+Por ello se ha elegido el lenguaje SQL, en concreto las \emph{sentencias de consulta y de
+manipulación de datos}, como eje del recurso. El recurso se contextualiza en una
+cooperativa agrícola ficticia de la Región de Murcia, de modo que los datos con los que trabaja
+el alumnado (socios de Murcia, Lorca, Cartagena o Cieza; limones, alcachofas, melocotones…)
+resulten cercanos a su entorno socioproductivo, como pide el currículo autonómico al
+orientar los ciclos al sistema productivo de la región \cite{murciaDAM,murciaDAW}.
+
+\subsection{Destinatarios}
+
+El recurso está dirigido al alumnado de \textbf{primer curso} de los Ciclos Formativos de
+Grado Superior de \textbf{Desarrollo de Aplicaciones Multiplataforma (DAM)} y
+\textbf{Desarrollo de Aplicaciones Web (DAW)} que cursa el módulo profesional
+\textbf{0484 Bases de datos} en un centro de la Región de Murcia. Los currículos
+autonómicos publicados en el BORM sitúan este módulo en el primer curso de ambos ciclos
+\cite{murciaDAM,murciaDAW}, que desarrollan los títulos estatales
+\cite{rd450,rd686,rd405}. Se trata de alumnado mayor de edad
+o próximo a serlo, con perfiles de acceso heterogéneos (Bachillerato, Grado Medio, prueba de
+acceso o reincorporación al sistema educativo, según las vías de acceso a los ciclos de
+grado superior que regula la normativa de Formación Profesional \cite{lofp,rd659}), con
+conocimientos básicos de ofimática y que en paralelo inicia el módulo de Programación. Se presupone que ya ha trabajado el modelo
+relacional y la creación de tablas (RA2) y que se introduce en la consulta y manipulación de
+datos.
+
+El recurso también se puede usar, con cambios menores, en los módulos
+\emph{0372 Gestión de bases de datos} (CFGS ASIR) \cite{rd1629,ordenASIR}, cuyos contenidos
+de consulta y manipulación de datos son equivalentes, y como repaso al inicio del módulo
+\emph{0486 Acceso a datos} (CFGS DAM) \cite{ordenDAM,murciaDAM}.
+
+\subsection{Objetivos}
+
+\paragraph{Objetivo general.} Que el alumnado sea capaz de consultar y modificar la
+información de una base de datos relacional mediante sentencias SQL correctas y eficientes,
+valorando distintas alternativas para resolver un mismo problema.
+
+\paragraph{Objetivos específicos.} Al finalizar la actividad, el alumnado será capaz de:
+\begin{enumerate}[label=\textbf{O\arabic*.}]
+  \item Distinguir los sublenguajes de SQL (DDL, DML, DCL y control de transacciones) y
+        clasificar sus sentencias principales.
+  \item Construir consultas simples sobre una tabla con selección (\texttt{WHERE}),
+        proyección, ordenación (\texttt{ORDER BY}) y eliminación de duplicados
+        (\texttt{DISTINCT}), usando operadores relacionales, lógicos, \texttt{BETWEEN},
+        \texttt{IN}, \texttt{LIKE} e \texttt{IS NULL}.
+  \item Obtener valores de resumen con funciones de agregado, agrupando
+        (\texttt{GROUP BY}) y filtrando grupos (\texttt{HAVING}).
+  \item Combinar información de varias tablas mediante composiciones internas
+        (\texttt{INNER JOIN}) y externas (\texttt{LEFT}/\texttt{RIGHT JOIN}).
+  \item Resolver consultas mediante subconsultas y compararlas con soluciones equivalentes
+        basadas en composiciones.
+  \item Insertar, actualizar y borrar datos (\texttt{INSERT}, \texttt{UPDATE},
+        \texttt{DELETE}) respetando la integridad referencial.
+  \item Reconocer el funcionamiento de las transacciones (\texttt{START TRANSACTION},
+        \texttt{COMMIT}, \texttt{ROLLBACK}, \texttt{SAVEPOINT}).
+  \item Mostrar autonomía, constancia y espíritu de superación ante los errores,
+        y colaborar con el grupo durante los retos.
+\end{enumerate}
+
+\subsection{Marco normativo de aplicación}
+
+\subsubsection{Normativa estatal}
+
+\begin{itemize}
+  \item \textbf{Ley Orgánica 2/2006, de 3 de mayo, de Educación} (LOE), modificada por la
+        Ley Orgánica 3/2020, de 29 de diciembre (LOMLOE) \cite{loe,lomloe}.
+  \item \textbf{Ley Orgánica 3/2022, de 31 de marzo, de ordenación e integración de la
+        Formación Profesional} \cite{lofp}, y su desarrollo mediante el
+        \textbf{Real Decreto 659/2023, de 18 de julio}, por el que se desarrolla la
+        ordenación del Sistema de Formación Profesional \cite{rd659}.
+  \item \textbf{Real Decreto 450/2010, de 16 de abril}, por el que se establece el título
+        de Técnico Superior en Desarrollo de Aplicaciones Multiplataforma y se fijan sus
+        enseñanzas mínimas \cite{rd450}, y \textbf{Real Decreto 686/2010, de 20 de
+        mayo}, para el título de Técnico Superior en Desarrollo de Aplicaciones Web
+        \cite{rd686}.
+  \item \textbf{Real Decreto 405/2023, de 29 de mayo}, por el que se actualizan los títulos
+        de Técnico Superior en Desarrollo de Aplicaciones Multiplataforma y Técnico Superior
+        en Desarrollo de Aplicaciones Web y se fijan sus enseñanzas mínimas. Establece los
+        \emph{resultados de aprendizaje y criterios de evaluación} del módulo 0484
+        \cite{rd405}.
+  \item \textbf{Orden EDU/2000/2010, de 13 de julio}, por la que se establece el currículo
+        del ciclo formativo de grado superior de DAM \cite{ordenDAM}, y
+        \textbf{Orden EDU/2887/2010, de 2 de noviembre}, para el ciclo de DAW
+        \cite{ordenDAW}. Recogen los \emph{contenidos} del módulo 0484 en el ámbito de
+        gestión del Ministerio.
+\end{itemize}
+
+\subsubsection{Normativa autonómica (Región de Murcia)}
+
+\begin{itemize}
+  \item \textbf{Orden de 12 de marzo de 2013}, de la Consejería de Educación, Formación y
+        Empleo, por la que se establece el currículo del Ciclo Formativo de Grado Superior
+        correspondiente al título de \textbf{Técnico Superior en Desarrollo de Aplicaciones
+        Multiplataforma} en el ámbito de la Comunidad Autónoma de la Región de Murcia
+        (BORM n.º~73, de 1 de abril de 2013) \cite{murciaDAM}.
+  \item \textbf{Orden de 12 de marzo de 2013}, de la misma Consejería, por la que se
+        establece el currículo del Ciclo Formativo de Grado Superior correspondiente al
+        título de \textbf{Técnico Superior en Desarrollo de Aplicaciones Web} en el ámbito
+        de la Comunidad Autónoma de la Región de Murcia (BORM n.º~73, de 1 de abril de 2013)
+        \cite{murciaDAW}.
+  \item Modificaciones posteriores de dichas órdenes para adaptarlas a la actualización de
+        los títulos y a la nueva ordenación de la FP, así como las instrucciones de inicio
+        de curso de la Dirección General competente en Formación Profesional de la Región de Murcia.
+\end{itemize}
+
+Las órdenes autonómicas concretan para la Región de Murcia los contenidos del módulo
+0484 (que se ubica en el primer curso de ambos ciclos), su duración y su
+organización, y disponen que las programaciones se adapten al entorno socioeconómico de la
+región. Por ese motivo, el recurso usa como caso práctico una cooperativa hortofrutícola
+murciana, un sector económico clave en la región.
+
+\subsubsection{Resultados de aprendizaje y criterios de evaluación}
+
+La actividad se centra en los siguientes resultados de aprendizaje (RA) del módulo
+0484 \cite{rd405}:
+
+\begin{longtable}{@{}p{0.27\linewidth}p{0.68\linewidth}@{}}
+\toprule
+\textbf{Resultado de aprendizaje} & \textbf{Criterios de evaluación trabajados} \\
+\midrule
+\endhead
+\textbf{RA3.} Consulta la información almacenada en una base de datos empleando
+asistentes, herramientas gráficas y el lenguaje de manipulación de datos.
+&
+\begin{enumerate}[label=\alph*), leftmargin=*, nosep]
+  \item Se han identificado las herramientas y sentencias para realizar consultas.
+  \item Se han realizado consultas simples sobre una tabla.
+  \item Se han realizado consultas que generan valores de resumen.
+  \item Se han realizado consultas sobre el contenido de varias tablas mediante
+        composiciones internas.
+  \item Se han realizado consultas sobre el contenido de varias tablas mediante
+        composiciones externas.
+  \item Se han realizado consultas con subconsultas.
+  \item Se han valorado las ventajas e inconvenientes de las distintas opciones válidas
+        para llevar a cabo una consulta.
+\end{enumerate} \\
+\midrule
+\textbf{RA4.} Modifica la información almacenada en la base de datos utilizando
+asistentes, herramientas gráficas y el lenguaje de manipulación de datos.
+&
+\begin{enumerate}[label=\alph*), leftmargin=*, nosep]
+  \item Se han identificado las herramientas y sentencias para modificar el contenido
+        de la base de datos.
+  \item Se han insertado, borrado y actualizado datos en las tablas.
+  \item Se ha incluido en una tabla la información resultante de la ejecución de una
+        consulta.
+  \item Se han diseñado guiones de sentencias para llevar a cabo tareas complejas.
+  \item Se ha reconocido el funcionamiento de las transacciones.
+  \item Se han anulado parcial o totalmente los cambios producidos por una transacción.
+  \item[h)] Se han adoptado medidas para mantener la integridad y consistencia de la
+        información.
+\end{enumerate} \\
+\bottomrule
+\end{longtable}
+
+De forma complementaria, la actividad repasa el criterio del \textbf{RA2} relativo a la
+definición de claves primarias, ajenas y restricciones, necesario para entender los errores
+de integridad referencial que se plantean en los retos.
+
+\subsection{Contenidos que se trabajan}
+
+De acuerdo con los contenidos básicos del módulo \cite{ordenDAM,murciaDAM}, el recurso
+trabaja los bloques \emph{Realización de consultas} y \emph{Tratamiento de datos}:
+
+\begin{table}[H]
+\centering
+\begin{tabularx}{\linewidth}{@{}p{0.3\linewidth}X@{}}
+\toprule
+\textbf{Bloque de contenidos} & \textbf{Contenidos concretos} \\
+\midrule
+Introducción al lenguaje SQL &
+Sublenguajes DDL, DML, DCL y de control de transacciones. Herramientas gráficas y de línea
+de comandos para ejecutar sentencias. \\
+\addlinespace
+Realización de consultas &
+La sentencia \texttt{SELECT}. Selección y ordenación de registros. Operadores de
+comparación, lógicos, \texttt{BETWEEN}, \texttt{IN}, \texttt{LIKE}, \texttt{IS NULL}.
+Alias y \texttt{DISTINCT}. Consultas de resumen: funciones de agregado
+(\texttt{COUNT}, \texttt{SUM}, \texttt{AVG}, \texttt{MIN}, \texttt{MAX}). Agrupamiento de
+registros (\texttt{GROUP BY}) y filtrado de grupos (\texttt{HAVING}). Composiciones
+internas y externas. Subconsultas. \\
+\addlinespace
+Tratamiento de datos &
+Inserción, borrado y modificación de registros. Integridad referencial. Subconsultas en
+sentencias de edición. Transacciones: \texttt{COMMIT}, \texttt{ROLLBACK},
+\texttt{SAVEPOINT}. \\
+\addlinespace
+Contenidos transversales &
+Resolución de problemas, pensamiento computacional, trabajo en equipo, tolerancia al error
+y conocimiento del entorno productivo de la Región de Murcia. \\
+\bottomrule
+\end{tabularx}
+\caption{Contenidos trabajados en la actividad}
+\end{table}
+
+% =====================================================================
+\section{Descripción de la actividad}
+% =====================================================================
+
+\subsection{Visión general y narrativa}
+
+\emph{Misión SQL: el enigma de la Cooperativa Huerta de Murcia} es un recurso gamificado
+formado por:
+
+\begin{enumerate}
+  \item Una \textbf{presentación interactiva} en Genially, que sirve de hilo conductor
+        y donde se desarrollan la narrativa, los contenidos teóricos y la sala final.
+  \item \textbf{Tres juegos digitales educativos}, desarrollados como páginas web propias
+        (HTML, CSS y JavaScript) y publicados con GitHub Pages. La presentación los enlaza
+        en el orden de la misión.
+\end{enumerate}
+
+\paragraph{Narrativa.} Una tormenta de granizo ha dañado el servidor de la
+\emph{Cooperativa Huerta de Murcia} justo antes de la campaña de exportación. La gerencia
+ha contratado al alumnado como \emph{técnicos junior de bases de datos} para recuperar la
+información de socios, productos y entregas. El acceso a la copia de seguridad está protegido
+por una \textbf{caja fuerte digital con un código de cuatro dígitos}. Cada juego superado
+revela uno o dos dígitos (la «llave» del juego), y solo el equipo que reúna los cuatro
+podrá abrir la caja fuerte en la última diapositiva y «salvar la campaña».
+
+\paragraph{Elementos de gamificación.} Siguiendo el marco de mecánicas, dinámicas y
+componentes de Werbach y Hunter \cite{werbach2012}:
+
+\begin{itemize}
+  \item \textbf{Dinámicas}: narrativa, progresión por niveles (de lo sencillo a lo complejo),
+        sensación de logro y colaboración por equipos.
+  \item \textbf{Mecánicas}: retos, retroalimentación inmediata, recompensas (dígitos
+        de la llave), competición sana entre equipos y límite de tiempo en el juego 2.
+  \item \textbf{Componentes}: puntos, insignias por juego («Clasificador»,
+        «Detective de consultas», «Maestro del DML»), tabla de clasificación y desbloqueo
+        de la caja fuerte final.
+\end{itemize}
+
+\begin{figure}[H]
+\centering
+\begin{tikzpicture}[
+  node distance=0.9cm and 0.7cm,
+  caja/.style={rectangle, rounded corners=3pt, draw=principal, very thick,
+               fill=principal!8, minimum width=2.6cm, minimum height=1.25cm,
+               align=center, font=\small},
+  llave/.style={rectangle, rounded corners=3pt, draw=acento, thick, fill=acento!10,
+               font=\small\bfseries, align=center},
+  flecha/.style={-{Stealth[length=3mm]}, thick, principal}
+]
+  \node[caja] (g0) {Genially\\Narrativa y teoría};
+  \node[caja, right=of g0] (j1) {Juego 1\\Clasifica\\y ordena};
+  \node[caja, right=of j1] (j2) {Juego 2\\¿Qué devuelve\\la consulta?};
+  \node[caja, right=of j2] (j3) {Juego 3\\Terminal de\\la Cooperativa};
+  \node[caja, below=1.6cm of j2, draw=acento, fill=acento!10] (fin) {Genially\\Caja fuerte final};
+  \draw[flecha] (g0) -- (j1);
+  \draw[flecha] (j1) -- (j2);
+  \draw[flecha] (j2) -- (j3);
+  \node[llave, below=0.25cm of j1] (k1) {dígito 1};
+  \node[llave, below=0.25cm of j2] (k2) {dígito 2};
+  \node[llave, below=0.25cm of j3] (k3) {dígitos 3 y 4};
+  \draw[flecha, acento] (k1) |- (fin);
+  \draw[flecha, acento] (k2) -- (fin);
+  \draw[flecha, acento] (k3) |- (fin);
+\end{tikzpicture}
+\caption{Itinerario de la misión y obtención del código de la caja fuerte}
+\end{figure}
+
+\subsection{Base de datos de trabajo}
+
+Todos los retos se resuelven sobre la misma base de datos, \texttt{cooperativa}, que el
+alumnado conoce en la presentación y que el juego~3 carga en el navegador. Tiene tres
+tablas:
+
+\begin{itemize}
+  \item \texttt{socio(\underline{id\_socio}, nombre, municipio, fecha\_alta)}
+  \item \texttt{producto(\underline{id\_producto}, nombre, categoria, precio\_kg)}
+  \item \texttt{entrega(\underline{id\_entrega}, id\_socio\textsuperscript{FK},
+        id\_producto\textsuperscript{FK}, fecha, kilos)}
+\end{itemize}
+
+\begin{table}[H]
+\centering\small
+\begin{tabular}{@{}clll@{}}
+\toprule
+\multicolumn{4}{c}{\texttt{socio}} \\
+\midrule
+\textbf{id} & \textbf{nombre} & \textbf{municipio} & \textbf{fecha\_alta} \\
+1 & Ana Martínez   & Murcia    & 2019-02-11 \\
+2 & José López     & Lorca     & 2020-05-03 \\
+3 & Carmen Sánchez & Cartagena & 2021-09-20 \\
+4 & Pedro Ruiz     & Murcia    & 2022-01-15 \\
+5 & Lucía Gómez    & Cieza     & 2025-11-30 \\
+\bottomrule
+\end{tabular}
+\hfill
+\begin{tabular}{@{}clll@{}}
+\toprule
+\multicolumn{4}{c}{\texttt{producto}} \\
+\midrule
+\textbf{id} & \textbf{nombre} & \textbf{categoria} & \textbf{precio\_kg} \\
+1 & Limón       & Cítrico        & 0,60 \\
+2 & Naranja     & Cítrico        & 0,45 \\
+3 & Pimiento    & Hortaliza      & 1,20 \\
+4 & Alcachofa   & Hortaliza      & 1,80 \\
+5 & Melocotón   & Fruta de hueso & 1,50 \\
+6 & Albaricoque & Fruta de hueso & 2,10 \\
+\bottomrule
+\end{tabular}
+
+\vspace{0.4cm}
+\begin{tabular}{@{}ccccr@{}}
+\toprule
+\multicolumn{5}{c}{\texttt{entrega}} \\
+\midrule
+\textbf{id\_entrega} & \textbf{id\_socio} & \textbf{id\_producto} & \textbf{fecha} & \textbf{kilos} \\
+1 & 1 & 1 & 2026-03-02 & 500 \\
+2 & 1 & 3 & 2026-03-05 & 200 \\
+3 & 2 & 2 & 2026-03-05 & 800 \\
+4 & 2 & 4 & 2026-03-10 & 150 \\
+5 & 3 & 1 & 2026-03-12 & 300 \\
+6 & 3 & 5 & 2026-06-20 & 400 \\
+7 & 4 & 3 & 2026-03-15 & 250 \\
+8 & 4 & 4 & 2026-03-18 & 100 \\
+9 & 1 & 5 & 2026-06-25 & 350 \\
+\bottomrule
+\end{tabular}
+\caption{Contenido de la base de datos \texttt{cooperativa}}
+\label{tab:datos}
+\end{table}
+
+Los datos están pensados para que aparezcan casos didácticos concretos: una socia sin
+entregas (Lucía Gómez), útil para las composiciones externas; un producto sin entregas
+(Albaricoque), útil para \texttt{NOT IN}; y dos socios del mismo municipio, útil para
+\texttt{DISTINCT}. El guion completo de creación se incluye en el
+apéndice~\ref{ap:script}.
+
+\subsection{Presentación interactiva (Genially)}
+
+\begin{nota}
+\textbf{URL pública:} \url{\urlGenially}\\
+\textbf{Número de diapositivas:} \numDiapositivas
+\end{nota}
+
+La presentación es el tablero de la misión. Combina diapositivas de narrativa,
+diapositivas de contenido con ejemplos interactivos (ventanas emergentes con el resultado de
+cada consulta y botones «¿Y si…?») y botones de acceso a cada juego. Su estructura de
+contenidos es la siguiente:
+
+\begin{longtable}{@{}p{0.2\linewidth}p{0.75\linewidth}@{}}
+\toprule
+\textbf{Sección} & \textbf{Contenido} \\
+\midrule
+\endhead
+Portada y misión & Título, presentación de la Cooperativa Huerta de Murcia, la tormenta
+y el encargo al equipo técnico. Normas del juego, formación de equipos y explicación de la
+caja fuerte. \\
+\addlinespace
+Objetivos & Qué vamos a aprender: objetivos O1–O8 en lenguaje cercano al alumnado. \\
+\addlinespace
+La base de datos & Esquema relacional de \texttt{cooperativa} con claves primarias y
+ajenas; ventanas emergentes con el contenido de cada tabla. \\
+\addlinespace
+¿Qué es SQL? & Historia breve, estándar ISO/IEC 9075, SGBD habituales (MySQL/MariaDB,
+PostgreSQL, Oracle, SQLite). Sublenguajes DDL, DML, DCL y TCL con ejemplos. \\
+\addlinespace
+\textbf{Acceso al juego 1} & Botón «Clasifica y ordena» y casilla para anotar el
+\emph{dígito~1}. \\
+\addlinespace
+Consultas simples & Estructura de \texttt{SELECT}; proyección, alias, \texttt{DISTINCT};
+\texttt{WHERE} con operadores de comparación y lógicos; \texttt{BETWEEN}, \texttt{IN},
+\texttt{LIKE}, \texttt{IS NULL}; \texttt{ORDER BY}. Orden de escritura frente a orden lógico
+de evaluación de las cláusulas. \\
+\addlinespace
+Consultas de resumen & Funciones de agregado; \texttt{GROUP BY}; diferencia entre
+\texttt{WHERE} y \texttt{HAVING}, con una animación de cómo se forman los grupos. \\
+\addlinespace
+Varias tablas & Producto cartesiano; \texttt{INNER JOIN}; \texttt{LEFT}/\texttt{RIGHT JOIN}
+con diagramas de conjuntos; ejemplo de la socia sin entregas. \\
+\addlinespace
+Subconsultas & Subconsultas escalares, con \texttt{IN}/\texttt{NOT IN} y
+\texttt{EXISTS}; comparación entre una subconsulta y un \texttt{JOIN} equivalente
+(CE~3.g). \\
+\addlinespace
+\textbf{Acceso al juego 2} & Botón «¿Qué devuelve la consulta?» y casilla del
+\emph{dígito~2}. \\
+\addlinespace
+Manipulación de datos & \texttt{INSERT} (incluido \texttt{INSERT \ldots{} SELECT}),
+\texttt{UPDATE}, \texttt{DELETE}; peligro de olvidar el \texttt{WHERE}; errores de
+integridad referencial y opciones \texttt{ON DELETE}/\texttt{ON UPDATE}. \\
+\addlinespace
+Transacciones & Propiedades ACID; \texttt{START TRANSACTION}, \texttt{COMMIT},
+\texttt{ROLLBACK}, \texttt{SAVEPOINT}; nociones de bloqueo y acceso concurrente. \\
+\addlinespace
+\textbf{Acceso al juego 3} & Botón «Terminal de la Cooperativa» y casillas de los
+\emph{dígitos~3 y~4}. \\
+\addlinespace
+Caja fuerte final & Teclado numérico interactivo: el código correcto muestra la pantalla
+de victoria y la insignia final; un código erróneo devuelve una pista sobre el juego que hay
+que revisar. \\
+\addlinespace
+Cierre & Resumen de lo aprendido, autoevaluación, enlace a la base de datos para
+practicar en casa, créditos y bibliografía. \\
+\bottomrule
+\end{longtable}
+
+\subsection{Juegos digitales educativos}
+
+\begin{nota}
+Los tres juegos se publican juntos, en una única aplicación de GitHub Pages:\\
+\textbf{Repositorio:} \url{\urlRepo}\\
+\textbf{Página índice de los juegos:} \url{\urlJuegos}
+\end{nota}
+
+Los juegos forman una \textbf{aplicación web común} con \textbf{tres juegos diferenciados}.
+La aplicación ofrece la interfaz, la narrativa y las mecánicas de gamificación
+compartidas: perfil del equipo, marcador global de puntos, insignias, mapa del itinerario y
+registro de los dígitos de la llave. Cada juego es un juego independiente, con su propia
+naturaleza, mecánica y forma de interacción. No son fases de un mismo juego. El
+itinerario es progresivo: cada juego trabaja un nivel de complejidad mayor que el anterior
+y se desbloquea al superar el previo, aunque todos se pueden volver a jugar por separado.
+
+\begin{table}[H]
+\centering\small
+\begin{tabularx}{\linewidth}{@{}l>{\raggedright}p{2.7cm}>{\raggedright}p{3.2cm}>{\raggedright\arraybackslash}X@{}}
+\toprule
+\textbf{Juego} & \textbf{Tipo de juego} & \textbf{Interacción} & \textbf{Habilidad que se trabaja} \\
+\midrule
+1. Clasifica y ordena & Puzle de clasificación y ordenación & Arrastrar y soltar piezas &
+Reconocer la sintaxis y la estructura del lenguaje (\emph{recordar y comprender}) \\
+\addlinespace
+2. ¿Qué devuelve la consulta? & Concurso de preguntas contrarreloj & Elegir una respuesta con
+cuenta atrás & Leer e interpretar sentencias y predecir su resultado (\emph{comprender y
+analizar}) \\
+\addlinespace
+3. Terminal de la Cooperativa & Simulación o \emph{escape room} de resolución de
+incidencias & Escribir y ejecutar SQL real en una consola & Escribir sentencias que
+resuelven problemas reales (\emph{aplicar y crear}) \\
+\bottomrule
+\end{tabularx}
+\caption{Naturaleza diferenciada de los tres juegos}
+\end{table}
+
+La aplicación está formada por páginas web estáticas (HTML5, CSS y JavaScript sin servidor),
+así que se puede publicar gratis en GitHub Pages, funciona en cualquier navegador de
+ordenador, tableta o móvil, y no pide registro ni recoge datos personales del alumnado (puntuaciones y
+progreso se guardan solo en el navegador con \texttt{localStorage}). Todos los juegos
+comparten la estética de la presentación y el mismo esquema:
+pantalla de inicio con la parte de la narrativa que corresponde, instrucciones, desarrollo
+con retroalimentación inmediata y pantalla final con puntuación, insignia y dígito de la llave.
+
+% ---------------------------------------------------------------------
+\subsubsection{Juego 1: «Clasifica y ordena»}
+% ---------------------------------------------------------------------
+
+\begin{nota}
+\textbf{URL pública:} \url{\urlJuegoUno}\\
+\textbf{Objetivos:} O1, O2 \quad \textbf{CE:} 3.a, 4.a \quad
+\textbf{Duración estimada:} 10–15 minutos
+\end{nota}
+
+\paragraph{Descripción.} Juego de arrastrar y soltar en tres niveles, implementado con la API
+\emph{Drag and Drop} de HTML5 (con alternativa táctil para móviles). Cada acierto suma 10
+puntos; cada fallo resta 2 y muestra una explicación breve. Hay que superar un nivel para
+desbloquear el siguiente.
+
+\begin{reto}{Nivel 1 -- Clasificación de sentencias}
+Arrastra cada sentencia a su sublenguaje: \textbf{DDL} (definición), \textbf{DML}
+(manipulación), \textbf{DCL} (control de acceso) o \textbf{TCL} (control de transacciones).
+
+\texttt{CREATE}, \texttt{SELECT}, \texttt{GRANT}, \texttt{COMMIT}, \texttt{ALTER},
+\texttt{INSERT}, \texttt{REVOKE}, \texttt{ROLLBACK}, \texttt{DROP}, \texttt{UPDATE},
+\texttt{TRUNCATE}, \texttt{DELETE}, \texttt{SAVEPOINT}.
+\end{reto}
+
+\begin{solucion}
+\begin{tabularx}{\linewidth}{@{}>{\bfseries}lX@{}}
+DDL & \texttt{CREATE}, \texttt{ALTER}, \texttt{DROP}, \texttt{TRUNCATE} \\
+DML & \texttt{SELECT}, \texttt{INSERT}, \texttt{UPDATE}, \texttt{DELETE} \\
+DCL & \texttt{GRANT}, \texttt{REVOKE} \\
+TCL & \texttt{COMMIT}, \texttt{ROLLBACK}, \texttt{SAVEPOINT} \\
+\end{tabularx}
+
+\smallskip
+\emph{Nota:} \texttt{TRUNCATE} se clasifica como DDL porque vacía la tabla
+redefiniéndola, sin borrar fila a fila, y en muchos SGBD no admite \texttt{ROLLBACK}.
+\end{solucion}
+
+\begin{reto}{Nivel 2 -- Ordena las cláusulas}
+Ordena las piezas para formar una consulta sintácticamente correcta que obtenga, para
+cada socio con más de 400 kg entregados en 2026, el total de kilos, de mayor a menor:
+
+\texttt{HAVING SUM(kilos) > 400} $\cdot$ \texttt{FROM entrega} $\cdot$
+\texttt{ORDER BY total DESC} $\cdot$ \texttt{SELECT id\_socio, SUM(kilos) AS total} $\cdot$
+\texttt{GROUP BY id\_socio} $\cdot$ \texttt{WHERE fecha >= '2026-01-01'}
+\end{reto}
+
+\begin{solucion}
+\begin{lstlisting}
+SELECT id_socio, SUM(kilos) AS total
+FROM entrega
+WHERE fecha >= '2026-01-01'
+GROUP BY id_socio
+HAVING SUM(kilos) > 400
+ORDER BY total DESC;
+\end{lstlisting}
+Resultado: socio 1 (1050 kg), socio 2 (950 kg), socio 3 (700 kg). El socio 4
+(350 kg) no supera el filtro del \texttt{HAVING}.
+
+\smallskip
+\emph{Pregunta adicional del nivel:} ordena las cláusulas según su orden \emph{lógico de
+evaluación}. Solución: \texttt{FROM} $\rightarrow$ \texttt{WHERE} $\rightarrow$
+\texttt{GROUP BY} $\rightarrow$ \texttt{HAVING} $\rightarrow$ \texttt{SELECT}
+$\rightarrow$ \texttt{ORDER BY}.
+\end{solucion}
+
+\begin{reto}{Nivel 3 -- Relaciona operador y significado}
+Une cada expresión con su significado.
+\end{reto}
+
+\begin{solucion}
+\begin{tabularx}{\linewidth}{@{}lX@{}}
+\toprule
+\textbf{Expresión} & \textbf{Significado} \\
+\midrule
+\texttt{nombre LIKE 'Car\%'} & El nombre empieza por «Car» \\
+\texttt{nombre LIKE '\_o\%'} & La segunda letra del nombre es una «o» \\
+\texttt{municipio IN ('Lorca','Cieza')} & El municipio es Lorca o Cieza \\
+\texttt{precio\_kg BETWEEN 1 AND 2} & Precio entre 1 y 2 €, ambos incluidos \\
+\texttt{fecha\_alta IS NULL} & No se conoce la fecha de alta \\
+\texttt{SELECT DISTINCT municipio} & Muestra cada municipio una sola vez \\
+\texttt{SUM(kilos) AS total} & Pone el alias «total» a la columna calculada \\
+\texttt{precio\_kg <> 0.60} & Precio distinto de 0,60 € \\
+\bottomrule
+\end{tabularx}
+\end{solucion}
+
+\begin{reto}{Llave del juego 1 -- dígito 1}
+Al terminar los tres niveles se pregunta: \emph{¿Cuántas sentencias de la lista del
+nivel~1 pertenecen al DCL?}
+\end{reto}
+\begin{solucion}
+\textbf{2} (\texttt{GRANT} y \texttt{REVOKE}). \quad \textbf{Dígito 1 = 2}.
+\end{solucion}
+
+% ---------------------------------------------------------------------
+\subsubsection{Juego 2: «¿Qué devuelve la consulta?»}
+% ---------------------------------------------------------------------
+
+\begin{nota}
+\textbf{URL pública:} \url{\urlJuegoDos}\\
+\textbf{Objetivos:} O2, O3, O4, O5, O6, O7 \quad
+\textbf{CE:} 3.b, 3.c, 3.d, 3.e, 3.f, 4.b, 4.e, 4.h \quad
+\textbf{Duración estimada:} 15–20 minutos
+\end{nota}
+
+\paragraph{Descripción.} Concurso de preguntas de respuesta múltiple con cuenta atrás
+(30~s por pregunta) y puntuación según rapidez (hasta 1000 puntos por pregunta, como en los
+concursos de televisión). Cada pregunta muestra una sentencia SQL sobre la base de datos de la
+tabla~\ref{tab:datos}, que se puede consultar en todo momento con el botón «Ver tablas». Tras
+responder, el juego indica si la respuesta es correcta y muestra el resultado real de la
+consulta con una explicación. El docente puede proyectarlo en el aula para jugar por equipos
+o el alumnado puede jugarlo de forma individual. Al final se muestra la clasificación
+guardada en el navegador.
+
+A continuación figuran las doce preguntas con sus opciones (la correcta se marca con
+\textbf{\checkmark}).
+
+\newcommand{\ok}{\textbf{\checkmark}}
+
+\begin{reto}{Pregunta 1 -- Selección simple}
+\begin{lstlisting}
+SELECT nombre FROM socio WHERE municipio = 'Murcia';
+\end{lstlisting}
+a) Ana Martínez \quad
+b) Ana Martínez y Pedro Ruiz \ok \quad
+c) Pedro Ruiz \quad
+d) Los cinco socios
+\end{reto}
+
+\begin{reto}{Pregunta 2 -- Función de agregado \emph{(llave: dígito 2)}}
+\begin{lstlisting}
+SELECT COUNT(*) FROM entrega;
+\end{lstlisting}
+a) 5 \quad b) 6 \quad c) 9 \ok \quad d) 3050
+\end{reto}
+
+\begin{reto}{Pregunta 3 -- Rango y ordenación}
+\begin{lstlisting}
+SELECT nombre FROM producto
+WHERE precio_kg BETWEEN 1 AND 2
+ORDER BY precio_kg DESC;
+\end{lstlisting}
+¿Qué producto aparece en la \emph{primera} fila?\\
+a) Albaricoque \quad b) Alcachofa \ok \quad c) Pimiento \quad d) Melocotón
+\end{reto}
+
+\begin{reto}{Pregunta 4 -- Suma con filtro}
+\begin{lstlisting}
+SELECT SUM(kilos) FROM entrega WHERE id_socio = 1;
+\end{lstlisting}
+a) 500 \quad b) 700 \quad c) 1050 \ok \quad d) 3
+\end{reto}
+
+\begin{reto}{Pregunta 5 -- Agrupamiento y HAVING}
+\begin{lstlisting}
+SELECT id_socio, COUNT(*) FROM entrega
+GROUP BY id_socio
+HAVING COUNT(*) > 2;
+\end{lstlisting}
+¿Cuántas filas devuelve?\\
+a) 0 \quad b) 1 \ok \quad c) 4 \quad d) 9
+\end{reto}
+
+\begin{reto}{Pregunta 6 -- Composición interna}
+\begin{lstlisting}
+SELECT s.nombre
+FROM socio s
+  INNER JOIN entrega e  ON s.id_socio = e.id_socio
+  INNER JOIN producto p ON e.id_producto = p.id_producto
+WHERE p.nombre = 'Alcachofa';
+\end{lstlisting}
+a) José López y Pedro Ruiz \ok \quad
+b) Pedro Ruiz \quad
+c) Ana Martínez y Carmen Sánchez \quad
+d) Ninguna fila
+\end{reto}
+
+\begin{reto}{Pregunta 7 -- Composición externa}
+\begin{lstlisting}
+SELECT s.nombre
+FROM socio s LEFT JOIN entrega e ON s.id_socio = e.id_socio
+WHERE e.id_entrega IS NULL;
+\end{lstlisting}
+a) Ninguna fila \quad b) Lucía Gómez \ok \quad c) Los cinco socios \quad d) Error de sintaxis
+\end{reto}
+
+\begin{reto}{Pregunta 8 -- Subconsulta escalar}
+\begin{lstlisting}
+SELECT nombre FROM producto
+WHERE precio_kg > (SELECT AVG(precio_kg) FROM producto);
+\end{lstlisting}
+a) Solo Albaricoque \quad
+b) Alcachofa, Melocotón y Albaricoque \ok \quad
+c) Limón y Naranja \quad
+d) Pimiento, Alcachofa, Melocotón y Albaricoque
+\end{reto}
+
+\begin{reto}{Pregunta 9 -- Patrones con LIKE}
+\begin{lstlisting}
+SELECT COUNT(*) FROM socio WHERE nombre LIKE '%ez';
+\end{lstlisting}
+a) 2 \quad b) 3 \quad c) 4 \ok \quad d) 5
+\end{reto}
+
+\begin{reto}{Pregunta 10 -- Actualización}
+\begin{lstlisting}
+UPDATE producto SET precio_kg = precio_kg * 1.10
+WHERE categoria = 'Cítrico';
+\end{lstlisting}
+¿Cuántas filas se modifican?\\
+a) 0 \quad b) 1 \quad c) 2 \ok \quad d) 6
+\end{reto}
+
+\begin{reto}{Pregunta 11 -- Integridad referencial}
+Si la clave ajena \texttt{entrega.id\_socio} se ha definido sin \texttt{ON DELETE CASCADE},
+¿qué ocurre al ejecutar la siguiente sentencia?
+\begin{lstlisting}
+DELETE FROM socio WHERE id_socio = 1;
+\end{lstlisting}
+a) Se borra el socio y sus tres entregas \quad
+b) Se borra el socio y sus entregas quedan con \texttt{id\_socio} a \texttt{NULL} \quad
+c) El SGBD rechaza la sentencia por violar la integridad referencial \ok \quad
+d) Se borran todos los socios
+\end{reto}
+
+\begin{reto}{Pregunta 12 -- Transacciones}
+\begin{lstlisting}
+START TRANSACTION;
+DELETE FROM entrega WHERE kilos < 200;
+ROLLBACK;
+SELECT COUNT(*) FROM entrega;
+\end{lstlisting}
+a) 7 \quad b) 9 \ok \quad c) 0 \quad d) Error: no se puede borrar
+\end{reto}
+
+\begin{solucion}
+\begin{tabularx}{\linewidth}{@{}clX@{}}
+\toprule
+\textbf{P.} & \textbf{Correcta} & \textbf{Justificación} \\
+\midrule
+1  & b & Solo Ana Martínez (id~1) y Pedro Ruiz (id~4) son de Murcia. \\
+2  & c & La tabla \texttt{entrega} tiene 9 filas. \textbf{Dígito 2 = 9}. \\
+3  & b & Están en el rango Alcachofa (1,80), Melocotón (1,50) y Pimiento (1,20); en orden descendente
+         la primera es Alcachofa. Albaricoque (2,10) queda fuera. \\
+4  & c & $500 + 200 + 350 = 1050$ kg. \\
+5  & b & El socio 1 tiene 3 entregas; los socios 2, 3 y 4 tienen 2; el 5, ninguna. \\
+6  & a & La alcachofa (id~4) aparece en las entregas 4 (socio 2) y 8 (socio 4). \\
+7  & b & Lucía Gómez no tiene entregas: el \texttt{LEFT JOIN} rellena con \texttt{NULL}. \\
+8  & b & Media $= 7{,}65/6 = 1{,}275$ €; la superan 1,80, 1,50 y 2,10. \\
+9  & c & Martínez, López, Sánchez y Gómez acaban en «ez»; Ruiz, no. \\
+10 & c & Hay dos cítricos: Limón y Naranja. \\
+11 & c & Existen filas en \texttt{entrega} que referencian al socio 1 (restricción
+         \texttt{RESTRICT}/\texttt{NO ACTION} por defecto). \\
+12 & b & \texttt{ROLLBACK} deshace el borrado de las entregas~4 (150 kg) y~8 (100 kg),
+         así que vuelve a haber 9 filas. \\
+\bottomrule
+\end{tabularx}
+\end{solucion}
+
+% ---------------------------------------------------------------------
+\subsubsection{Juego 3: «Terminal de la Cooperativa»}
+% ---------------------------------------------------------------------
+
+\begin{nota}
+\textbf{URL pública:} \url{\urlJuegoTres}\\
+\textbf{Objetivos:} O3, O4, O5, O6, O7 \quad
+\textbf{CE:} 3.c, 3.d, 3.f, 3.g, 4.b, 4.c, 4.d, 4.e, 4.f \quad
+\textbf{Duración estimada:} 30–40 minutos
+\end{nota}
+
+\paragraph{Descripción.} Es el reto más exigente y el más parecido al trabajo real.
+La página simula la consola del servidor recuperado: incluye un editor de texto con resaltado
+de sintaxis y un motor SQLite compilado a WebAssembly (biblioteca \emph{sql.js}), que carga la
+base de datos \texttt{cooperativa} en el navegador. Así el alumnado escribe y ejecuta
+\emph{sentencias SQL reales} sin instalar nada y sin depender de ningún servidor.
+
+El juego plantea seis «incidencias» de la cooperativa. En cada una, el alumnado escribe la
+sentencia y pulsa \emph{Comprobar}. El juego ejecuta la sentencia, compara el resultado
+(o el estado de la tabla tras una modificación) con el esperado e informa del acierto o del
+error. Si se equivoca, puede pedir hasta dos pistas, que restan puntos. En las primeras incidencias
+se ofrecen plantillas con huecos para completar (modo guiado). En las últimas, el editor está
+vacío (modo libre). Un botón \emph{Reiniciar base de datos} restaura los datos originales.
+Al terminar, el juego muestra el resumen de puntos y la insignia «Maestro del DML».
+
+\begin{reto}{Incidencia 1 -- Liquidación por socio (modo guiado)}
+La gerencia necesita el importe que corresponde a cada socio (kilos $\times$ precio),
+ordenado de mayor a menor. Completa los huecos:
+\begin{lstlisting}
+SELECT s.nombre, SUM(e.kilos * p.precio_kg) AS importe
+FROM socio s
+  ______ JOIN entrega e  ON s.id_socio = e.______
+  INNER JOIN producto p ON e.id_producto = p.id_producto
+______ s.nombre
+ORDER BY importe ______;
+\end{lstlisting}
+\end{reto}
+\begin{solucion}
+Huecos: \texttt{INNER}, \texttt{id\_socio}, \texttt{GROUP BY}, \texttt{DESC}.
+
+\begin{tabular}{@{}lr@{}}
+\toprule
+\textbf{nombre} & \textbf{importe} \\
+\midrule
+Ana Martínez   & 1065,00 \\
+Carmen Sánchez &  780,00 \\
+José López     &  630,00 \\
+Pedro Ruiz     &  480,00 \\
+\bottomrule
+\end{tabular}
+\end{solucion}
+
+\begin{reto}{Incidencia 2 -- Categorías estrella (modo guiado) \emph{(llave: dígito 4)}}
+Obtén las categorías de producto cuyo total de kilos entregados supere los 1000 kg.
+\begin{lstlisting}
+SELECT p.categoria, SUM(e.kilos) AS total_kg
+FROM producto p INNER JOIN entrega e ON p.id_producto = e.id_producto
+GROUP BY ______
+______ SUM(e.kilos) > 1000;
+\end{lstlisting}
+\end{reto}
+\begin{solucion}
+Huecos: \texttt{p.categoria}, \texttt{HAVING}.
+Resultado: una única fila, \emph{Cítrico -- 1600 kg} (Hortaliza suma 700 kg y Fruta de
+hueso, 750 kg). \textbf{Dígito 4 = 1} (número de categorías obtenidas).
+\end{solucion}
+
+\begin{reto}{Incidencia 3 -- Producto sin movimiento (modo libre)}
+Escribe una consulta que muestre los productos de los que no hay ninguna entrega.
+Después, escribe una segunda versión con otra técnica y explica cuál prefieres.
+\end{reto}
+\begin{solucion}
+\begin{lstlisting}
+-- Versión con subconsulta
+SELECT nombre FROM producto
+WHERE id_producto NOT IN (SELECT id_producto FROM entrega);
+
+-- Versión con composición externa
+SELECT p.nombre
+FROM producto p LEFT JOIN entrega e ON p.id_producto = e.id_producto
+WHERE e.id_entrega IS NULL;
+\end{lstlisting}
+Resultado en ambos casos: \emph{Albaricoque}. Las dos versiones son válidas. La versión con
+subconsulta se lee mejor, pero \texttt{NOT IN} devuelve un conjunto vacío si la subconsulta
+contiene algún \texttt{NULL}. La composición externa (o \texttt{NOT EXISTS}) evita ese
+problema y los optimizadores suelen ejecutarla de forma eficiente (CE~3.g).
+\end{solucion}
+
+\begin{reto}{Incidencia 4 -- Nuevo socio (modo libre)}
+Se incorpora a la cooperativa Antonio Pérez, de Yecla, con fecha de alta 1 de octubre de
+2026 e identificador 6. Regístralo y, a continuación, registra que hoy (2026-10-29) ha
+entregado 600 kg de limones (entrega número 10).
+\end{reto}
+\begin{solucion}
+\begin{lstlisting}
+INSERT INTO socio (id_socio, nombre, municipio, fecha_alta)
+VALUES (6, 'Antonio Pérez', 'Yecla', '2026-10-01');
+
+INSERT INTO entrega (id_entrega, id_socio, id_producto, fecha, kilos)
+VALUES (10, 6, 1, '2026-10-29', 600);
+\end{lstlisting}
+El orden importa: si se inserta primero la entrega, el SGBD la rechaza porque el socio
+6 aún no existe (integridad referencial, CE~4.h).
+\end{solucion}
+
+\begin{reto}{Incidencia 5 -- Limpieza de entregas antiguas (modo libre) \emph{(llave: dígito 3)}}
+\emph{Partiendo de la base de datos original (pulsa Reiniciar).} Dentro de una
+transacción, borra las entregas anteriores al 6 de marzo de 2026, comprueba cuántas filas
+se han borrado y confirma los cambios.
+\end{reto}
+\begin{solucion}
+\begin{lstlisting}
+START TRANSACTION;          -- BEGIN TRANSACTION en SQLite
+DELETE FROM entrega WHERE fecha < '2026-03-06';
+SELECT COUNT(*) FROM entrega;   -- quedan 6 filas
+COMMIT;
+\end{lstlisting}
+Se borran \textbf{3 filas} (entregas 1, 2 y 3). \textbf{Dígito 3 = 3}.
+\end{solucion}
+
+\begin{reto}{Incidencia 6 -- Subida de precios con marcha atrás (modo libre)}
+Dentro de una transacción: sube un 10\,\% el precio de las hortalizas, crea un punto de
+guardado, sube otro 5\,\% el de la fruta de hueso, deshaz solo esta segunda subida y
+confirma la primera. Por último, guarda en una tabla nueva \texttt{resumen\_categoria}
+el precio medio de cada categoría.
+\end{reto}
+\begin{solucion}
+\begin{lstlisting}
+START TRANSACTION;
+UPDATE producto SET precio_kg = precio_kg * 1.10
+WHERE categoria = 'Hortaliza';
+SAVEPOINT tras_hortalizas;
+UPDATE producto SET precio_kg = precio_kg * 1.05
+WHERE categoria = 'Fruta de hueso';
+ROLLBACK TO SAVEPOINT tras_hortalizas;
+COMMIT;
+
+CREATE TABLE resumen_categoria (
+  categoria    VARCHAR(30) PRIMARY KEY,
+  precio_medio DECIMAL(5,2)
+);
+INSERT INTO resumen_categoria (categoria, precio_medio)
+SELECT categoria, ROUND(AVG(precio_kg), 2)
+FROM producto
+GROUP BY categoria;
+\end{lstlisting}
+Resultado esperado: Pimiento pasa a 1,32 € y Alcachofa a 1,98 €; la fruta de hueso
+conserva sus precios. \texttt{resumen\_categoria}: Cítrico 0,53; Fruta de hueso 1,80;
+Hortaliza 1,65 (CE~4.c, 4.d, 4.f).
+\end{solucion}
+
+\subsection{Código de la caja fuerte}
+
+\begin{center}
+\begin{tabular}{@{}lll c@{}}
+\toprule
+\textbf{Dígito} & \textbf{Juego} & \textbf{Reto} & \textbf{Valor} \\
+\midrule
+1 & Juego 1 & Sentencias DCL de la lista & 2 \\
+2 & Juego 2 & Pregunta 2: \texttt{COUNT(*)} de \texttt{entrega} & 9 \\
+3 & Juego 3 & Incidencia 5: filas borradas & 3 \\
+4 & Juego 3 & Incidencia 2: categorías con más de 1000 kg & 1 \\
+\midrule
+\multicolumn{3}{r}{\textbf{Código de la caja fuerte}} & \textbf{\Large 2931} \\
+\bottomrule
+\end{tabular}
+\end{center}
+
+\subsection{Secuenciación y metodología}
+
+La actividad está pensada para tres sesiones de 55 minutos, en el momento de la programación
+en que se empiezan a trabajar los RA3 y RA4:
+
+\begin{itemize}
+  \item \textbf{Sesión 1}: presentación de la misión y de la base de datos, introducción a SQL,
+        \textbf{juego~1}, consultas simples y de resumen.
+  \item \textbf{Sesión 2}: composiciones, subconsultas y \textbf{juego~2} jugado en el aula
+        por equipos con clasificación proyectada.
+  \item \textbf{Sesión 3}: manipulación de datos y transacciones, \textbf{juego~3} por
+        parejas y apertura de la caja fuerte. Puesta en común y autoevaluación.
+\end{itemize}
+
+Se usa una metodología activa que combina la explicación interactiva con la
+\emph{presentación}, el aprendizaje basado en retos y el trabajo cooperativo. Como los
+juegos son páginas web abiertas, el alumnado puede repetirlos fuera del aula tantas veces
+como quiera, lo que facilita la atención a la diversidad: quien necesita más práctica puede
+volver a jugarlos, y quien avanza rápido puede abordar en el juego~3 las versiones
+alternativas de cada consulta. Las páginas siguen pautas básicas de accesibilidad
+(contraste suficiente, navegación por teclado y textos alternativos).
+
+\paragraph{Evaluación.} Los juegos 1 y 2 tienen carácter formativo: dan
+retroalimentación inmediata al alumnado y permiten al docente detectar errores
+frecuentes. Las soluciones del juego~3 (que el alumnado puede copiar o exportar
+desde la propia terminal) sirven como evidencia para evaluar los criterios 3.c–3.g y
+4.b–4.f con una rúbrica.
+
+% =====================================================================
+\section{Bibliografía}
+% =====================================================================
+
+\nocite{*}
+\printbibliography[heading=none]
+
+% =====================================================================
+\appendix
+\section{Guion SQL de la base de datos \texttt{cooperativa}}
+\label{ap:script}
+% =====================================================================
+
+El siguiente guion crea y carga la base de datos de trabajo. Es compatible con SQLite,
+MySQL/MariaDB y PostgreSQL. Es el mismo que el juego~3 carga en el navegador y está
+disponible en el repositorio de los juegos.
+
+\lstinputlisting{sql/cooperativa.sql}
+
+\end{document}
