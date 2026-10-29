@@ -44,6 +44,7 @@
 \definecolor{principal}{HTML}{1F4E79}
 \definecolor{acento}{HTML}{E07A1F}
 \definecolor{fondocodigo}{HTML}{F5F7FA}
+\newcommand{\trab}{\textcolor{ForestGreen}{\ensuremath{\checkmark}}}
 
 \titleformat{\section}{\Large\bfseries\color{principal}}{\thesection.}{0.6em}{}
 \titleformat{\subsection}{\large\bfseries\color{principal}}{\thesubsection.}{0.6em}{}
@@ -167,46 +168,116 @@ también la naturaleza declarativa del lenguaje, poco intuitiva para un alumnado
 programar en lenguajes imperativos, y el hecho de que el orden lógico de evaluación de las
 cláusulas no coincide con el orden en que se escriben \cite{taipalus2018}.
 
-Superar estos errores no depende tanto de memorizar la sintaxis como de escribir muchas
-consultas, comprobar su resultado y corregirlas. El alumnado necesita, por tanto, mucha
-práctica con retroalimentación inmediata sobre cada intento. Mantener la motivación durante
-esa práctica repetida es precisamente lo que busca la \textbf{gamificación}, entendida como
+Para superar estos errores no basta con conocer la sintaxis: el alumnado tiene que escribir
+consultas, comprobar su resultado y corregirlas. La retroalimentación sobre la propia tarea
+es uno de los factores con mayor influencia en el aprendizaje \cite{hattie2007}, y en la
+enseñanza de SQL una de las líneas de investigación más activas es el desarrollo de herramientas
+que evalúan automáticamente las consultas y devuelven retroalimentación inmediata
+\cite{taipalus2020}. Mantener la motivación durante
+esa práctica repetida es precisamente lo que busca la \textit{gamificación}, entendida como
 el uso de elementos de diseño de juegos en contextos que no son lúdicos \cite{deterding2011}.
 Elementos como los retos breves, la retroalimentación inmediata, la puntuación o una
 narrativa que da sentido a las tareas favorecen la implicación del alumnado en la actividad
-\cite{kapp2012,werbach2012}. La revisión de estudios empíricos de Hamari, Koivisto y Sarsa
-concluye que la gamificación tiene, en general, efectos positivos, especialmente en
-contextos educativos, aunque estos dependen del diseño concreto y del perfil de los
-usuarios \cite{hamari2014}. Por eso el recurso combina retos de dificultad creciente con
-corrección automática de las respuestas.
+\cite{kapp2012,werbach2012}. Trabajos previos~\cite{hamari2014,dicheva2015,sailer2020}
+concluyen que la gamificación tiene, en general, efectos positivos sobre la motivación y el
+aprendizaje, especialmente en contextos educativos, aunque estos dependen del diseño
+concreto y del perfil de los usuarios.
 
-Por ello se ha elegido el lenguaje SQL, en concreto las \emph{sentencias de consulta y de
-manipulación de datos}, como eje del recurso. El recurso se contextualiza en una
-cooperativa agrícola ficticia de la Región de Murcia, de modo que los datos con los que trabaja
-el alumnado (socios de Murcia, Lorca, Cartagena o Cieza; limones, alcachofas, melocotones…)
-resulten cercanos a su entorno socioproductivo, como pide el currículo autonómico al
-orientar los ciclos al sistema productivo de la región \cite{murciaDAM,murciaDAW}.
+En resumen, SQL es un contenido imprescindible para el perfil profesional del alumnado,
+plantea dificultades de aprendizaje bien documentadas y requiere una práctica intensa con
+retroalimentación, que es justo lo que la gamificación ayuda a sostener. Por estas razones,
+se han elegido las \emph{sentencias de consulta y de manipulación de datos} de SQL como eje
+de un recurso educativo gamificado.
 
-\subsection{Destinatarios}
+\noindent\textbf{Valor añadido.} Además, para que la práctica tenga sentido para el alumnado, todos los retos se plantean
+sobre un caso cercano: una cooperativa agrícola ficticia de la Región de Murcia, con socios
+de Murcia, Lorca, Cartagena o Cieza y productos como limones, alcachofas o melocotones.
+Esta decisión es coherente con el currículo autonómico vigente, que establece que el
+currículo se implantará «teniendo en cuenta la realidad socioeconómica, las necesidades del
+tejido empresarial y las características geográficas, socio-productivas y laborales propias
+del entorno» y reconoce a los centros autonomía pedagógica para adaptar las enseñanzas «a las
+características concretas del entorno socioeconómico, cultural y profesional»
+\cite[art.~4]{murcia2026}.
+
+\subsection{Destinatarios y módulo profesional}
 
 El recurso está dirigido al alumnado de \textbf{primer curso} de los Ciclos Formativos de
 Grado Superior de \textbf{Desarrollo de Aplicaciones Multiplataforma (DAM)} y
-\textbf{Desarrollo de Aplicaciones Web (DAW)} que cursa el módulo profesional
-\textbf{0484 Bases de datos} en un centro de la Región de Murcia. Los currículos
-autonómicos publicados en el BORM sitúan este módulo en el primer curso de ambos ciclos
-\cite{murciaDAM,murciaDAW}, que desarrollan los títulos estatales
-\cite{rd450,rd686,rd405}. Se trata de alumnado mayor de edad
-o próximo a serlo, con perfiles de acceso heterogéneos (Bachillerato, Grado Medio, prueba de
-acceso o reincorporación al sistema educativo, según las vías de acceso a los ciclos de
-grado superior que regula la normativa de Formación Profesional \cite{lofp,rd659}), con
-conocimientos básicos de ofimática y que en paralelo inicia el módulo de Programación. Se presupone que ya ha trabajado el modelo
-relacional y la creación de tablas (RA2) y que se introduce en la consulta y manipulación de
-datos.
+\textbf{Desarrollo de Aplicaciones Web (DAW)}, de la familia profesional Informática y
+Comunicaciones, que cursa el módulo profesional \textbf{0484 Bases de datos} en un centro de
+la Región de Murcia. Este módulo es común a ambos títulos \cite{rd450,rd686,rd405,rd500}.
+Sus elementos curriculares se fijan en el RD 405/2023 \cite{rd405} y su organización en la
+región, en la Orden de 21 de septiembre de 2026 \cite{murcia2026}. La
+tabla~\ref{tab:modulo} resume sus datos básicos.
 
-El recurso también se puede usar, con cambios menores, en los módulos
-\emph{0372 Gestión de bases de datos} (CFGS ASIR) \cite{rd1629,ordenASIR}, cuyos contenidos
-de consulta y manipulación de datos son equivalentes, y como repaso al inicio del módulo
-\emph{0486 Acceso a datos} (CFGS DAM) \cite{ordenDAM,murciaDAM}.
+\begin{table}[H]
+\centering
+\begin{tabularx}{\linewidth}{@{}>{\bfseries}p{0.3\linewidth}X@{}}
+\toprule
+Código y denominación & 0484 Bases de datos \\
+Ciclos formativos & CFGS Desarrollo de Aplicaciones Multiplataforma (DAM) y CFGS
+                    Desarrollo de Aplicaciones Web (DAW) \\
+Curso & Primero \cite[anexos XLIV y XLV]{murcia2026} \\
+Duración en la Región de Murcia & 175 horas, 5 horas semanales
+                    \cite[anexos XLIV y XLV]{murcia2026} \\
+Duración mínima estatal & 105 horas \cite{rd405} \\
+Créditos ECTS & 12 \cite{rd405} \\
+Resultados de aprendizaje & 7 (tabla~\ref{tab:ra}) \\
+\bottomrule
+\end{tabularx}
+\caption{Datos básicos del módulo profesional 0484}
+\label{tab:modulo}
+\end{table}
+
+\paragraph{Perfil del alumnado.} Se trata de alumnado mayor de edad o próximo a serlo, con
+perfiles de acceso heterogéneos (Bachillerato, Grado Medio, prueba de acceso o
+reincorporación al sistema educativo, según las vías de acceso a los ciclos de grado
+superior que regula la normativa de Formación Profesional \cite{lofp,rd659}), con
+conocimientos básicos de ofimática y que en paralelo inicia el módulo de Programación.
+
+\paragraph{Función del módulo y perfil profesional.} Según las orientaciones pedagógicas del
+RD 405/2023, el módulo «contiene la formación necesaria para desempeñar la función de
+programación de bases de datos», que incluye la planificación y realización del diseño
+lógico y físico de una base de datos, la normalización de esquemas, la inserción y
+manipulación de datos, la planificación y realización de consultas y la programación de
+procedimientos almacenados. Las actividades profesionales asociadas se aplican en la gestión
+de la información almacenada en bases de datos y en el desarrollo de aplicaciones que acceden
+a ellas \cite{rd405}.
+
+En el título de DAM, el módulo contribuye a alcanzar los objetivos generales c), e), f), p)
+y t) del ciclo y las competencias b), c), e), p) y t) del título. Entre ellas destacan la
+competencia c), «Gestionar bases de datos, interpretando su diseño lógico y verificando
+integridad, consistencia, seguridad y accesibilidad de los datos», y la e), «Desarrollar
+aplicaciones multiplataforma con acceso a bases de datos utilizando lenguajes, librerías y
+herramientas adecuados a las especificaciones». En el título de DAW contribuye a los
+objetivos generales e), f), g), p) y r) y a las competencias d), e) y p) \cite{rd405}.
+
+\paragraph{Estructura del módulo.} El módulo se organiza en siete resultados de aprendizaje,
+que recorren el ciclo completo de trabajo con bases de datos: reconocer los sistemas de
+almacenamiento y los SGBD (RA1), crear bases de datos relacionales (RA2), consultar (RA3)
+y modificar (RA4) la información, programar procedimientos almacenados (RA5), diseñar
+modelos relacionales normalizados a partir de diagramas entidad/relación (RA6) y gestionar
+bases de datos no relacionales (RA7). Sus contenidos básicos se agrupan en los bloques
+\emph{Almacenamiento de la información}, \emph{Bases de datos relacionales},
+\emph{Realización de consultas}, \emph{Tratamiento de datos}, \emph{Programación de bases de
+datos}, \emph{Interpretación de diagramas entidad/relación} y \emph{Uso de bases de datos no
+relacionales} \cite{rd405}.
+
+\paragraph{Lugar de la actividad en el módulo.} El recurso se sitúa en el centro de esa
+secuencia. Se presupone que el alumnado ya ha trabajado el RA2, «Crea bases de datos
+definiendo su estructura y las características de sus elementos según el modelo
+relacional», es decir, que conoce el modelo relacional y sabe crear tablas con sus claves y
+restricciones. Con este recurso se inicia en la consulta y la modificación de datos con SQL
+(RA3 y RA4, apartado~\ref{sec:ra}), antes de pasar a la programación de procedimientos
+almacenados (RA5). Responde así a una de las líneas de actuación que las orientaciones
+pedagógicas proponen para el módulo: «la realización de operaciones de consulta y
+modificación sobre los datos almacenados» \cite{rd405}.
+
+\paragraph{Uso en otros módulos.} El recurso también se puede usar, con cambios menores, en
+el módulo \emph{0372 Gestión de bases de datos} (CFGS ASIR), también de primer curso
+\cite{rd1629,rd500,ordenASIR}\cite[anexo XLIII]{murcia2026}, cuyos contenidos de consulta y
+manipulación de datos son equivalentes, y como repaso al inicio del módulo
+\emph{0486 Acceso a datos} (segundo curso del CFGS DAM) \cite{rd405}\cite[anexo XLIV]{murcia2026}.
 
 \subsection{Objetivos}
 
@@ -247,99 +318,217 @@ valorando distintas alternativas para resolver un mismo problema.
         Formación Profesional} \cite{lofp}, y su desarrollo mediante el
         \textbf{Real Decreto 659/2023, de 18 de julio}, por el que se desarrolla la
         ordenación del Sistema de Formación Profesional \cite{rd659}.
+  \item \textbf{Real Decreto 278/2023, de 11 de abril}, por el que se establece el calendario
+        de implantación del Sistema de Formación Profesional establecido por la Ley Orgánica
+        3/2022 \cite{rd278}.
   \item \textbf{Real Decreto 450/2010, de 16 de abril}, por el que se establece el título
         de Técnico Superior en Desarrollo de Aplicaciones Multiplataforma y se fijan sus
         enseñanzas mínimas \cite{rd450}, y \textbf{Real Decreto 686/2010, de 20 de
         mayo}, para el título de Técnico Superior en Desarrollo de Aplicaciones Web
-        \cite{rd686}.
+        \cite{rd686}. Ambos siguen vigentes con las dos modificaciones siguientes.
   \item \textbf{Real Decreto 405/2023, de 29 de mayo}, por el que se actualizan los títulos
         de Técnico Superior en Desarrollo de Aplicaciones Multiplataforma y Técnico Superior
-        en Desarrollo de Aplicaciones Web y se fijan sus enseñanzas mínimas. Establece los
-        \emph{resultados de aprendizaje y criterios de evaluación} del módulo 0484
-        \cite{rd405}.
+        en Desarrollo de Aplicaciones Web y se fijan sus enseñanzas mínimas. Da nueva
+        redacción al módulo 0484 y establece sus \emph{resultados de aprendizaje, criterios
+        de evaluación y contenidos básicos} \cite{rd405}.
+  \item \textbf{Real Decreto 500/2024, de 21 de mayo}, por el que se modifican determinados
+        reales decretos por los que se establecen títulos de Formación Profesional de grado
+        superior y se fijan sus enseñanzas mínimas. Adapta los títulos de DAM, DAW y ASIR,
+        entre otros, a la nueva ordenación del RD 659/2023 \cite{rd500}.
   \item \textbf{Orden EDU/2000/2010, de 13 de julio}, por la que se establece el currículo
         del ciclo formativo de grado superior de DAM \cite{ordenDAM}, y
         \textbf{Orden EDU/2887/2010, de 2 de noviembre}, para el ciclo de DAW
-        \cite{ordenDAW}. Recogen los \emph{contenidos} del módulo 0484 en el ámbito de
-        gestión del Ministerio.
+        \cite{ordenDAW}. Desarrollan el currículo en el ámbito de gestión del Ministerio,
+        por lo que no se aplican en la Región de Murcia; se citan solo como referencia.
 \end{itemize}
 
 \subsubsection{Normativa autonómica (Región de Murcia)}
 
 \begin{itemize}
-  \item \textbf{Orden de 12 de marzo de 2013}, de la Consejería de Educación, Formación y
-        Empleo, por la que se establece el currículo del Ciclo Formativo de Grado Superior
-        correspondiente al título de \textbf{Técnico Superior en Desarrollo de Aplicaciones
-        Multiplataforma} en el ámbito de la Comunidad Autónoma de la Región de Murcia
-        (BORM n.º~73, de 1 de abril de 2013) \cite{murciaDAM}.
-  \item \textbf{Orden de 12 de marzo de 2013}, de la misma Consejería, por la que se
-        establece el currículo del Ciclo Formativo de Grado Superior correspondiente al
-        título de \textbf{Técnico Superior en Desarrollo de Aplicaciones Web} en el ámbito
-        de la Comunidad Autónoma de la Región de Murcia (BORM n.º~73, de 1 de abril de 2013)
-        \cite{murciaDAW}.
-  \item Modificaciones posteriores de dichas órdenes para adaptarlas a la actualización de
-        los títulos y a la nueva ordenación de la FP, así como las instrucciones de inicio
-        de curso de la Dirección General competente en Formación Profesional de la Región de Murcia.
+  \item \textbf{Decreto n.º 13/2026, de 5 de marzo}, por el que se establece la ordenación
+        de la Formación Profesional de Grado D y de Grado E en la Comunidad Autónoma de la
+        Región de Murcia. Determina la estructura mínima de los currículos de los ciclos
+        formativos \cite{decreto13}.
+  \item \textbf{Orden de 21 de septiembre de 2026}, de la Consejería de Educación y Formación
+        Profesional, por la que se establecen los currículos de los títulos de los ciclos
+        formativos de formación profesional de grado superior y se regulan determinados
+        aspectos organizativos de aquellos en la Comunidad Autónoma de la Región de Murcia
+        (BORM n.º~222, de 25 de septiembre de 2026). Produce efectos académicos desde el
+        curso 2024/2025 y deroga las Órdenes de 12 de marzo de 2013 que establecían los
+        currículos de DAM y DAW en la región \cite{murcia2026}.
 \end{itemize}
 
-Las órdenes autonómicas concretan para la Región de Murcia los contenidos del módulo
-0484 (que se ubica en el primer curso de ambos ciclos), su duración y su
-organización, y disponen que las programaciones se adapten al entorno socioeconómico de la
-región. Por ese motivo, el recurso usa como caso práctico una cooperativa hortofrutícola
-murciana, un sector económico clave en la región.
+La Orden de 21 de septiembre de 2026 establece que los resultados de aprendizaje y los
+criterios de evaluación de cada módulo son los del Anexo I de los reales decretos de
+título y tienen carácter \emph{prescriptivo}, mientras que los contenidos básicos tienen
+carácter \emph{orientativo} y corresponde a los equipos docentes concretarlos en las
+programaciones \cite[art.~3]{murcia2026}. Además, dispone que el currículo se adapte a la
+realidad socioeconómica y productiva del entorno \cite[art.~4]{murcia2026}. Sus anexos
+XLIV (DAM) y XLV (DAW) sitúan el módulo 0484 en el primer curso, con 175 horas y
+5 horas semanales. Por ese motivo, el recurso toma como referencia los resultados de
+aprendizaje y criterios de evaluación del RD 405/2023 y usa como caso práctico una
+cooperativa hortofrutícola murciana, un sector económico clave en la región.
 
 \subsubsection{Resultados de aprendizaje y criterios de evaluación}
+\label{sec:ra}
 
-La actividad se centra en los siguientes resultados de aprendizaje (RA) del módulo
-0484 \cite{rd405}:
+El módulo 0484 \emph{Bases de datos} tiene siete resultados de aprendizaje (RA), con sus
+criterios de evaluación (CE), en la redacción dada por el Anexo~I del RD 405/2023
+\cite{rd405}. En la Región de Murcia son prescriptivos para el diseño de las programaciones y
+la evaluación \cite[art.~3]{murcia2026}. La tabla~\ref{tab:ra} los recoge todos y marca con
+\trab{} los criterios que trabaja esta actividad.
 
 \begin{longtable}{@{}p{0.27\linewidth}p{0.68\linewidth}@{}}
+\caption{Resultados de aprendizaje y criterios de evaluación del módulo 0484 (RD 405/2023)}
+\label{tab:ra}\\
 \toprule
-\textbf{Resultado de aprendizaje} & \textbf{Criterios de evaluación trabajados} \\
+\textbf{Resultado de aprendizaje} & \textbf{Criterios de evaluación} \\
+\midrule
+\endfirsthead
+\toprule
+\textbf{Resultado de aprendizaje} & \textbf{Criterios de evaluación} \\
 \midrule
 \endhead
-\textbf{RA3.} Consulta la información almacenada en una base de datos empleando
-asistentes, herramientas gráficas y el lenguaje de manipulación de datos.
+\bottomrule
+\endfoot
+\textbf{RA1.} Reconoce los elementos de las bases de datos analizando sus funciones y
+valorando la utilidad de los sistemas gestores.
+
+\smallskip\emph{No se trabaja.}
 &
 \begin{enumerate}[label=\alph*), leftmargin=*, nosep]
-  \item Se han identificado las herramientas y sentencias para realizar consultas.
-  \item Se han realizado consultas simples sobre una tabla.
-  \item Se han realizado consultas que generan valores de resumen.
+  \item Se han analizado los sistemas lógicos de almacenamiento y sus características.
+  \item Se han identificado los distintos tipos de bases de datos según el modelo de datos
+        utilizado.
+  \item Se han identificado los distintos tipos de bases de datos en función de la
+        ubicación de la información.
+  \item Se ha evaluado la utilidad de un sistema gestor de bases de datos.
+  \item Se ha reconocido la función de cada uno de los elementos de un sistema gestor de
+        bases de datos.
+  \item Se han clasificado los sistemas gestores de bases de datos.
+  \item Se ha reconocido la utilidad de las bases de datos distribuidas.
+  \item Se han analizado las políticas de fragmentación de la información.
+  \item Se ha identificado la legislación vigente sobre protección de datos.
+  \item Se han reconocido los conceptos de Big Data y de la inteligencia de negocios.
+\end{enumerate} \\
+\midrule
+\textbf{RA2.} Crea bases de datos definiendo su estructura y las características de sus
+elementos según el modelo relacional.
+
+\smallskip\emph{Se repasa}: claves y restricciones, necesarias para entender los errores de
+integridad referencial de los retos.
+&
+\begin{enumerate}[label=\alph*), leftmargin=*, nosep]
+  \item Se ha analizado el formato de almacenamiento de la información.
+  \item Se han creado las tablas y las relaciones entre ellas.
+  \item Se han seleccionado los tipos de datos adecuados.
+  \item Se han definido los campos clave en las tablas. \trab
+  \item Se han implantado las restricciones reflejadas en el diseño lógico. \trab
+  \item Se han creado vistas.
+  \item Se han creado los usuarios y se les han asignado privilegios.
+  \item Se han utilizado asistentes, herramientas gráficas y los lenguajes de definición
+        y control de datos.
+\end{enumerate} \\
+\midrule
+\textbf{RA3.} Consulta la información almacenada en una base de datos empleando
+asistentes, herramientas gráficas y el lenguaje de manipulación de datos.
+
+\smallskip\emph{Se trabaja}: núcleo de la actividad.
+&
+\begin{enumerate}[label=\alph*), leftmargin=*, nosep]
+  \item Se han identificado las herramientas y sentencias para realizar consultas. \trab
+  \item Se han realizado consultas simples sobre una tabla. \trab
   \item Se han realizado consultas sobre el contenido de varias tablas mediante
-        composiciones internas.
+        composiciones internas. \trab
   \item Se han realizado consultas sobre el contenido de varias tablas mediante
-        composiciones externas.
-  \item Se han realizado consultas con subconsultas.
-  \item Se han valorado las ventajas e inconvenientes de las distintas opciones válidas
-        para llevar a cabo una consulta.
+        composiciones externas. \trab
+  \item Se han realizado consultas resumen. \trab
+  \item Se han realizado consultas con subconsultas. \trab
+  \item Se han realizado consultas que implican múltiples selecciones.
+  \item Se han aplicado criterios de optimización de consultas. \trab
 \end{enumerate} \\
 \midrule
 \textbf{RA4.} Modifica la información almacenada en la base de datos utilizando
 asistentes, herramientas gráficas y el lenguaje de manipulación de datos.
+
+\smallskip\emph{Se trabaja}: núcleo de la actividad.
 &
 \begin{enumerate}[label=\alph*), leftmargin=*, nosep]
   \item Se han identificado las herramientas y sentencias para modificar el contenido
-        de la base de datos.
-  \item Se han insertado, borrado y actualizado datos en las tablas.
+        de la base de datos. \trab
+  \item Se han insertado, borrado y actualizado datos en las tablas. \trab
   \item Se ha incluido en una tabla la información resultante de la ejecución de una
-        consulta.
-  \item Se han diseñado guiones de sentencias para llevar a cabo tareas complejas.
-  \item Se ha reconocido el funcionamiento de las transacciones.
+        consulta. \trab
+  \item Se han diseñado guiones de sentencias para llevar a cabo tareas complejas. \trab
+  \item Se ha reconocido el funcionamiento de las transacciones. \trab
   \item Se han anulado parcial o totalmente los cambios producidos por una transacción.
-  \item[h)] Se han adoptado medidas para mantener la integridad y consistencia de la
-        información.
+        \trab
+  \item Se han identificado los efectos de las distintas políticas de bloqueo de
+        registros. \trab
+  \item Se han adoptado medidas para mantener la integridad y consistencia de la
+        información. \trab
 \end{enumerate} \\
-\bottomrule
+\midrule
+\textbf{RA5.} Desarrolla procedimientos almacenados evaluando y utilizando las sentencias
+del lenguaje incorporado en el sistema gestor de bases de datos.
+
+\smallskip\emph{No se trabaja.}
+&
+\begin{enumerate}[label=\alph*), leftmargin=*, nosep]
+  \item Se han identificado las diversas formas de automatizar tareas.
+  \item Se han reconocido los métodos de ejecución de guiones.
+  \item Se han identificado las herramientas disponibles para editar guiones.
+  \item Se han definido y utilizado guiones para automatizar tareas.
+  \item Se ha hecho uso de las funciones proporcionadas por el sistema gestor.
+  \item Se han definido procedimientos y funciones de usuario.
+  \item Se han utilizado estructuras de control de flujo.
+  \item Se han definido eventos y disparadores.
+  \item Se han utilizado cursores.
+  \item Se han utilizado excepciones.
+\end{enumerate} \\
+\midrule
+\textbf{RA6.} Diseña modelos relacionales normalizados interpretando diagramas
+entidad/relación.
+
+\smallskip\emph{No se trabaja.}
+&
+\begin{enumerate}[label=\alph*), leftmargin=*, nosep]
+  \item Se han utilizado herramientas gráficas para representar el diseño lógico.
+  \item Se han identificado las tablas del diseño lógico.
+  \item Se han identificado los campos que forman parte de las tablas del diseño lógico.
+  \item Se han analizado las relaciones entre las tablas del diseño lógico.
+  \item Se han identificado los campos clave.
+  \item Se han aplicado reglas de integridad.
+  \item Se han aplicado reglas de normalización.
+  \item Se han analizado y documentado las restricciones que no pueden plasmarse en el
+        diseño lógico.
+\end{enumerate} \\
+\midrule
+\textbf{RA7.} Gestiona la información almacenada en bases de datos no relacionales,
+evaluando y utilizando las posibilidades que proporciona el sistema gestor.
+
+\smallskip\emph{No se trabaja.}
+&
+\begin{enumerate}[label=\alph*), leftmargin=*, nosep]
+  \item Se han caracterizado las bases de datos no relacionales.
+  \item Se han evaluado los principales tipos de bases de datos no relacionales.
+  \item Se han identificado los elementos utilizados en estas bases de datos.
+  \item Se han identificado distintas formas de gestión de la información según el tipo
+        de base de datos no relacionales.
+  \item Se han utilizado las herramientas del sistema gestor para la gestión de la
+        información almacenada.
+\end{enumerate} \\
 \end{longtable}
 
-De forma complementaria, la actividad repasa el criterio del \textbf{RA2} relativo a la
-definición de claves primarias, ajenas y restricciones, necesario para entender los errores
-de integridad referencial que se plantean en los retos.
+En resumen, la actividad se centra en los \textbf{RA3} y \textbf{RA4}. Trabaja todos sus
+criterios excepto el 3.g, y repasa los criterios 2.d y 2.e del \textbf{RA2}.
 
 \subsection{Contenidos que se trabajan}
 
-De acuerdo con los contenidos básicos del módulo \cite{ordenDAM,murciaDAM}, el recurso
-trabaja los bloques \emph{Realización de consultas} y \emph{Tratamiento de datos}:
+De los contenidos básicos del módulo \cite{rd405}, que en la Región de Murcia tienen carácter
+orientativo \cite[art.~3]{murcia2026}, el recurso trabaja los bloques \emph{Realización de
+consultas} y \emph{Tratamiento de datos}, además de los sublenguajes DDL y DCL del bloque
+\emph{Bases de datos relacionales}:
 
 \begin{table}[H]
 \centering
@@ -352,17 +541,18 @@ Sublenguajes DDL, DML, DCL y de control de transacciones. Herramientas gráficas
 de comandos para ejecutar sentencias. \\
 \addlinespace
 Realización de consultas &
-La sentencia \texttt{SELECT}. Selección y ordenación de registros. Operadores de
-comparación, lógicos, \texttt{BETWEEN}, \texttt{IN}, \texttt{LIKE}, \texttt{IS NULL}.
-Alias y \texttt{DISTINCT}. Consultas de resumen: funciones de agregado
-(\texttt{COUNT}, \texttt{SUM}, \texttt{AVG}, \texttt{MIN}, \texttt{MAX}). Agrupamiento de
-registros (\texttt{GROUP BY}) y filtrado de grupos (\texttt{HAVING}). Composiciones
-internas y externas. Subconsultas. \\
+Proyección, selección y ordenación de registros (\texttt{SELECT}, \texttt{WHERE},
+\texttt{ORDER BY}, alias y \texttt{DISTINCT}). Operadores de comparación y lógicos,
+\texttt{BETWEEN}, \texttt{IN}, \texttt{LIKE}, \texttt{IS NULL}. Consultas de resumen:
+funciones de agregado (\texttt{COUNT}, \texttt{SUM}, \texttt{AVG}, \texttt{MIN},
+\texttt{MAX}). Agrupamiento de registros (\texttt{GROUP BY}) y filtrado de grupos
+(\texttt{HAVING}). Composiciones internas y externas. Subconsultas. Optimización de
+consultas: comparación de soluciones equivalentes. \\
 \addlinespace
 Tratamiento de datos &
-Inserción, borrado y modificación de registros. Integridad referencial. Subconsultas en
-sentencias de edición. Transacciones: \texttt{COMMIT}, \texttt{ROLLBACK},
-\texttt{SAVEPOINT}. \\
+Inserción, borrado y modificación de registros. Integridad referencial. Subconsultas y
+composiciones en órdenes de edición. Transacciones: \texttt{COMMIT}, \texttt{ROLLBACK},
+\texttt{SAVEPOINT}. Políticas de bloqueo y concurrencia (nociones). \\
 \addlinespace
 Contenidos transversales &
 Resolución de problemas, pensamiento computacional, trabajo en equipo, tolerancia al error
@@ -553,7 +743,7 @@ con diagramas de conjuntos; ejemplo de la socia sin entregas. \\
 \addlinespace
 Subconsultas & Subconsultas escalares, con \texttt{IN}/\texttt{NOT IN} y
 \texttt{EXISTS}; comparación entre una subconsulta y un \texttt{JOIN} equivalente
-(CE~3.g). \\
+(CE~3.h). \\
 \addlinespace
 \textbf{Acceso al juego 2} & Botón «¿Qué devuelve la consulta?» y casilla del
 \emph{dígito~2}. \\
@@ -888,7 +1078,7 @@ a) 7 \quad b) 9 \ok \quad c) 0 \quad d) Error: no se puede borrar
 \begin{nota}
 \textbf{URL pública:} \url{\urlJuegoTres}\\
 \textbf{Objetivos:} O3, O4, O5, O6, O7 \quad
-\textbf{CE:} 3.c, 3.d, 3.f, 3.g, 4.b, 4.c, 4.d, 4.e, 4.f \quad
+\textbf{CE:} 3.c, 3.e, 3.f, 3.h, 4.b, 4.c, 4.d, 4.e, 4.f, 4.h \quad
 \textbf{Duración estimada:} 30–40 minutos
 \end{nota}
 
@@ -966,7 +1156,7 @@ WHERE e.id_entrega IS NULL;
 Resultado en ambos casos: \emph{Albaricoque}. Las dos versiones son válidas. La versión con
 subconsulta se lee mejor, pero \texttt{NOT IN} devuelve un conjunto vacío si la subconsulta
 contiene algún \texttt{NULL}. La composición externa (o \texttt{NOT EXISTS}) evita ese
-problema y los optimizadores suelen ejecutarla de forma eficiente (CE~3.g).
+problema y los optimizadores suelen ejecutarla de forma eficiente (CE~3.h).
 \end{solucion}
 
 \begin{reto}{Incidencia 4 -- Nuevo socio (modo libre)}
@@ -1074,7 +1264,7 @@ alternativas de cada consulta. Las páginas siguen pautas básicas de accesibili
 \paragraph{Evaluación.} Los juegos 1 y 2 tienen carácter formativo: dan
 retroalimentación inmediata al alumnado y permiten al docente detectar errores
 frecuentes. Las soluciones del juego~3 (que el alumnado puede copiar o exportar
-desde la propia terminal) sirven como evidencia para evaluar los criterios 3.c–3.g y
+desde la propia terminal) sirven como evidencia para evaluar los criterios 3.c–3.f, 3.h y
 4.b–4.f con una rúbrica.
 
 % =====================================================================
