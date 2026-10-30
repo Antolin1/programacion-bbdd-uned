@@ -918,8 +918,9 @@ nivel~1 pertenecen al DCL?}
 \end{nota}
 
 \paragraph{Descripción.} Concurso de preguntas de respuesta múltiple con cuenta atrás
-(30~s por pregunta) y puntuación según rapidez (hasta 1000 puntos por pregunta, como en los
-concursos de televisión). Cada pregunta muestra una sentencia SQL sobre la base de datos de la
+(30~s por pregunta) y puntuación según rapidez (entre 500 y 1000 puntos por acierto, como en
+los concursos de televisión, más una bonificación de 100 puntos por racha a partir del tercer
+acierto seguido). Cada pregunta muestra una sentencia SQL sobre la base de datos de la
 tabla~\ref{tab:datos}, que se puede consultar en todo momento con el botón «Ver tablas». Tras
 responder, el juego indica si la respuesta es correcta y muestra el resultado real de la
 consulta con una explicación. El docente puede proyectarlo en el aula para jugar por equipos
@@ -1091,7 +1092,7 @@ base de datos \texttt{cooperativa} en el navegador. Así el alumnado escribe y e
 El juego plantea seis «incidencias» de la cooperativa. En cada una, el alumnado escribe la
 sentencia y pulsa \emph{Comprobar}. El juego ejecuta la sentencia, compara el resultado
 (o el estado de la tabla tras una modificación) con el esperado e informa del acierto o del
-error. Si se equivoca, puede pedir hasta dos pistas, que restan puntos. En las primeras incidencias
+error. Cada incidencia vale 500 puntos. Si se equivoca, puede pedir hasta dos pistas, que restan 100 puntos cada una, y cada comprobación fallida resta 25, con un mínimo de 150 puntos por incidencia resuelta. En las primeras incidencias
 se ofrecen plantillas con huecos para completar (modo guiado). En las últimas, el editor está
 vacío (modo libre). Un botón \emph{Reiniciar base de datos} restaura los datos originales.
 Al terminar, el juego muestra el resumen de puntos y la insignia «Maestro del DML».

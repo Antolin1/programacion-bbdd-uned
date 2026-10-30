@@ -1,0 +1,126 @@
+<!doctype html>
+<html lang="es">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Terminal de la Cooperativa · Misión SQL</title>
+  <link rel="icon" href="../assets/favicon.svg" type="image/svg+xml">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Fredoka:wght@400;500;600;700&family=JetBrains+Mono:wght@400;600;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/codemirror@5.65.16/lib/codemirror.css">
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/codemirror@5.65.16/theme/dracula.css">
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/codemirror@5.65.16/addon/hint/show-hint.css">
+  <link rel="stylesheet" href="../assets/common.css">
+  <link rel="stylesheet" href="juego3.css">
+  <script src="https://cdn.jsdelivr.net/npm/gsap@3.12.5/dist/gsap.min.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/canvas-confetti@1.9.3/dist/confetti.browser.min.js"></script>
+  <script src="https://unpkg.com/lucide@0.453.0/dist/umd/lucide.min.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/tsparticles-slim@2.12.0/tsparticles.slim.bundle.min.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/codemirror@5.65.16/lib/codemirror.min.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/codemirror@5.65.16/mode/sql/sql.min.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/codemirror@5.65.16/addon/edit/matchbrackets.min.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/codemirror@5.65.16/addon/hint/show-hint.min.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/codemirror@5.65.16/addon/hint/sql-hint.min.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/sql.js@1.10.3/dist/sql-wasm.js"></script>
+  <script src="../assets/common.js"></script>
+</head>
+<body>
+  <div id="particles"></div>
+  <main class="container wide">
+    <div class="game-head">
+      <div>
+        <div class="kicker">Juego 3 · Escape room en una consola SQL</div>
+        <h1>Terminal de la Cooperativa</h1>
+      </div>
+      <span style="flex:1"></span>
+      <span class="chip" id="progress-chip"><i data-lucide="list-checks"></i> <span id="solved">0</span> / 6</span>
+      <span class="chip score"><i data-lucide="star"></i> <span id="score">0</span> puntos</span>
+    </div>
+
+    <!-- Inicio -->
+    <section class="screen active" id="s-intro">
+      <div class="panel center-card">
+        <div class="big-icon"><i data-lucide="terminal-square"></i></div>
+        <h2>Acceso a la consola del servidor</h2>
+        <div class="story">
+          ¡Por fin tenéis acceso a la consola del servidor recuperado! La cooperativa ha abierto seis
+          incidencias que hay que resolver escribiendo <strong>SQL de verdad</strong>. Resolvedlas para
+          conseguir los <strong>dígitos 3 y 4</strong> de la caja fuerte.
+        </div>
+        <ul class="rules">
+          <li><i data-lucide="play"></i> <strong>Ejecutar</strong> (Ctrl+Intro): prueba tu SQL en la base de datos de trabajo.</li>
+          <li><i data-lucide="check-check"></i> <strong>Comprobar</strong>: el sistema ejecuta tu SQL en una copia nueva de la base de datos y lo corrige.</li>
+          <li><i data-lucide="lightbulb"></i> Hasta 2 pistas por incidencia (−100 puntos cada una).</li>
+          <li><i data-lucide="star"></i> 500 puntos por incidencia; cada comprobación fallida resta 25.</li>
+        </ul>
+        <button class="btn lemon" id="start"><i data-lucide="log-in"></i> Entrar en la terminal</button>
+      </div>
+    </section>
+
+    <!-- Terminal -->
+    <section class="screen" id="s-term">
+      <div class="term-grid">
+        <aside class="side">
+          <div class="panel side-panel">
+            <h3><i data-lucide="inbox"></i> Incidencias</h3>
+            <ol class="inc-list" id="inc-list"></ol>
+          </div>
+          <div class="panel side-panel">
+            <h3><i data-lucide="database"></i> Esquema</h3>
+            <p class="muted small">Toca un nombre para insertarlo en el editor.</p>
+            <div id="schema"></div>
+            <button class="btn ghost small" id="tables-btn"><i data-lucide="table-2"></i> Ver los datos originales</button>
+          </div>
+        </aside>
+
+        <section class="work">
+          <div class="panel inc-card" id="inc-card"></div>
+          <div class="editor-shell">
+            <div class="editor-bar">
+              <span class="dots"><i></i><i></i><i></i></span>
+              <span class="mono muted">cooperativa.db — sqlite</span>
+              <span style="flex:1"></span>
+              <span class="mode-badge" id="mode-badge"></span>
+            </div>
+            <textarea id="editor"></textarea>
+          </div>
+          <div class="toolbar">
+            <button class="btn blue" id="run"><i data-lucide="play"></i> Ejecutar</button>
+            <button class="btn lemon" id="check"><i data-lucide="check-check"></i> Comprobar</button>
+            <button class="btn ghost" id="hint"><i data-lucide="lightbulb"></i> Pista <span id="hint-left"></span></button>
+            <span style="flex:1"></span>
+            <button class="btn ghost small" id="reset-db" title="Restaura los datos originales de la base de datos de trabajo"><i data-lucide="rotate-ccw"></i> Reiniciar BD</button>
+            <button class="btn ghost small" id="reset-code" title="Vuelve a la plantilla inicial"><i data-lucide="file-x"></i> Plantilla</button>
+            <button class="btn ghost small" id="export"><i data-lucide="download"></i> Mis soluciones</button>
+          </div>
+          <div class="panel output" id="output">
+            <p class="muted">Aquí aparecerán los resultados de tus sentencias.</p>
+          </div>
+        </section>
+      </div>
+    </section>
+
+    <!-- Final -->
+    <section class="screen" id="s-end">
+      <div class="panel center-card">
+        <h2>¡Todas las incidencias resueltas!</h2>
+        <p class="muted">Dígitos 3 y 4 de la caja fuerte</p>
+        <div><span class="digit-reveal">3</span><span class="digit-reveal">1</span></div>
+        <p><span class="badge"><i data-lucide="medal"></i> Insignia «Maestro del DML»</span></p>
+        <p class="final-score"><span id="final-score">0</span> puntos</p>
+        <div class="story" id="final-code"></div>
+        <div class="actions center">
+          <a class="btn lemon" href="../"><i data-lucide="map"></i> Volver al mapa</a>
+          <button class="btn ghost" id="export-end"><i data-lucide="download"></i> Descargar mis soluciones</button>
+          <button class="btn ghost" id="again"><i data-lucide="rotate-ccw"></i> Jugar otra vez</button>
+        </div>
+      </div>
+    </section>
+
+    <footer class="foot">Misión SQL · Juego 3 · SQLite en el navegador con sql.js</footer>
+  </main>
+  <script src="incidencias.js"></script>
+  <script src="juego3.js"></script>
+</body>
+</html>

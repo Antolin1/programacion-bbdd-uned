@@ -1,0 +1,67 @@
+/* Portal de Misión SQL: portada, caja fuerte y mapa del itinerario */
+.hero { display: grid; grid-template-columns: 1.4fr 1fr; gap: 28px; align-items: center; margin: 46px 0 30px; }
+.hero h1 { font-size: clamp(2.8rem, 8vw, 5.2rem); margin: 6px 0 12px; letter-spacing: -0.02em; }
+.grad { background: linear-gradient(90deg, var(--lemon), var(--orange), var(--violet)); -webkit-background-clip: text; background-clip: text; color: transparent; }
+.kicker { color: var(--orange); font-weight: 600; letter-spacing: 0.08em; text-transform: uppercase; margin: 0; }
+.lead { font-size: 1.15rem; color: #d7dbf5; max-width: 60ch; }
+.team-form { margin-top: 18px; }
+.team-form .row { display: flex; gap: 10px; flex-wrap: wrap; margin-top: 6px; }
+.team-form input { flex: 1; min-width: 200px; }
+
+.safe { text-align: center; }
+.safe-title { font-weight: 700; font-size: 1.3rem; display: flex; gap: 8px; justify-content: center; align-items: center; }
+.safe-digits { display: flex; gap: 12px; justify-content: center; margin: 18px 0 8px; perspective: 600px; }
+.safe-digit {
+  width: 68px; height: 88px; border-radius: 16px; display: grid; place-items: center;
+  font: 700 2.8rem var(--mono); color: var(--muted);
+  background: rgba(0, 0, 0, 0.35); border: 2px dashed var(--border);
+}
+.safe-digit.on { color: #1b1300; border: 0; background: linear-gradient(160deg, var(--lemon), var(--orange)); box-shadow: 0 12px 30px rgba(255, 140, 66, 0.45); }
+.small { font-size: 0.9rem; }
+
+.map-section h2 { display: flex; align-items: center; gap: 10px; }
+.map { position: relative; margin: 10px 0 40px; }
+.map-path { position: absolute; left: 0; right: 0; top: 50%; width: 100%; height: 120px; transform: translateY(-50%); z-index: 0; }
+.map-path path { fill: none; stroke: rgba(255, 210, 63, 0.55); stroke-width: 4; stroke-dasharray: 12 12; animation: dash 2.5s linear infinite; }
+@keyframes dash { to { stroke-dashoffset: -48; } }
+.map-nodes { position: relative; z-index: 1; display: grid; grid-template-columns: repeat(3, 1fr); gap: 22px; }
+
+.node {
+  position: relative; padding: 22px; border-radius: 22px;
+  background: linear-gradient(160deg, #262b5e, #161a3a);
+  border: 1px solid var(--border); box-shadow: var(--shadow);
+  display: flex; flex-direction: column; gap: 10px; min-height: 290px;
+  transition: transform 0.25s ease;
+}
+.node:hover { transform: translateY(-6px) rotate(-0.4deg); }
+.node .num {
+  position: absolute; top: -16px; left: 22px; width: 40px; height: 40px; border-radius: 50%;
+  display: grid; place-items: center; font-weight: 700; color: #0b0d1d; background: var(--lemon);
+  box-shadow: 0 6px 18px rgba(255, 210, 63, 0.5);
+}
+.node .ic { width: 64px; height: 64px; border-radius: 20px; display: grid; place-items: center; margin-top: 8px; }
+.node .ic svg { width: 34px; height: 34px; color: #fff; }
+.node[data-n="1"] .ic { background: linear-gradient(135deg, var(--green), var(--blue)); }
+.node[data-n="2"] .ic { background: linear-gradient(135deg, var(--orange), var(--red)); }
+.node[data-n="3"] .ic { background: linear-gradient(135deg, var(--violet), var(--blue)); }
+.node h3 { margin: 4px 0 0; font-size: 1.35rem; }
+.node .type { color: var(--muted); margin: 0; flex: 1; }
+.node .status { display: flex; align-items: center; gap: 8px; font-weight: 600; }
+.node .status svg { width: 18px; height: 18px; }
+.node.locked { filter: saturate(0.2); opacity: 0.6; }
+.node.locked .status { color: var(--muted); }
+.node.done .status { color: var(--green); }
+.node.open .status { color: var(--lemon); }
+
+.bottom-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 20px; }
+.bottom-grid h3 { display: flex; align-items: center; gap: 8px; }
+.bottom-grid .btn { margin: 6px 6px 0 0; }
+.badges { display: flex; flex-wrap: wrap; gap: 10px; }
+.switch { display: flex; gap: 10px; align-items: center; margin-bottom: 12px; cursor: pointer; }
+.switch input { width: 20px; height: 20px; accent-color: var(--lemon); }
+
+@media (max-width: 900px) {
+  .hero, .bottom-grid, .map-nodes { grid-template-columns: 1fr; }
+  .map-path { display: none; }
+  .node { min-height: 0; }
+}

@@ -1,0 +1,139 @@
+<!doctype html>
+<html lang="es">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Clasifica y ordena · Misión SQL</title>
+  <link rel="icon" href="../assets/favicon.svg" type="image/svg+xml">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Fredoka:wght@400;500;600;700&family=JetBrains+Mono:wght@400;600;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="../assets/common.css">
+  <link rel="stylesheet" href="juego1.css">
+  <script src="https://cdn.jsdelivr.net/npm/gsap@3.12.5/dist/gsap.min.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/canvas-confetti@1.9.3/dist/confetti.browser.min.js"></script>
+  <script src="https://unpkg.com/lucide@0.453.0/dist/umd/lucide.min.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/tsparticles-slim@2.12.0/tsparticles.slim.bundle.min.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/sortablejs@1.15.2/Sortable.min.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/sql.js@1.10.3/dist/sql-wasm.js"></script>
+  <script src="../assets/common.js"></script>
+</head>
+<body>
+  <div id="particles"></div>
+  <main class="container">
+    <div class="game-head">
+      <div>
+        <div class="kicker">Juego 1 · Puzle de clasificación y ordenación</div>
+        <h1>Clasifica y ordena</h1>
+      </div>
+      <span class="spacer" style="flex:1"></span>
+      <div class="steps" id="steps">
+        <span class="step" data-step="1">1 · Sentencias</span>
+        <span class="step" data-step="2">2 · Cláusulas</span>
+        <span class="step" data-step="3">3 · Operadores</span>
+        <span class="step" data-step="4">Llave</span>
+      </div>
+      <span class="chip score"><i data-lucide="star"></i> <span id="score">0</span> puntos</span>
+    </div>
+
+    <!-- Inicio -->
+    <section class="screen active" id="s-intro">
+      <div class="panel center-card">
+        <div class="big-icon"><i data-lucide="puzzle"></i></div>
+        <h2>El servidor está desordenado</h2>
+        <div class="story">
+          La tormenta ha revuelto los ficheros del servidor de la cooperativa: las sentencias SQL
+          están mezcladas, las cláusulas de las consultas fuera de sitio y los operadores sin
+          etiqueta. Ponedlo todo en orden para obtener el <strong>primer dígito</strong> de la llave.
+        </div>
+        <p class="muted">Arrastra cada pieza a su sitio (o tócala y después toca su destino).
+          Cada acierto suma <strong>10 puntos</strong>; cada fallo resta <strong>2</strong> y muestra una pista.</p>
+        <button class="btn lemon" id="start"><i data-lucide="play"></i> Empezar</button>
+      </div>
+    </section>
+
+    <!-- Nivel 1 -->
+    <section class="screen" id="s-l1">
+      <div class="panel">
+        <h2>Nivel 1 · ¿A qué sublenguaje pertenece cada sentencia?</h2>
+        <p class="muted">DDL define la estructura, DML manipula los datos, DCL controla el acceso y TCL controla las transacciones.</p>
+        <div class="pool" id="pool1" aria-label="Sentencias por clasificar"></div>
+        <div class="buckets" id="buckets1"></div>
+        <div class="actions"><button class="btn green" id="next1" disabled><i data-lucide="arrow-right"></i> Siguiente nivel</button></div>
+      </div>
+    </section>
+
+    <!-- Nivel 2 -->
+    <section class="screen" id="s-l2">
+      <div class="panel">
+        <h2>Nivel 2 · Ordena las cláusulas</h2>
+        <p>Forma una consulta que obtenga, para cada socio con <strong>más de 400 kg</strong> entregados en
+          2026, el total de kilos, <strong>de mayor a menor</strong>.</p>
+        <div class="order-wrap">
+          <ol class="order-list" id="order-a"></ol>
+          <div class="order-side">
+            <button class="btn lemon" id="check-a"><i data-lucide="check-check"></i> Comprobar</button>
+            <div id="result-a"></div>
+          </div>
+        </div>
+        <div id="part-b" hidden>
+          <h3>Pregunta extra · Orden <em>lógico</em> de evaluación</h3>
+          <p class="muted">El SGBD no ejecuta las cláusulas en el orden en que se escriben. Ordénalas según el orden en que las evalúa.</p>
+          <div class="order-wrap">
+            <ol class="order-list" id="order-b"></ol>
+            <div class="order-side">
+              <button class="btn lemon" id="check-b"><i data-lucide="check-check"></i> Comprobar</button>
+            </div>
+          </div>
+        </div>
+        <div class="actions"><button class="btn green" id="next2" disabled><i data-lucide="arrow-right"></i> Siguiente nivel</button></div>
+      </div>
+    </section>
+
+    <!-- Nivel 3 -->
+    <section class="screen" id="s-l3">
+      <div class="panel">
+        <h2>Nivel 3 · Relaciona cada expresión con su significado</h2>
+        <p class="muted">Toca una expresión y después su significado.</p>
+        <div class="match">
+          <div class="match-col" id="col-expr"></div>
+          <div class="match-col" id="col-mean"></div>
+        </div>
+        <div class="actions"><button class="btn green" id="next3" disabled><i data-lucide="arrow-right"></i> Ir a la llave</button></div>
+      </div>
+    </section>
+
+    <!-- Llave -->
+    <section class="screen" id="s-key">
+      <div class="panel center-card">
+        <div class="big-icon"><i data-lucide="key-round"></i></div>
+        <h2>Pregunta llave</h2>
+        <p>¿Cuántas sentencias de la lista del nivel 1 pertenecen al <strong>DCL</strong>?</p>
+        <form class="key-box" id="key-form">
+          <input type="number" id="key-input" min="0" max="13" inputmode="numeric" aria-label="Respuesta">
+          <button class="btn lemon" type="submit"><i data-lucide="unlock"></i> Desbloquear</button>
+        </form>
+      </div>
+    </section>
+
+    <!-- Final -->
+    <section class="screen" id="s-end">
+      <div class="panel center-card">
+        <h2>¡Juego superado!</h2>
+        <p class="muted">Dígito 1 de la caja fuerte</p>
+        <div class="digit-reveal" id="digit">2</div>
+        <p><span class="badge"><i data-lucide="medal"></i> Insignia «Clasificador»</span></p>
+        <p class="final-score"><span id="final-score">0</span> puntos</p>
+        <div class="actions center">
+          <a class="btn lemon" href="../juego2/"><i data-lucide="arrow-right"></i> Ir al juego 2</a>
+          <a class="btn ghost" href="../"><i data-lucide="map"></i> Volver al mapa</a>
+          <button class="btn ghost" id="again"><i data-lucide="rotate-ccw"></i> Jugar otra vez</button>
+        </div>
+      </div>
+    </section>
+
+    <footer class="foot">Misión SQL · Juego 1</footer>
+  </main>
+  <script src="juego1.js"></script>
+</body>
+</html>

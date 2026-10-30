@@ -1,0 +1,82 @@
+<!doctype html>
+<html lang="es">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Misión SQL</title>
+  <meta name="description" content="Misión SQL: tres juegos para aprender SQL con la Cooperativa Huerta de Murcia.">
+  <link rel="icon" href="assets/favicon.svg" type="image/svg+xml">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Fredoka:wght@400;500;600;700&family=JetBrains+Mono:wght@400;600;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="assets/common.css">
+  <link rel="stylesheet" href="assets/hub.css">
+  <script src="https://cdn.jsdelivr.net/npm/gsap@3.12.5/dist/gsap.min.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/canvas-confetti@1.9.3/dist/confetti.browser.min.js"></script>
+  <script src="https://unpkg.com/lucide@0.453.0/dist/umd/lucide.min.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/tsparticles-slim@2.12.0/tsparticles.slim.bundle.min.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/sql.js@1.10.3/dist/sql-wasm.js"></script>
+  <script src="assets/common.js"></script>
+</head>
+<body>
+  <div id="particles"></div>
+
+  <main class="container">
+    <section class="hero">
+      <div class="hero-text">
+        <p class="kicker">Cooperativa Huerta de Murcia · Bases de datos</p>
+        <h1>Misión <span class="grad">SQL</span></h1>
+        <p class="lead">Una tormenta de granizo ha dañado el servidor de la cooperativa justo antes de la
+          campaña de exportación. Sois el equipo técnico de bases de datos: superad los tres juegos,
+          reunid los <strong>cuatro dígitos</strong> y abrid la caja fuerte de la copia de seguridad.</p>
+        <form id="team-form" class="team-form">
+          <label for="team" class="muted">Nombre del equipo</label>
+          <div class="row">
+            <input id="team" type="text" maxlength="40" placeholder="Ej.: Los Limoneros" autocomplete="off">
+            <button class="btn lemon" type="submit"><i data-lucide="check"></i> Guardar</button>
+          </div>
+        </form>
+      </div>
+      <div class="safe panel" aria-label="Caja fuerte">
+        <div class="safe-title"><i data-lucide="vault"></i> Caja fuerte</div>
+        <div class="safe-digits" id="safe-digits"></div>
+        <p class="muted small" id="safe-msg">Cada juego superado revela dígitos de la llave.</p>
+      </div>
+    </section>
+
+    <section class="map-section">
+      <h2><i data-lucide="map"></i> Itinerario de la misión</h2>
+      <div class="map" id="map">
+        <svg class="map-path" viewBox="0 0 1000 120" preserveAspectRatio="none" aria-hidden="true">
+          <path id="trail" d="M 60 60 C 250 -10, 330 130, 500 60 S 760 -10, 940 60" />
+        </svg>
+        <div class="map-nodes" id="map-nodes"></div>
+      </div>
+    </section>
+
+    <section class="bottom-grid">
+      <div class="panel">
+        <h3><i data-lucide="award"></i> Insignias</h3>
+        <div class="badges" id="badges"></div>
+      </div>
+      <div class="panel">
+        <h3><i data-lucide="database"></i> La base de datos</h3>
+        <p class="muted">Todos los retos usan las tablas <span class="mono">socio</span>,
+          <span class="mono">producto</span> y <span class="mono">entrega</span>.</p>
+        <button class="btn ghost" id="see-tables"><i data-lucide="table-2"></i> Ver las tablas</button>
+        <a class="btn ghost" href="data/cooperativa.sql" download><i data-lucide="download"></i> Descargar el guion SQL</a>
+      </div>
+      <div class="panel">
+        <h3><i data-lucide="settings-2"></i> Opciones</h3>
+        <label class="switch"><input type="checkbox" id="unlock"> <span>Modo docente: desbloquear todos los juegos</span></label>
+        <button class="btn ghost small" id="reset"><i data-lucide="rotate-ccw"></i> Reiniciar el progreso</button>
+        <p class="muted small">El progreso se guarda solo en este navegador. No se recogen datos personales.</p>
+      </div>
+    </section>
+
+    <footer class="foot">Misión SQL · Recurso educativo para el módulo 0484 Bases de datos (CFGS DAM/DAW) · Región de Murcia</footer>
+  </main>
+
+  <script src="assets/hub.js"></script>
+</body>
+</html>

@@ -1,0 +1,119 @@
+<!doctype html>
+<html lang="es">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>¿Qué devuelve la consulta? · Misión SQL</title>
+  <link rel="icon" href="../assets/favicon.svg" type="image/svg+xml">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Fredoka:wght@400;500;600;700&family=JetBrains+Mono:wght@400;600;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.9.0/styles/atom-one-dark.min.css">
+  <link rel="stylesheet" href="../assets/common.css">
+  <link rel="stylesheet" href="juego2.css">
+  <script src="https://cdn.jsdelivr.net/npm/gsap@3.12.5/dist/gsap.min.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/canvas-confetti@1.9.3/dist/confetti.browser.min.js"></script>
+  <script src="https://unpkg.com/lucide@0.453.0/dist/umd/lucide.min.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/tsparticles-slim@2.12.0/tsparticles.slim.bundle.min.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.9.0/highlight.min.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.9.0/languages/sql.min.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/sql.js@1.10.3/dist/sql-wasm.js"></script>
+  <script src="../assets/common.js"></script>
+</head>
+<body>
+  <div id="particles"></div>
+  <main class="container">
+    <div class="game-head">
+      <div>
+        <div class="kicker">Juego 2 · Concurso contrarreloj</div>
+        <h1>¿Qué devuelve la consulta?</h1>
+      </div>
+      <span style="flex:1"></span>
+      <button class="btn ghost small" id="tables-btn"><i data-lucide="table-2"></i> Ver tablas</button>
+      <span class="chip score"><i data-lucide="star"></i> <span id="score">0</span> puntos</span>
+    </div>
+
+    <!-- Inicio -->
+    <section class="screen active" id="s-intro">
+      <div class="panel center-card">
+        <div class="big-icon"><i data-lucide="timer"></i></div>
+        <h2>Interrogatorio a la base de datos</h2>
+        <div class="story">
+          Ya tenéis el servidor ordenado. Ahora la gerencia necesita saber si sabéis leer las
+          consultas que lanza el programa de la cooperativa. Para cada sentencia, adivinad qué devuelve
+          <strong>antes de que se acabe el tiempo</strong>.
+        </div>
+        <ul class="rules">
+          <li><i data-lucide="hourglass"></i> 12 preguntas · 30 segundos cada una</li>
+          <li><i data-lucide="zap"></i> Hasta 1000 puntos por pregunta: cuanto antes respondas, más puntos</li>
+          <li><i data-lucide="flame"></i> Racha: +100 por cada acierto seguido a partir del tercero</li>
+          <li><i data-lucide="table-2"></i> Consulta las tablas cuando quieras con «Ver tablas»</li>
+        </ul>
+        <button class="btn lemon" id="start"><i data-lucide="play"></i> Empezar</button>
+      </div>
+    </section>
+
+    <!-- Pregunta -->
+    <section class="screen" id="s-q">
+      <div class="q-top">
+        <span class="chip" id="q-count">Pregunta 1 / 12</span>
+        <span class="chip" id="q-topic"></span>
+        <span class="chip streak" id="streak" hidden><i data-lucide="flame"></i> <span></span></span>
+        <span style="flex:1"></span>
+        <span class="chip time"><i data-lucide="hourglass"></i> <span id="time">30</span> s</span>
+      </div>
+      <div class="timer"><div class="timer-fill" id="timer-fill"></div></div>
+      <div class="panel q-panel">
+        <p class="q-text" id="q-text"></p>
+        <pre class="q-code"><code class="language-sql" id="q-code"></code></pre>
+      </div>
+      <div class="answers" id="answers"></div>
+      <div class="feedback panel" id="feedback" hidden>
+        <div class="fb-head" id="fb-head"></div>
+        <p id="fb-why"></p>
+        <div id="fb-result"></div>
+        <div class="actions"><button class="btn lemon" id="next"><i data-lucide="arrow-right"></i> Siguiente</button></div>
+      </div>
+    </section>
+
+    <!-- Llave -->
+    <section class="screen" id="s-key">
+      <div class="panel center-card">
+        <div class="big-icon"><i data-lucide="key-round"></i></div>
+        <h2>Pregunta llave</h2>
+        <p>Escribe el número que devolvía la <strong>pregunta 2</strong>:</p>
+        <pre class="q-code small"><code class="language-sql">SELECT COUNT(*) FROM entrega;</code></pre>
+        <form class="key-box" id="key-form">
+          <input type="number" id="key-input" min="0" inputmode="numeric" aria-label="Respuesta">
+          <button class="btn lemon" type="submit"><i data-lucide="unlock"></i> Desbloquear</button>
+        </form>
+      </div>
+    </section>
+
+    <!-- Final -->
+    <section class="screen" id="s-end">
+      <div class="panel center-card">
+        <h2>¡Concurso terminado!</h2>
+        <div class="podium">
+          <div><span class="muted">Puntos</span><strong id="final-score">0</strong></div>
+          <div><span class="muted">Aciertos</span><strong id="final-hits">0</strong></div>
+        </div>
+        <p class="muted">Dígito 2 de la caja fuerte</p>
+        <div class="digit-reveal" id="digit">9</div>
+        <p><span class="badge"><i data-lucide="medal"></i> Insignia «Detective de consultas»</span></p>
+        <h3>Clasificación en este navegador</h3>
+        <div id="ranking"></div>
+        <div class="actions center">
+          <a class="btn lemon" href="../juego3/"><i data-lucide="arrow-right"></i> Ir al juego 3</a>
+          <a class="btn ghost" href="../"><i data-lucide="map"></i> Volver al mapa</a>
+          <button class="btn ghost" id="again"><i data-lucide="rotate-ccw"></i> Jugar otra vez</button>
+        </div>
+      </div>
+    </section>
+
+    <footer class="foot">Misión SQL · Juego 2</footer>
+  </main>
+  <script src="preguntas.js"></script>
+  <script src="juego2.js"></script>
+</body>
+</html>
