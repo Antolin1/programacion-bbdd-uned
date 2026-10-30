@@ -119,7 +119,7 @@
     bar.innerHTML = `
       <div class="container">
         <a class="brand" href="${ROOT}">
-          <span class="logo">${icon("database")}</span><span class="txt">Misión SQL</span>
+          <span class="logo">${icon("citrus")}</span><span class="txt">Misión SQL</span>
         </a>
         <span class="spacer"></span>
         <span class="chip" title="Equipo">${icon("users")} ${escapeHtml(state.team || "Sin equipo")}</span>
@@ -194,7 +194,7 @@
   /* ---------- Efectos ---------- */
   function confettiBurst(opts = {}) {
     if (!window.confetti || reducedMotion()) return;
-    const colors = ["#ffd23f", "#ff8c42", "#3ddc97", "#4cc9f0", "#9b5de5"];
+    const colors = ["#f4c430", "#d9691c", "#3f8a32", "#7fb24a", "#c4432c"];
     if (opts.small) {
       confetti({ particleCount: 40, spread: 55, startVelocity: 28, origin: opts.origin || { y: 0.7 }, colors, scalar: 0.8 });
       return;
@@ -260,12 +260,16 @@
     tsParticles.load("particles", {
       fpsLimit: 60,
       particles: {
-        number: { value: 46, density: { enable: true, area: 900 } },
-        color: { value: ["#ffd23f", "#4cc9f0", "#9b5de5", "#3ddc97"] },
-        links: { enable: true, distance: 140, color: "#8890c0", opacity: 0.18, width: 1 },
-        move: { enable: true, speed: 0.6, outModes: { default: "out" } },
-        opacity: { value: { min: 0.2, max: 0.6 } },
-        size: { value: { min: 1, max: 3 } },
+        // Pétalos de azahar y hojas que caen despacio, como en los huertos de limoneros
+        number: { value: 28, density: { enable: true, area: 1000 } },
+        color: { value: ["#ffffff", "#fff4c2", "#f4c430", "#7fb24a"] },
+        shape: { type: "ellipse" },
+        stroke: { width: 1, color: "#e6d3a8" },
+        move: { enable: true, speed: 0.7, direction: "bottom-right", drift: 0.4, outModes: { default: "out" } },
+        rotate: { value: { min: 0, max: 360 }, animation: { enable: true, speed: 6 } },
+        wobble: { enable: true, distance: 6, speed: 4 },
+        opacity: { value: { min: 0.5, max: 0.9 } },
+        size: { value: { min: 3, max: 6 } },
       },
       detectRetina: true,
     });

@@ -1,18 +1,18 @@
 /* Juego 2: ¿Qué devuelve la consulta? */
 .rules { list-style: none; padding: 0; display: grid; gap: 10px; text-align: left; max-width: 520px; margin: 0 auto 24px; }
 .rules li { display: flex; gap: 10px; align-items: center; }
-.rules svg { color: var(--lemon); flex: none; }
+.rules svg { color: var(--lemon-ink); flex: none; }
 
 .q-top { display: flex; gap: 10px; align-items: center; flex-wrap: wrap; margin-bottom: 10px; }
-.chip.time { font-size: 1.15rem; color: var(--lemon); }
+.chip.time { font-size: 1.15rem; color: var(--lemon-ink); }
 .chip.streak { color: var(--orange); border-color: var(--orange); }
-.timer { height: 12px; border-radius: 999px; background: rgba(255, 255, 255, 0.08); overflow: hidden; margin-bottom: 16px; }
+.timer { height: 12px; border-radius: 999px; background: var(--tint); overflow: hidden; margin-bottom: 16px; }
 .timer-fill { height: 100%; width: 100%; border-radius: 999px; background: linear-gradient(90deg, var(--green), var(--lemon), var(--orange), var(--red)); background-size: 300% 100%; transform-origin: left; }
 
 .q-panel { margin-bottom: 16px; }
 .q-text { font-size: 1.25rem; font-weight: 600; margin: 0 0 12px; }
 .q-code { margin: 0; border-radius: 14px; overflow: auto; font-size: 1.05rem; }
-.q-code code { padding: 18px 20px !important; border-radius: 14px; }
+.q-code code { padding: 18px 20px !important; border-radius: 14px; background: #fffdf7 !important; border: 1px solid var(--border); }
 .q-code.small { font-size: 0.95rem; text-align: left; max-width: 420px; margin: 0 auto; }
 
 .answers { display: grid; grid-template-columns: 1fr 1fr; gap: 14px; }
@@ -28,13 +28,14 @@
 .answer:active { transform: translateY(4px); box-shadow: 0 3px 0 color-mix(in srgb, var(--c) 55%, black); }
 .answer .shape { width: 40px; height: 40px; flex: none; display: grid; place-items: center; font-size: 1.6rem; }
 .answer code { font-family: var(--mono); background: rgba(0, 0, 0, 0.2); padding: 1px 6px; border-radius: 6px; }
-.answer[data-i="0"] { --c: #e21b3c; }
-.answer[data-i="1"] { --c: #1368ce; }
-.answer[data-i="2"] { --c: #d89e00; }
-.answer[data-i="3"] { --c: #26890c; }
+/* Pimiento, acequia, limón y bancal */
+.answer[data-i="0"] { --c: #c4432c; }
+.answer[data-i="1"] { --c: #2a7aa3; }
+.answer[data-i="2"] { --c: #c99400; }
+.answer[data-i="3"] { --c: #3f8a32; }
 .answers.revealed .answer { cursor: default; }
 .answers.revealed .answer:not(.correct):not(.chosen) { opacity: 0.35; }
-.answer.correct { outline: 4px solid #fff; }
+.answer.correct { outline: 4px solid var(--lemon); outline-offset: 2px; }
 .answer.chosen:not(.correct) { filter: grayscale(0.6) brightness(0.8); }
 .answer .mark { margin-left: auto; width: 30px; height: 30px; }
 
@@ -42,14 +43,14 @@
 .fb-head { display: flex; align-items: center; gap: 12px; font-size: 1.4rem; font-weight: 700; margin-bottom: 6px; }
 .fb-head.ok { color: var(--green); }
 .fb-head.bad { color: var(--red); }
-.fb-head .pts { margin-left: auto; color: var(--lemon); }
+.fb-head .pts { margin-left: auto; color: var(--lemon-ink); }
 .actions { display: flex; gap: 10px; justify-content: flex-end; flex-wrap: wrap; margin-top: 18px; }
 .actions.center { justify-content: center; }
-.sql-error { font-family: var(--mono); color: var(--red); background: rgba(255, 93, 115, 0.12); border: 1px solid var(--red); border-radius: 12px; padding: 12px 14px; }
+.sql-error { font-family: var(--mono); color: var(--red); background: rgba(196, 67, 44, 0.08); border: 1px solid var(--red); border-radius: 12px; padding: 12px 14px; }
 
 .podium { display: flex; gap: 18px; justify-content: center; margin: 10px 0 20px; }
-.podium div { display: grid; padding: 16px 26px; border-radius: 18px; background: rgba(0, 0, 0, 0.3); border: 1px solid var(--border); }
-.podium strong { font-size: 2.4rem; color: var(--lemon); }
+.podium div { display: grid; padding: 16px 26px; border-radius: 18px; background: var(--well); border: 1px solid var(--border); }
+.podium strong { font-size: 2.4rem; color: var(--lemon-ink); }
 #ranking { max-width: 520px; margin: 0 auto; text-align: left; }
 
 @media (max-width: 700px) {

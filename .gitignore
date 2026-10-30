@@ -1,1 +1,20 @@
 /conver.txt
+
+# LaTeX (por si se compila fuera de Docker)
+*.aux
+*.bbl
+*.bcf
+*.blg
+*.fdb_latexmk
+*.fls
+*.log
+*.out
+*.run.xml
+*.synctex.gz
+*.toc
+*.lof
+*.lot
+*.pdf.tmp
+
+# PDF de la memoria: se genera con memoria/build.sh
+/memoria/main.pdf

@@ -47,7 +47,7 @@
     { e: "SUM(kilos) AS total", m: "Pone el alias «total» a la columna calculada" },
     { e: "precio_kg <> 0.60", m: "Precio distinto de 0,60 €" },
   ];
-  const PAIR_COLORS = ["#ffd23f", "#4cc9f0", "#3ddc97", "#ff8c42", "#9b5de5", "#ff5d73", "#f15bb5", "#00f5d4"];
+  const PAIR_COLORS = ["#f4c430", "#8fc7e0", "#9ccc6e", "#f2a35e", "#c9a0c3", "#ec8b77", "#e8c98f", "#7fcfb4"];
 
   let score = 0;
 

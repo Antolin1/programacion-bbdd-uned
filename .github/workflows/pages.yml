@@ -1,10 +1,11 @@
-# Publica la aplicación en GitHub Pages cada vez que se sube un cambio a main.
+# Publica la aplicación web (carpeta web/) en GitHub Pages cada vez que se sube un cambio a main.
 # Requisito: en Settings → Pages, elegir «Source: GitHub Actions».
 name: Publicar en GitHub Pages
 
 on:
   push:
     branches: [main]
+    paths: ["web/**", ".github/workflows/pages.yml"]
   workflow_dispatch:
 
 permissions:
@@ -27,6 +28,6 @@ jobs:
       - uses: actions/configure-pages@v5
       - uses: actions/upload-pages-artifact@v3
         with:
-          path: .
+          path: web
       - id: deployment
         uses: actions/deploy-pages@v4

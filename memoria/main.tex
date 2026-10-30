@@ -3,15 +3,16 @@
 % ---------------------------------------------------------------------
 %  Paquetes
 % ---------------------------------------------------------------------
-\usepackage[utf8]{inputenc}
-\usepackage[T1]{fontenc}
+% Se compila con LuaLaTeX para usar las mismas fuentes que la web (Fredoka y JetBrains Mono)
+\usepackage{fontspec}
 \usepackage[spanish,es-noshorthands,es-tabla]{babel}
-\usepackage{lmodern}
 \usepackage{microtype}
 \usepackage[margin=2.5cm]{geometry}
 \usepackage[dvipsnames,table]{xcolor}
 \usepackage{amssymb}
 \usepackage{float}
+\usepackage{eso-pic}
+\usepackage{pagecolor}
 \usepackage{graphicx}
 \usepackage{booktabs}
 \usepackage{tabularx}
@@ -27,12 +28,13 @@
 \usepackage{csquotes}
 \usepackage[backend=biber,style=ieee]{biblatex}
 \addbibresource{bibliografia.bib}
-\usepackage[hidelinks]{hyperref}
+\usepackage[colorlinks]{hyperref}
 \usepackage{xurl}
 
 \input{datos}
 
 \hypersetup{
+  linkcolor=tierra, citecolor=hoja, urlcolor=acequia,
   pdftitle={Misión SQL -- Memoria de la actividad},
   pdfauthor={\alumno},
   pdfsubject={\asignatura}
@@ -41,21 +43,58 @@
 % ---------------------------------------------------------------------
 %  Estilo
 % ---------------------------------------------------------------------
-\definecolor{principal}{HTML}{1F4E79}
-\definecolor{acento}{HTML}{E07A1F}
-\definecolor{fondocodigo}{HTML}{F5F7FA}
-\newcommand{\trab}{\textcolor{ForestGreen}{\ensuremath{\checkmark}}}
+% --- Fuentes de la web (Fredoka no tiene cursiva: se inclina la redonda) ---
+\setmainfont{Fredoka}[
+  Path=fuentes/, Extension=.ttf,
+  UprightFont=*-Regular, BoldFont=*-SemiBold,
+  ItalicFont=*-Regular, ItalicFeatures={FakeSlant=0.18},
+  BoldItalicFont=*-SemiBold, BoldItalicFeatures={FakeSlant=0.18}]
+\newfontfamily\titular{Fredoka}[Path=fuentes/, Extension=.ttf, UprightFont=*-Bold]
+\setmonofont{JetBrains Mono}[Scale=0.86, Ligatures=NoCommon, Contextuals=NoAlternate]
 
-\titleformat{\section}{\Large\bfseries\color{principal}}{\thesection.}{0.6em}{}
-\titleformat{\subsection}{\large\bfseries\color{principal}}{\thesubsection.}{0.6em}{}
-\titleformat{\subsubsection}{\normalsize\bfseries\color{principal}}{\thesubsubsection.}{0.6em}{}
+% --- Paleta de la huerta murciana (la misma que web/assets/common.css) ---
+\definecolor{tierra}{HTML}{3A2A17}    % texto
+\definecolor{tenue}{HTML}{7A6850}     % texto secundario
+\definecolor{crema}{HTML}{F6EEDB}     % fondo
+\definecolor{papel}{HTML}{FFFAF0}     % paneles
+\definecolor{borde}{HTML}{DCCDB0}
+\definecolor{limon}{HTML}{F4C430}
+\definecolor{limontinta}{HTML}{946800}
+\definecolor{naranja}{HTML}{D9691C}
+\definecolor{verde}{HTML}{3F8A32}
+\definecolor{hoja}{HTML}{2F5D24}
+\definecolor{pimiento}{HTML}{C4432C}
+\definecolor{acequia}{HTML}{2A7AA3}
+\definecolor{berenjena}{HTML}{7B3F73}
+% Nombres que usa el resto del documento
+\colorlet{principal}{hoja}
+\colorlet{acento}{naranja}
+\definecolor{fondocodigo}{HTML}{FFFDF7}
+\newcommand{\trab}{\textcolor{verde}{\ensuremath{\checkmark}}}
+
+\pagecolor{papel}
+\color{tierra}
+
+% Franja a rayas de limón y hoja en lo alto de cada página, como la cabecera de la web
+\newcommand{\toldo}[1]{%
+  \begin{tikzpicture}[remember picture,overlay]
+    \foreach \i in {0,...,30} {
+      \fill[limon] ([xshift=\i*0.88cm, yshift=-#1]current page.north west) rectangle ++(0.44cm,-0.16cm);
+      \fill[verde] ([xshift=\i*0.88cm+0.44cm, yshift=-#1]current page.north west) rectangle ++(0.44cm,-0.16cm);
+    }
+  \end{tikzpicture}}
+
+\titleformat{\section}{\titular\LARGE\color{tierra}}{\textcolor{naranja}{\thesection}}{0.5em}{}
+\titleformat{\subsection}{\titular\Large\color{hoja}}{\textcolor{naranja}{\thesubsection}}{0.5em}{}
+\titleformat{\subsubsection}{\titular\large\color{tierra}}{\textcolor{naranja}{\thesubsubsection}}{0.5em}{}
 
 \pagestyle{fancy}
 \fancyhf{}
-\fancyhead[L]{\small\color{principal}Misión SQL}
-\fancyhead[R]{\small\color{principal}\asignatura}
-\fancyfoot[C]{\small\thepage}
-\renewcommand{\headrulewidth}{0.4pt}
+\fancyhead[L]{\small\color{naranja}\textbf{MISIÓN SQL}}
+\fancyhead[R]{\small\color{tenue}\asignatura}
+\fancyfoot[C]{\small\color{tenue}\thepage}
+\renewcommand{\headrulewidth}{0pt}
+\AddToShipoutPictureBG{\ifnum\value{page}>1 \toldo{0cm}\fi}
 
 \setlist{itemsep=2pt,topsep=4pt}
 \renewcommand{\arraystretch}{1.25}
@@ -63,11 +102,12 @@
 \lstdefinestyle{sql}{
   language=SQL,
   basicstyle=\ttfamily\small,
-  keywordstyle=\color{principal}\bfseries,
-  commentstyle=\color{gray}\itshape,
-  stringstyle=\color{acento},
+  keywordstyle=\color{acequia}\bfseries,
+  commentstyle=\color{tenue}\itshape,
+  stringstyle=\color{pimiento},
+  numberstyle=\color{tenue},
   backgroundcolor=\color{fondocodigo},
-  frame=single, rulecolor=\color{gray!40},
+  frame=single, rulecolor=\color{borde},
   framesep=4pt, xleftmargin=6pt, xrightmargin=6pt,
   breaklines=true, columns=fullflexible, keepspaces=true,
   showstringspaces=false, upquote=true,
@@ -79,12 +119,14 @@
 }
 \lstset{style=sql}
 
-\newtcolorbox{reto}[1]{enhanced, breakable, colback=white, colframe=principal,
-  coltitle=white, fonttitle=\bfseries, title={#1}, arc=2mm, boxrule=0.8pt}
-\newtcolorbox{solucion}{enhanced, breakable, colback=green!4, colframe=ForestGreen,
-  fonttitle=\bfseries, title={Solución}, arc=2mm, boxrule=0.6pt}
-\newtcolorbox{nota}{enhanced, colback=acento!6, colframe=acento,
-  arc=2mm, boxrule=0.6pt}
+% Cajas con el aspecto de los paneles de la web: fondo claro, borde suave y esquinas redondeadas
+\newtcolorbox{reto}[1]{enhanced, breakable, colback=fondocodigo, colframe=acequia,
+  coltitle=white, fonttitle=\titular, title={#1}, arc=3mm, boxrule=0.8pt,
+  drop fuzzy shadow=borde}
+\newtcolorbox{solucion}{enhanced, breakable, colback=verde!6!papel, colframe=verde,
+  coltitle=white, fonttitle=\titular, title={Solución}, arc=3mm, boxrule=0.6pt}
+\newtcolorbox{nota}{enhanced, colback=limon!16!papel, colframe=limon!50!naranja,
+  arc=3mm, boxrule=0pt, borderline west={3pt}{0pt}{naranja}}
 
 % =====================================================================
 \begin{document}
@@ -95,29 +137,37 @@
 % ---------------------------------------------------------------------
 \begin{titlepage}
   \thispagestyle{empty}
+  \newpagecolor{crema}
+  \setlength{\parindent}{0pt}
   \begin{tikzpicture}[remember picture,overlay]
-    \fill[principal] (current page.north west) rectangle ([yshift=-6.2cm]current page.north east);
-    \fill[acento] ([yshift=-6.2cm]current page.north west) rectangle ([yshift=-6.5cm]current page.north east);
+    % Brillo de sol como en el fondo de la web (detrás de la cabecera)
+    \shade[inner color=limon!70, outer color=crema] ([xshift=-3.5cm,yshift=-9cm]current page.north east) circle (4cm);
+    % Cabecera verde de hoja con la franja de toldo
+    \fill[hoja] (current page.north west) rectangle ([yshift=-5.4cm]current page.north east);
+    % Paisaje de la huerta al pie de la portada
+    \node[anchor=south, inner sep=0, opacity=0.8] at (current page.south)
+      {\includegraphics[width=\paperwidth]{img/huerta.pdf}};
   \end{tikzpicture}
+  \toldo{5.4cm}
 
-  \vspace*{0.2cm}
+  \vspace*{-0.4cm}
   {\color{white}
     \large\textsc{Universidad Nacional de Educación a Distancia}\\[0.4cm]
-    \Large\bfseries \asignatura\par}
+    {\titular\Large \asignatura}\par}
 
-  \vspace{4.2cm}
-  \begin{center}
-    {\Huge\bfseries\color{principal} Misión SQL\par}
-    \vspace{0.3cm}
-    {\Large\color{acento} El enigma de la Cooperativa Huerta de Murcia\par}
-    \vspace{0.6cm}
-    {\large Recurso educativo gamificado: presentación interactiva\\
-     y tres juegos digitales sobre el lenguaje SQL\par}
-  \end{center}
+  \vspace{3.6cm}
+  {\color{naranja}\bfseries\large COOPERATIVA HUERTA DE MURCIA · BASES DE DATOS\par}
+  \vspace{0.2cm}
+  {\titular\fontsize{58}{60}\selectfont\color{tierra} Misión \textcolor{naranja}{SQL}\par}
+  \vspace{0.3cm}
+  {\Large\color{hoja} El enigma de la Cooperativa Huerta de Murcia\par}
+  \vspace{0.4cm}
+  {\large Recurso educativo gamificado: presentación interactiva\\
+   y tres juegos digitales sobre el lenguaje SQL\par}
 
-  \vspace{1.2cm}
-  \begin{tcolorbox}[colback=fondocodigo, colframe=principal, arc=2mm, boxrule=0.6pt]
-    \begin{tabularx}{\linewidth}{@{}>{\bfseries}p{4.2cm}X@{}}
+  \vspace{0.9cm}
+  \begin{tcolorbox}[colback=papel, colframe=borde, arc=4mm, boxrule=0.6pt, drop fuzzy shadow=borde]
+    \begin{tabularx}{\linewidth}{@{}>{\leavevmode\bfseries\color{hoja}}p{4.2cm}X@{}}
       Actividad        & \actividad \\
       Bloque temático  & \bloque \\
       Materia de FP    & \materiaFP \\
@@ -125,15 +175,17 @@
     \end{tabularx}
   \end{tcolorbox}
 
-  \vfill
-  \begin{tabularx}{\linewidth}{@{}>{\bfseries}p{4.2cm}X@{}}
+  \vspace{0.5cm}
+  \begin{tabularx}{\linewidth}{@{}>{\leavevmode\bfseries\color{hoja}}p{4.2cm}X@{}}
     Estudiante      & \alumno \\
     DNI             & \dni \\
     Correo electrónico & \href{mailto:\email}{\email} \\
     Centro asociado & \centro \\
     Curso académico & \curso \\
   \end{tabularx}
+  \vfill
 \end{titlepage}
+\restorepagecolor
 
 \tableofcontents
 \newpage
@@ -1285,6 +1337,6 @@ El siguiente guion crea y carga la base de datos de trabajo. Es compatible con S
 MySQL/MariaDB y PostgreSQL. Es el mismo que el juego~3 carga en el navegador y está
 disponible en el repositorio de los juegos.
 
-\lstinputlisting{sql/cooperativa.sql}
+\lstinputlisting{../web/data/cooperativa.sql}
 
 \end{document}
