@@ -1,0 +1,334 @@
+/* @theme mision */
+/* Tema de Misión SQL: la misma paleta de la huerta murciana y la misma tipografía (Fredoka y
+   JetBrains Mono) que la web de los juegos y la memoria en LaTeX. */
+@import url("https://fonts.googleapis.com/css2?family=Fredoka:wght@400;500;600;700&family=JetBrains+Mono:wght@400;600&display=swap");
+
+section {
+  --bg: #f6eedb;
+  --papel: #fffaf0;
+  --panel: #fffdf7;
+  --borde: #dccdb0;
+  --text: #3a2a17;
+  --muted: #7a6850;
+  --lemon: #f4c430;
+  --lemon-ink: #946800;
+  --orange: #d9691c;
+  --green: #3f8a32;
+  --leaf: #2f5d24;
+  --red: #c4432c;
+  --blue: #2a7aa3;
+  --violet: #7b3f73;
+  --earth: #8a5a2b;
+
+  width: 1280px;
+  height: 720px;
+  box-sizing: border-box;
+  padding: 64px 80px 124px;
+  font-family: "Fredoka", system-ui, sans-serif;
+  font-size: 30px;
+  line-height: 1.4;
+  color: var(--text);
+  background:
+    url("data:image/svg+xml,%3Csvg xmlns=%22http://www.w3.org/2000/svg%22 opacity=%220.75%22 viewBox=%220 0 1200 200%22 preserveAspectRatio=%22xMidYMax meet%22%3E%3Cdefs%3E%3Cpattern id=%22surcos%22 width=%2214%22 height=%2214%22 patternUnits=%22userSpaceOnUse%22 patternTransform=%22rotate(-8)%22%3E%3Crect width=%2214%22 height=%2214%22 fill=%22%239cc365%22/%3E%3Crect width=%2214%22 height=%225%22 fill=%22%2386b04f%22/%3E%3C/pattern%3E%3Cpattern id=%22surcos2%22 width=%2212%22 height=%2212%22 patternUnits=%22userSpaceOnUse%22 patternTransform=%22rotate(6)%22%3E%3Crect width=%2212%22 height=%2212%22 fill=%22%23b9cf6a%22/%3E%3Crect width=%2212%22 height=%224%22 fill=%22%23a3bd55%22/%3E%3C/pattern%3E%3Cg id=%22limonero%22%3E%3Crect x=%22-3%22 y=%220%22 width=%226%22 height=%2217%22 fill=%22%236e4a2a%22/%3E%3Ccircle cx=%220%22 cy=%22-9%22 r=%2218%22 fill=%22%232f6b2a%22/%3E%3Ccircle cx=%22-10%22 cy=%22-3%22 r=%2212%22 fill=%22%233b7d31%22/%3E%3Ccircle cx=%2210%22 cy=%22-5%22 r=%2213%22 fill=%22%233b7d31%22/%3E%3Ccircle cx=%220%22 cy=%22-17%22 r=%2210%22 fill=%22%234a8f3a%22/%3E%3Cg fill=%22%23f6d23a%22 stroke=%22%23d8a91f%22 stroke-width=%220.8%22%3E%3Cellipse cx=%22-7%22 cy=%22-12%22 rx=%223.6%22 ry=%222.8%22 transform=%22rotate(-25 -7 -12)%22/%3E%3Cellipse cx=%228%22 cy=%22-8%22 rx=%223.6%22 ry=%222.8%22 transform=%22rotate(20 8 -8)%22/%3E%3Cellipse cx=%22-1%22 cy=%220%22 rx=%223.6%22 ry=%222.8%22/%3E%3Cellipse cx=%2211%22 cy=%22-17%22 rx=%223.2%22 ry=%222.6%22 transform=%22rotate(-15 11 -17)%22/%3E%3Cellipse cx=%22-14%22 cy=%220%22 rx=%223.2%22 ry=%222.6%22 transform=%22rotate(30 -14 0)%22/%3E%3Cellipse cx=%222%22 cy=%22-22%22 rx=%223.2%22 ry=%222.6%22/%3E%3C/g%3E%3C/g%3E%3C/defs%3E%3Cpath d=%22M0 110 L 60 92 L 120 100 L 190 70 L 250 88 L 320 64 L 380 84 L 450 76 L 520 96 L 600 72 L 680 90 L 760 60 L 830 82 L 900 74 L 980 94 L 1050 70 L 1120 90 L 1200 110 V 200 H 0 Z%22 fill=%22%23c9b48a%22 opacity=%220.7%22/%3E%3Cpath d=%22M0 132 C 150 108, 260 126, 400 116 S 650 100, 800 118 S 1050 112, 1200 132 V 200 H 0 Z%22 fill=%22%23a9c97a%22/%3E%3Cpath d=%22M0 150 C 200 136, 380 146, 560 140 L 600 200 H 0 Z%22 fill=%22url(%23surcos)%22/%3E%3Cpath d=%22M560 140 C 760 134, 980 142, 1200 150 V 200 H 600 Z%22 fill=%22url(%23surcos2)%22/%3E%3Cpath d=%22M0 176 C 180 168, 320 184, 520 174 S 860 166, 1000 176 S 1140 182, 1200 176%22 stroke=%22%235aa6c9%22 stroke-width=%227%22 fill=%22none%22 stroke-linecap=%22round%22/%3E%3Cpath d=%22M40 175 h 30 M 300 178 h 26 M 640 171 h 30 M 940 174 h 24%22 stroke=%22%23bfe3f2%22 stroke-width=%222%22 stroke-linecap=%22round%22/%3E%3Cpath d=%22M0 186 C 300 180, 600 192, 900 184 S 1100 186, 1200 186 V 200 H 0 Z%22 fill=%22%23c69a63%22/%3E%3Cg transform=%22translate(0 20) scale(1 1)%22 opacity=%220.9%22%3E%3Cg transform=%22scale(0.62) translate(0 0)%22%3E%3Cuse href=%22%23limonero%22 x=%2240%22 y=%22221%22/%3E%3Cuse href=%22%23limonero%22 x=%22133%22 y=%22221%22/%3E%3Cuse href=%22%23limonero%22 x=%22227%22 y=%22221%22/%3E%3Cuse href=%22%23limonero%22 x=%22320%22 y=%22221%22/%3E%3Cuse href=%22%23limonero%22 x=%22414%22 y=%22221%22/%3E%3Cuse href=%22%23limonero%22 x=%22508%22 y=%22221%22/%3E%3Cuse href=%22%23limonero%22 x=%22601%22 y=%22221%22/%3E%3Cuse href=%22%23limonero%22 x=%22695%22 y=%22221%22/%3E%3Cuse href=%22%23limonero%22 x=%22788%22 y=%22221%22/%3E%3Cuse href=%22%23limonero%22 x=%22882%22 y=%22221%22/%3E%3Cuse href=%22%23limonero%22 x=%22975%22 y=%22221%22/%3E%3Cuse href=%22%23limonero%22 x=%221069%22 y=%22221%22/%3E%3Cuse href=%22%23limonero%22 x=%221162%22 y=%22221%22/%3E%3Cuse href=%22%23limonero%22 x=%221256%22 y=%22221%22/%3E%3Cuse href=%22%23limonero%22 x=%221350%22 y=%22221%22/%3E%3Cuse href=%22%23limonero%22 x=%221443%22 y=%22221%22/%3E%3Cuse href=%22%23limonero%22 x=%221537%22 y=%22221%22/%3E%3Cuse href=%22%23limonero%22 x=%221630%22 y=%22221%22/%3E%3Cuse href=%22%23limonero%22 x=%221724%22 y=%22221%22/%3E%3Cuse href=%22%23limonero%22 x=%221817%22 y=%22221%22/%3E%3Cuse href=%22%23limonero%22 x=%221911%22 y=%22221%22/%3E%3C/g%3E%3C/g%3E%3Cuse href=%22%23limonero%22 x=%2235%22 y=%22160%22/%3E%3Cuse href=%22%23limonero%22 x=%22105%22 y=%22163%22/%3E%3Cuse href=%22%23limonero%22 x=%22175%22 y=%22159%22/%3E%3Cuse href=%22%23limonero%22 x=%22245%22 y=%22162%22/%3E%3Cuse href=%22%23limonero%22 x=%22315%22 y=%22158%22/%3E%3Cuse href=%22%23limonero%22 x=%22385%22 y=%22162%22/%3E%3Cuse href=%22%23limonero%22 x=%22450%22 y=%22159%22/%3E%3Cuse href=%22%23limonero%22 x=%22515%22 y=%22163%22/%3E%3Cuse href=%22%23limonero%22 x=%22575%22 y=%22160%22/%3E%3Cuse href=%22%23limonero%22 x=%22645%22 y=%22163%22/%3E%3Cuse href=%22%23limonero%22 x=%22715%22 y=%22158%22/%3E%3Cuse href=%22%23limonero%22 x=%22785%22 y=%22162%22/%3E%3Cuse href=%22%23limonero%22 x=%22855%22 y=%22159%22/%3E%3Cuse href=%22%23limonero%22 x=%22925%22 y=%22163%22/%3E%3Cuse href=%22%23limonero%22 x=%22995%22 y=%22159%22/%3E%3Cuse href=%22%23limonero%22 x=%221065%22 y=%22162%22/%3E%3Cuse href=%22%23limonero%22 x=%221135%22 y=%22160%22/%3E%3C/svg%3E") center bottom / auto 150px repeat-x,
+    radial-gradient(900px 500px at 105% -10%, rgba(244, 196, 48, 0.35), transparent 60%),
+    radial-gradient(900px 500px at -10% 0%, rgba(127, 178, 74, 0.22), transparent 60%),
+    var(--bg);
+}
+
+/* Franja de toldo (limón y hoja) en lo alto, como en la cabecera de la web */
+section::before {
+  content: "";
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  height: 12px;
+  background: repeating-linear-gradient(90deg, var(--lemon) 0 22px, var(--green) 22px 44px);
+}
+
+/* Número de diapositiva arriba a la derecha y pie arriba a la izquierda (el paisaje ocupa el fondo) */
+section::after {
+  position: absolute;
+  padding: 0;
+  line-height: 1;
+  top: 24px;
+  bottom: auto;
+  right: 40px;
+  font-size: 20px;
+  font-weight: 600;
+  color: var(--orange);
+}
+section > footer {
+  position: absolute;
+  height: 24px;
+  top: 24px;
+  bottom: auto;
+  left: 80px;
+  font-size: 19px;
+  font-weight: 500;
+  color: var(--muted);
+}
+
+/* ---------- Texto ---------- */
+h1 {
+  margin: 0 0 0.35em;
+  font-size: 50px;
+  font-weight: 700;
+  line-height: 1.1;
+  color: var(--leaf);
+}
+h2 {
+  margin: 0 0 0.3em;
+  font-size: 34px;
+  font-weight: 600;
+  color: var(--orange);
+}
+h3 {
+  margin: 0 0 0.2em;
+  font-size: 28px;
+  font-weight: 600;
+  color: var(--text);
+}
+p { margin: 0 0 0.6em; }
+ul, ol { margin: 0 0 0.5em; padding-left: 1.2em; }
+li { margin: 0.2em 0; }
+li::marker { color: var(--orange); font-weight: 700; }
+strong { font-weight: 600; color: var(--leaf); }
+em { color: var(--earth); }
+a { color: var(--blue); }
+
+code {
+  font-family: "JetBrains Mono", ui-monospace, monospace;
+  font-size: 0.78em;
+  color: var(--earth);
+  background: rgba(138, 90, 43, 0.1);
+  padding: 2px 8px;
+  border-radius: 6px;
+}
+pre {
+  margin: 0 0 0.6em;
+  padding: 14px 22px;
+  background: var(--panel);
+  border: 1.5px solid var(--borde);
+  border-radius: 14px;
+  box-shadow: 0 8px 20px rgba(92, 64, 30, 0.1);
+  font-size: 24px;
+  line-height: 1.45;
+}
+pre code {
+  font-size: 1em;
+  padding: 0;
+  background: none;
+  color: var(--text);
+}
+.hljs-keyword, .hljs-built_in, .hljs-type { color: var(--violet); font-weight: 600; }
+.hljs-string { color: var(--green); }
+.hljs-number, .hljs-literal { color: var(--orange); }
+.hljs-comment { color: var(--muted); font-style: italic; }
+
+/* ---------- Tablas ---------- */
+table {
+  margin: 0 0 0.6em;
+  border-collapse: separate;
+  border-spacing: 0;
+  font-size: 25px;
+  border: 1.5px solid var(--borde);
+  border-radius: 12px;
+  overflow: hidden;
+  background: var(--panel);
+}
+th {
+  padding: 6px 16px;
+  background: var(--leaf);
+  color: #fff;
+  font-weight: 600;
+  text-align: left;
+}
+td {
+  padding: 5px 16px;
+  border-top: 1px solid var(--borde);
+  background: var(--panel);
+}
+.res table { font-size: 22px; }
+.res th { background: var(--earth); padding: 4px 14px; }
+.res td { padding: 3px 14px; }
+.sm table { font-size: 22px; }
+
+/* ---------- Componentes ---------- */
+.cols { display: grid; grid-template-columns: 1fr 1fr; gap: 32px; align-items: start; }
+.cols3 { display: grid; grid-template-columns: repeat(3, 1fr); gap: 24px; align-items: start; }
+.cols4 { display: grid; grid-template-columns: repeat(4, 1fr); gap: 18px; align-items: stretch; }
+.cols > div, .cols3 > div, .cols4 > div { min-width: 0; }
+.cols > div > :last-child, .cols3 > div > :last-child { margin-bottom: 0; }
+
+.card {
+  padding: 14px 24px;
+  background: var(--panel);
+  border: 1.5px solid var(--borde);
+  border-radius: 18px;
+  box-shadow: 0 12px 28px rgba(92, 64, 30, 0.12);
+}
+.card h3 { margin-top: 0; color: var(--leaf); }
+.card p:last-child, .card ul:last-child { margin-bottom: 0; }
+
+.nota {
+  margin: 0.4em 0;
+  padding: 10px 22px;
+  background: rgba(244, 196, 48, 0.2);
+  border-left: 8px solid var(--orange);
+  border-radius: 12px;
+  font-size: 27px;
+}
+.nota p { margin: 0; }
+.aviso {
+  margin: 0.4em 0;
+  padding: 10px 22px;
+  background: rgba(196, 67, 44, 0.1);
+  border-left: 8px solid var(--red);
+  border-radius: 12px;
+  font-size: 27px;
+}
+.aviso p { margin: 0; }
+
+.s { font-size: 25px; }
+.t { font-size: 21px; }
+.centro { text-align: center; }
+.muted { color: var(--muted); }
+
+.pill {
+  display: inline-block;
+  padding: 0 14px;
+  background: var(--lemon);
+  color: var(--text);
+  border-radius: 999px;
+  font-size: 0.78em;
+  font-weight: 600;
+  line-height: 1.5;
+}
+.pill.v { background: var(--green); color: #fff; }
+.pill.a { background: var(--blue); color: #fff; }
+.pill.n { background: var(--orange); color: #fff; }
+.pill.b { background: var(--violet); color: #fff; }
+
+.btn {
+  display: inline-block;
+  padding: 12px 38px;
+  background: var(--orange);
+  color: #fff;
+  border-radius: 999px;
+  font-size: 34px;
+  font-weight: 700;
+  text-decoration: none;
+  box-shadow: 0 8px 0 #a64f12;
+}
+
+/* Casilla para anotar el dígito de la llave */
+.llave {
+  display: inline-block;
+  width: 92px;
+  height: 104px;
+  margin-right: 14px;
+  box-sizing: border-box;
+  background: var(--panel);
+  border: 4px dashed var(--orange);
+  border-radius: 18px;
+  color: var(--muted);
+  font-size: 50px;
+  font-weight: 700;
+  line-height: 96px;
+  text-align: center;
+  vertical-align: middle;
+}
+.llave.ok { border-style: solid; background: var(--lemon); color: var(--text); }
+
+/* Itinerario */
+.ruta { display: flex; align-items: stretch; gap: 10px; }
+.ruta > div {
+  flex: 1;
+  padding: 12px 10px;
+  background: var(--panel);
+  border: 2px solid var(--leaf);
+  border-radius: 16px;
+  font-size: 23px;
+  line-height: 1.25;
+  text-align: center;
+}
+.ruta > div.j { border-color: var(--orange); background: rgba(217, 105, 28, 0.1); }
+.ruta > .f { flex: 0 0 auto; align-self: center; padding: 0; border: 0; background: none; color: var(--orange); font-size: 36px; font-weight: 700; }
+
+/* Fases de una consulta */
+.pasos { display: flex; align-items: stretch; gap: 8px; }
+.pasos > div { flex: 1; padding: 10px 12px; background: var(--panel); border: 1.5px solid var(--borde); border-radius: 14px; font-size: 22px; line-height: 1.25; }
+.pasos > div b { display: block; margin-bottom: 4px; color: var(--orange); }
+.pasos > .f { flex: 0 0 auto; align-self: center; padding: 0; border: 0; background: none; color: var(--orange); font-size: 32px; font-weight: 700; }
+
+/* Teclado de la caja fuerte */
+.caja { display: flex; flex-direction: column; align-items: center; gap: 16px; }
+.visor { display: flex; gap: 14px; }
+.visor span {
+  width: 92px; height: 112px; box-sizing: border-box;
+  background: #1c1c1c; color: var(--lemon);
+  border: 5px solid var(--earth); border-radius: 14px;
+  font-family: "JetBrains Mono", monospace; font-size: 64px; font-weight: 600;
+  line-height: 102px; text-align: center;
+}
+.teclado { display: grid; grid-template-columns: repeat(5, 74px); gap: 10px; }
+.teclado span {
+  height: 62px; box-sizing: border-box;
+  background: var(--panel); border: 3px solid var(--earth); border-radius: 14px;
+  font-size: 32px; font-weight: 700; line-height: 56px; text-align: center;
+}
+
+.venn svg { display: block; margin: 0 auto 6px; }
+
+/* ---------- Variantes de diapositiva ---------- */
+
+/* Portada: cabecera verde con toldo, como la portada de la memoria */
+section.portada {
+  padding: 0 80px 124px;
+  background:
+    linear-gradient(var(--leaf), var(--leaf)) top / 100% 400px no-repeat,
+    url("data:image/svg+xml,%3Csvg xmlns=%22http://www.w3.org/2000/svg%22 opacity=%220.75%22 viewBox=%220 0 1200 200%22 preserveAspectRatio=%22xMidYMax meet%22%3E%3Cdefs%3E%3Cpattern id=%22surcos%22 width=%2214%22 height=%2214%22 patternUnits=%22userSpaceOnUse%22 patternTransform=%22rotate(-8)%22%3E%3Crect width=%2214%22 height=%2214%22 fill=%22%239cc365%22/%3E%3Crect width=%2214%22 height=%225%22 fill=%22%2386b04f%22/%3E%3C/pattern%3E%3Cpattern id=%22surcos2%22 width=%2212%22 height=%2212%22 patternUnits=%22userSpaceOnUse%22 patternTransform=%22rotate(6)%22%3E%3Crect width=%2212%22 height=%2212%22 fill=%22%23b9cf6a%22/%3E%3Crect width=%2212%22 height=%224%22 fill=%22%23a3bd55%22/%3E%3C/pattern%3E%3Cg id=%22limonero%22%3E%3Crect x=%22-3%22 y=%220%22 width=%226%22 height=%2217%22 fill=%22%236e4a2a%22/%3E%3Ccircle cx=%220%22 cy=%22-9%22 r=%2218%22 fill=%22%232f6b2a%22/%3E%3Ccircle cx=%22-10%22 cy=%22-3%22 r=%2212%22 fill=%22%233b7d31%22/%3E%3Ccircle cx=%2210%22 cy=%22-5%22 r=%2213%22 fill=%22%233b7d31%22/%3E%3Ccircle cx=%220%22 cy=%22-17%22 r=%2210%22 fill=%22%234a8f3a%22/%3E%3Cg fill=%22%23f6d23a%22 stroke=%22%23d8a91f%22 stroke-width=%220.8%22%3E%3Cellipse cx=%22-7%22 cy=%22-12%22 rx=%223.6%22 ry=%222.8%22 transform=%22rotate(-25 -7 -12)%22/%3E%3Cellipse cx=%228%22 cy=%22-8%22 rx=%223.6%22 ry=%222.8%22 transform=%22rotate(20 8 -8)%22/%3E%3Cellipse cx=%22-1%22 cy=%220%22 rx=%223.6%22 ry=%222.8%22/%3E%3Cellipse cx=%2211%22 cy=%22-17%22 rx=%223.2%22 ry=%222.6%22 transform=%22rotate(-15 11 -17)%22/%3E%3Cellipse cx=%22-14%22 cy=%220%22 rx=%223.2%22 ry=%222.6%22 transform=%22rotate(30 -14 0)%22/%3E%3Cellipse cx=%222%22 cy=%22-22%22 rx=%223.2%22 ry=%222.6%22/%3E%3C/g%3E%3C/g%3E%3C/defs%3E%3Cpath d=%22M0 110 L 60 92 L 120 100 L 190 70 L 250 88 L 320 64 L 380 84 L 450 76 L 520 96 L 600 72 L 680 90 L 760 60 L 830 82 L 900 74 L 980 94 L 1050 70 L 1120 90 L 1200 110 V 200 H 0 Z%22 fill=%22%23c9b48a%22 opacity=%220.7%22/%3E%3Cpath d=%22M0 132 C 150 108, 260 126, 400 116 S 650 100, 800 118 S 1050 112, 1200 132 V 200 H 0 Z%22 fill=%22%23a9c97a%22/%3E%3Cpath d=%22M0 150 C 200 136, 380 146, 560 140 L 600 200 H 0 Z%22 fill=%22url(%23surcos)%22/%3E%3Cpath d=%22M560 140 C 760 134, 980 142, 1200 150 V 200 H 600 Z%22 fill=%22url(%23surcos2)%22/%3E%3Cpath d=%22M0 176 C 180 168, 320 184, 520 174 S 860 166, 1000 176 S 1140 182, 1200 176%22 stroke=%22%235aa6c9%22 stroke-width=%227%22 fill=%22none%22 stroke-linecap=%22round%22/%3E%3Cpath d=%22M40 175 h 30 M 300 178 h 26 M 640 171 h 30 M 940 174 h 24%22 stroke=%22%23bfe3f2%22 stroke-width=%222%22 stroke-linecap=%22round%22/%3E%3Cpath d=%22M0 186 C 300 180, 600 192, 900 184 S 1100 186, 1200 186 V 200 H 0 Z%22 fill=%22%23c69a63%22/%3E%3Cg transform=%22translate(0 20) scale(1 1)%22 opacity=%220.9%22%3E%3Cg transform=%22scale(0.62) translate(0 0)%22%3E%3Cuse href=%22%23limonero%22 x=%2240%22 y=%22221%22/%3E%3Cuse href=%22%23limonero%22 x=%22133%22 y=%22221%22/%3E%3Cuse href=%22%23limonero%22 x=%22227%22 y=%22221%22/%3E%3Cuse href=%22%23limonero%22 x=%22320%22 y=%22221%22/%3E%3Cuse href=%22%23limonero%22 x=%22414%22 y=%22221%22/%3E%3Cuse href=%22%23limonero%22 x=%22508%22 y=%22221%22/%3E%3Cuse href=%22%23limonero%22 x=%22601%22 y=%22221%22/%3E%3Cuse href=%22%23limonero%22 x=%22695%22 y=%22221%22/%3E%3Cuse href=%22%23limonero%22 x=%22788%22 y=%22221%22/%3E%3Cuse href=%22%23limonero%22 x=%22882%22 y=%22221%22/%3E%3Cuse href=%22%23limonero%22 x=%22975%22 y=%22221%22/%3E%3Cuse href=%22%23limonero%22 x=%221069%22 y=%22221%22/%3E%3Cuse href=%22%23limonero%22 x=%221162%22 y=%22221%22/%3E%3Cuse href=%22%23limonero%22 x=%221256%22 y=%22221%22/%3E%3Cuse href=%22%23limonero%22 x=%221350%22 y=%22221%22/%3E%3Cuse href=%22%23limonero%22 x=%221443%22 y=%22221%22/%3E%3Cuse href=%22%23limonero%22 x=%221537%22 y=%22221%22/%3E%3Cuse href=%22%23limonero%22 x=%221630%22 y=%22221%22/%3E%3Cuse href=%22%23limonero%22 x=%221724%22 y=%22221%22/%3E%3Cuse href=%22%23limonero%22 x=%221817%22 y=%22221%22/%3E%3Cuse href=%22%23limonero%22 x=%221911%22 y=%22221%22/%3E%3C/g%3E%3C/g%3E%3Cuse href=%22%23limonero%22 x=%2235%22 y=%22160%22/%3E%3Cuse href=%22%23limonero%22 x=%22105%22 y=%22163%22/%3E%3Cuse href=%22%23limonero%22 x=%22175%22 y=%22159%22/%3E%3Cuse href=%22%23limonero%22 x=%22245%22 y=%22162%22/%3E%3Cuse href=%22%23limonero%22 x=%22315%22 y=%22158%22/%3E%3Cuse href=%22%23limonero%22 x=%22385%22 y=%22162%22/%3E%3Cuse href=%22%23limonero%22 x=%22450%22 y=%22159%22/%3E%3Cuse href=%22%23limonero%22 x=%22515%22 y=%22163%22/%3E%3Cuse href=%22%23limonero%22 x=%22575%22 y=%22160%22/%3E%3Cuse href=%22%23limonero%22 x=%22645%22 y=%22163%22/%3E%3Cuse href=%22%23limonero%22 x=%22715%22 y=%22158%22/%3E%3Cuse href=%22%23limonero%22 x=%22785%22 y=%22162%22/%3E%3Cuse href=%22%23limonero%22 x=%22855%22 y=%22159%22/%3E%3Cuse href=%22%23limonero%22 x=%22925%22 y=%22163%22/%3E%3Cuse href=%22%23limonero%22 x=%22995%22 y=%22159%22/%3E%3Cuse href=%22%23limonero%22 x=%221065%22 y=%22162%22/%3E%3Cuse href=%22%23limonero%22 x=%221135%22 y=%22160%22/%3E%3C/svg%3E") center bottom / auto 150px repeat-x,
+    radial-gradient(500px 360px at 90% 62%, rgba(244, 196, 48, 0.45), transparent 70%),
+    var(--bg);
+}
+section.portada::before { top: 400px; height: 16px; }
+section.portada .kicker {
+  margin: 70px 0 0;
+  font-size: 27px;
+  font-weight: 600;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  color: var(--lemon);
+}
+section.portada h1 { margin: 6px 0 0; font-size: 118px; color: #fff; line-height: 1.05; }
+section.portada h1 em { color: var(--lemon); font-style: normal; }
+section.portada h2 { margin: 0; font-size: 38px; font-weight: 500; color: #fff; }
+section.portada .meta { margin: 150px 0 0; font-size: 28px; color: var(--text); }
+
+/* Separador de bloque */
+section.bloque {
+  padding-top: 170px;
+  color: #fff;
+  background:
+    url("data:image/svg+xml,%3Csvg xmlns=%22http://www.w3.org/2000/svg%22 opacity=%220.75%22 viewBox=%220 0 1200 200%22 preserveAspectRatio=%22xMidYMax meet%22%3E%3Cdefs%3E%3Cpattern id=%22surcos%22 width=%2214%22 height=%2214%22 patternUnits=%22userSpaceOnUse%22 patternTransform=%22rotate(-8)%22%3E%3Crect width=%2214%22 height=%2214%22 fill=%22%239cc365%22/%3E%3Crect width=%2214%22 height=%225%22 fill=%22%2386b04f%22/%3E%3C/pattern%3E%3Cpattern id=%22surcos2%22 width=%2212%22 height=%2212%22 patternUnits=%22userSpaceOnUse%22 patternTransform=%22rotate(6)%22%3E%3Crect width=%2212%22 height=%2212%22 fill=%22%23b9cf6a%22/%3E%3Crect width=%2212%22 height=%224%22 fill=%22%23a3bd55%22/%3E%3C/pattern%3E%3Cg id=%22limonero%22%3E%3Crect x=%22-3%22 y=%220%22 width=%226%22 height=%2217%22 fill=%22%236e4a2a%22/%3E%3Ccircle cx=%220%22 cy=%22-9%22 r=%2218%22 fill=%22%232f6b2a%22/%3E%3Ccircle cx=%22-10%22 cy=%22-3%22 r=%2212%22 fill=%22%233b7d31%22/%3E%3Ccircle cx=%2210%22 cy=%22-5%22 r=%2213%22 fill=%22%233b7d31%22/%3E%3Ccircle cx=%220%22 cy=%22-17%22 r=%2210%22 fill=%22%234a8f3a%22/%3E%3Cg fill=%22%23f6d23a%22 stroke=%22%23d8a91f%22 stroke-width=%220.8%22%3E%3Cellipse cx=%22-7%22 cy=%22-12%22 rx=%223.6%22 ry=%222.8%22 transform=%22rotate(-25 -7 -12)%22/%3E%3Cellipse cx=%228%22 cy=%22-8%22 rx=%223.6%22 ry=%222.8%22 transform=%22rotate(20 8 -8)%22/%3E%3Cellipse cx=%22-1%22 cy=%220%22 rx=%223.6%22 ry=%222.8%22/%3E%3Cellipse cx=%2211%22 cy=%22-17%22 rx=%223.2%22 ry=%222.6%22 transform=%22rotate(-15 11 -17)%22/%3E%3Cellipse cx=%22-14%22 cy=%220%22 rx=%223.2%22 ry=%222.6%22 transform=%22rotate(30 -14 0)%22/%3E%3Cellipse cx=%222%22 cy=%22-22%22 rx=%223.2%22 ry=%222.6%22/%3E%3C/g%3E%3C/g%3E%3C/defs%3E%3Cpath d=%22M0 110 L 60 92 L 120 100 L 190 70 L 250 88 L 320 64 L 380 84 L 450 76 L 520 96 L 600 72 L 680 90 L 760 60 L 830 82 L 900 74 L 980 94 L 1050 70 L 1120 90 L 1200 110 V 200 H 0 Z%22 fill=%22%23c9b48a%22 opacity=%220.7%22/%3E%3Cpath d=%22M0 132 C 150 108, 260 126, 400 116 S 650 100, 800 118 S 1050 112, 1200 132 V 200 H 0 Z%22 fill=%22%23a9c97a%22/%3E%3Cpath d=%22M0 150 C 200 136, 380 146, 560 140 L 600 200 H 0 Z%22 fill=%22url(%23surcos)%22/%3E%3Cpath d=%22M560 140 C 760 134, 980 142, 1200 150 V 200 H 600 Z%22 fill=%22url(%23surcos2)%22/%3E%3Cpath d=%22M0 176 C 180 168, 320 184, 520 174 S 860 166, 1000 176 S 1140 182, 1200 176%22 stroke=%22%235aa6c9%22 stroke-width=%227%22 fill=%22none%22 stroke-linecap=%22round%22/%3E%3Cpath d=%22M40 175 h 30 M 300 178 h 26 M 640 171 h 30 M 940 174 h 24%22 stroke=%22%23bfe3f2%22 stroke-width=%222%22 stroke-linecap=%22round%22/%3E%3Cpath d=%22M0 186 C 300 180, 600 192, 900 184 S 1100 186, 1200 186 V 200 H 0 Z%22 fill=%22%23c69a63%22/%3E%3Cg transform=%22translate(0 20) scale(1 1)%22 opacity=%220.9%22%3E%3Cg transform=%22scale(0.62) translate(0 0)%22%3E%3Cuse href=%22%23limonero%22 x=%2240%22 y=%22221%22/%3E%3Cuse href=%22%23limonero%22 x=%22133%22 y=%22221%22/%3E%3Cuse href=%22%23limonero%22 x=%22227%22 y=%22221%22/%3E%3Cuse href=%22%23limonero%22 x=%22320%22 y=%22221%22/%3E%3Cuse href=%22%23limonero%22 x=%22414%22 y=%22221%22/%3E%3Cuse href=%22%23limonero%22 x=%22508%22 y=%22221%22/%3E%3Cuse href=%22%23limonero%22 x=%22601%22 y=%22221%22/%3E%3Cuse href=%22%23limonero%22 x=%22695%22 y=%22221%22/%3E%3Cuse href=%22%23limonero%22 x=%22788%22 y=%22221%22/%3E%3Cuse href=%22%23limonero%22 x=%22882%22 y=%22221%22/%3E%3Cuse href=%22%23limonero%22 x=%22975%22 y=%22221%22/%3E%3Cuse href=%22%23limonero%22 x=%221069%22 y=%22221%22/%3E%3Cuse href=%22%23limonero%22 x=%221162%22 y=%22221%22/%3E%3Cuse href=%22%23limonero%22 x=%221256%22 y=%22221%22/%3E%3Cuse href=%22%23limonero%22 x=%221350%22 y=%22221%22/%3E%3Cuse href=%22%23limonero%22 x=%221443%22 y=%22221%22/%3E%3Cuse href=%22%23limonero%22 x=%221537%22 y=%22221%22/%3E%3Cuse href=%22%23limonero%22 x=%221630%22 y=%22221%22/%3E%3Cuse href=%22%23limonero%22 x=%221724%22 y=%22221%22/%3E%3Cuse href=%22%23limonero%22 x=%221817%22 y=%22221%22/%3E%3Cuse href=%22%23limonero%22 x=%221911%22 y=%22221%22/%3E%3C/g%3E%3C/g%3E%3Cuse href=%22%23limonero%22 x=%2235%22 y=%22160%22/%3E%3Cuse href=%22%23limonero%22 x=%22105%22 y=%22163%22/%3E%3Cuse href=%22%23limonero%22 x=%22175%22 y=%22159%22/%3E%3Cuse href=%22%23limonero%22 x=%22245%22 y=%22162%22/%3E%3Cuse href=%22%23limonero%22 x=%22315%22 y=%22158%22/%3E%3Cuse href=%22%23limonero%22 x=%22385%22 y=%22162%22/%3E%3Cuse href=%22%23limonero%22 x=%22450%22 y=%22159%22/%3E%3Cuse href=%22%23limonero%22 x=%22515%22 y=%22163%22/%3E%3Cuse href=%22%23limonero%22 x=%22575%22 y=%22160%22/%3E%3Cuse href=%22%23limonero%22 x=%22645%22 y=%22163%22/%3E%3Cuse href=%22%23limonero%22 x=%22715%22 y=%22158%22/%3E%3Cuse href=%22%23limonero%22 x=%22785%22 y=%22162%22/%3E%3Cuse href=%22%23limonero%22 x=%22855%22 y=%22159%22/%3E%3Cuse href=%22%23limonero%22 x=%22925%22 y=%22163%22/%3E%3Cuse href=%22%23limonero%22 x=%22995%22 y=%22159%22/%3E%3Cuse href=%22%23limonero%22 x=%221065%22 y=%22162%22/%3E%3Cuse href=%22%23limonero%22 x=%221135%22 y=%22160%22/%3E%3C/svg%3E") center bottom / auto 150px repeat-x,
+    linear-gradient(160deg, var(--leaf), var(--green));
+}
+section.bloque h1 { margin: 0; font-size: 84px; color: #fff; }
+section.bloque h2 { margin: 0 0 18px; font-size: 40px; color: var(--lemon); }
+section.bloque p { max-width: 900px; font-size: 32px; }
+section.bloque strong, section.bloque em { color: var(--lemon); }
+section.bloque::after { color: var(--lemon); }
+section.bloque > footer { color: rgba(255, 255, 255, 0.8); }
+
+/* Acceso a un juego */
+section.juego h1 { color: var(--orange); }
+section.juego h1 .n { color: var(--leaf); }
+
+/* Cierre */
+section.cierre h1 { color: var(--orange); }
+
+/* Lista de casillas (autoevaluación) */
+.check ul { padding-left: 0; list-style: none; }
+.check li { margin: 0.35em 0; }
+.check li::marker { content: ""; }

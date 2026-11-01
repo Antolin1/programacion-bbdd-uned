@@ -13,6 +13,9 @@ web/                          Aplicación web (se publica tal cual)
   assets/                     Estilos, lógica común e imágenes (paisaje de la huerta, favicon)
   data/cooperativa.sql        Base de datos de ejemplo (la usan los juegos y el apéndice de la memoria)
   juego1/ juego2/ juego3/     Los tres juegos
+presentacion/                 Presentación de Genially en Marp (se exporta a PowerPoint)
+  mision-sql.md               Guion de las 51 diapositivas
+  mision.css                  Tema (misma paleta y tipografía que la web y la memoria)
 memoria/                      Memoria de la actividad en LaTeX
   main.tex                    Documento principal
   datos.tex                   Datos personales, URL y n.º de diapositivas (rellenar)

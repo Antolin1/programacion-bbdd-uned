@@ -44,7 +44,7 @@ body {
   padding-bottom: 120px;
 }
 
-/* Paisaje de la huerta al pie de la página: sierra, bancales, palmeras, barraca y limoneros */
+/* Paisaje de la huerta al pie de la página: sierra, bancales, acequia y filas de limoneros */
 body::after {
   content: ""; position: fixed; left: 0; right: 0; bottom: 0; height: 190px; z-index: -2;
   pointer-events: none; opacity: 0.55;

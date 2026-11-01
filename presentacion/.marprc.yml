@@ -1,0 +1,4 @@
+# Configuración de Marp CLI para esta carpeta (se lee automáticamente).
+theme: mision.css
+html: true
+allowLocalFiles: true
