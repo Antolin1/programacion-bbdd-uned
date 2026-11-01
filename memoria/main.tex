@@ -544,10 +544,12 @@ criterios excepto el 3.g, y repasa los criterios 2.d y 2.e del \textbf{RA2}.
 
 \subsection{Contenidos que se trabajan}
 
-De los contenidos básicos del módulo \cite{rd405}, que en la Región de Murcia tienen carácter
-orientativo \cite[art.~3]{murcia2026}, el recurso trabaja los bloques \emph{Realización de
-consultas} y \emph{Tratamiento de datos}, además de los sublenguajes DDL y DCL del bloque
-\emph{Bases de datos relacionales}:
+El Anexo~I del RD 405/2023 \cite{rd405} organiza los contenidos básicos del módulo 0484 en
+siete bloques, que en la Región de Murcia tienen carácter orientativo
+\cite[art.~3]{murcia2026}. El recurso trabaja tres de ellos: \emph{Realización de
+consultas}, \emph{Tratamiento de datos} y, del bloque \emph{Bases de datos relacionales},
+solo los lenguajes de descripción (DDL) y de control de datos (DCL). La \autoref{tab:contenidos}
+detalla los contenidos concretos.
 
 \begin{table}[H]
 \centering
@@ -555,9 +557,10 @@ consultas} y \emph{Tratamiento de datos}, además de los sublenguajes DDL y DCL 
 \toprule
 \textbf{Bloque de contenidos} & \textbf{Contenidos concretos} \\
 \midrule
-Introducción al lenguaje SQL &
-Sublenguajes DDL, DML, DCL y de control de transacciones. Herramientas gráficas y de línea
-de comandos para ejecutar sentencias. \\
+Bases de datos relacionales (solo DDL y DCL) &
+Lenguajes de descripción de datos (\texttt{CREATE}, \texttt{ALTER}, \texttt{DROP}) y de control
+de datos (usuarios y privilegios), en la medida en que hacen falta para entender las
+restricciones y los errores de integridad de los retos. \\
 \addlinespace
 Realización de consultas &
 Proyección, selección y ordenación de registros (\texttt{SELECT}, \texttt{WHERE},
@@ -572,14 +575,15 @@ Tratamiento de datos &
 Inserción, borrado y modificación de registros. Integridad referencial. Subconsultas y
 composiciones en órdenes de edición. Transacciones: \texttt{COMMIT}, \texttt{ROLLBACK},
 \texttt{SAVEPOINT}. Políticas de bloqueo y concurrencia (nociones). \\
-\addlinespace
-Contenidos transversales &
-Resolución de problemas, pensamiento computacional, trabajo en equipo, tolerancia al error
-y conocimiento del entorno productivo de la Región de Murcia. \\
 \bottomrule
 \end{tabularx}
 \caption{Contenidos trabajados en la actividad}
+\label{tab:contenidos}
 \end{table}
+
+Además, de forma transversal se trabajan la resolución de problemas, el pensamiento
+computacional, el trabajo en equipo, la tolerancia al error y el conocimiento del entorno
+productivo de la Región de Murcia.
 
 % =====================================================================
 \section{Descripción de la actividad}
@@ -591,67 +595,82 @@ y conocimiento del entorno productivo de la Región de Murcia. \\
 formado por:
 
 \begin{enumerate}
-  \item Una \textbf{presentación interactiva} en Genially, que sirve de hilo conductor
-        y donde se desarrollan la narrativa, los contenidos teóricos y la sala final.
+  \item Una \textbf{presentación interactiva} en Genially (\autoref{sec:genially}), que sirve
+        de hilo conductor y donde se desarrollan la narrativa, los contenidos teóricos y la
+        sala final.
   \item \textbf{Tres juegos digitales educativos}, desarrollados como páginas web propias
-        (HTML, CSS y JavaScript) y publicados con GitHub Pages. La presentación los enlaza
-        en el orden de la misión.
+        (HTML, CSS y JavaScript) y publicados con GitHub Pages (\autoref{sec:juegos}). La
+        presentación los enlaza en el orden de la misión, como muestra la
+        \autoref{fig:itinerario}.
 \end{enumerate}
 
 \paragraph{Narrativa.} Una tormenta de granizo ha dañado el servidor de la
 \emph{Cooperativa Huerta de Murcia} justo antes de la campaña de exportación. La gerencia
 ha contratado al alumnado como \emph{técnicos junior de bases de datos} para recuperar la
 información de socios, productos y entregas. El acceso a la copia de seguridad está protegido
-por una \textbf{caja fuerte digital con un código de cuatro dígitos}. Cada juego superado
-revela uno o dos dígitos (la «llave» del juego), y solo el equipo que reúna los cuatro
-podrá abrir la caja fuerte en la última diapositiva y «salvar la campaña».
+por una caja fuerte digital con un código de cuatro dígitos. Cada juego superado
+revela uno o dos dígitos, y solo el equipo que reúna los cuatro
+podrá abrir la caja fuerte en la última diapositiva y \textit{salvar la campaña}
+(los dígitos de cada juego se recogen en el \autoref{sec:codigo}).
 
-\paragraph{Elementos de gamificación.} Siguiendo el marco de mecánicas, dinámicas y
-componentes de Werbach y Hunter \cite{werbach2012}:
+\paragraph{Elementos de gamificación.} El recurso se ha diseñado siguiendo la clasificación de
+elementos de juego de Werbach y Hunter \cite{werbach2012}, que distingue tres niveles: las
+\emph{dinámicas} (el porqué, lo que motiva), las \emph{mecánicas} (el cómo, las reglas) y los
+\emph{componentes} (el qué, lo que ve el jugador):
 
 \begin{itemize}
   \item \textbf{Dinámicas}: narrativa, progresión por niveles (de lo sencillo a lo complejo),
         sensación de logro y colaboración por equipos.
   \item \textbf{Mecánicas}: retos, retroalimentación inmediata, recompensas (dígitos
         de la llave), competición sana entre equipos y límite de tiempo en el juego 2.
-  \item \textbf{Componentes}: puntos, insignias por juego («Clasificador»,
-        «Detective de consultas», «Maestro del DML»), tabla de clasificación y desbloqueo
+  \item \textbf{Componentes}: puntos, insignias por juego (\textit{Clasificador},
+        \textit{Detective de consultas}, \textit{Maestro del DML}), tabla de clasificación y desbloqueo
         de la caja fuerte final.
 \end{itemize}
 
 \begin{figure}[H]
 \centering
+\newcommand{\logoG}{\includegraphics[height=0.45cm]{img/genially.pdf}}
 \begin{tikzpicture}[
-  node distance=0.9cm and 0.7cm,
+  node distance=0.8cm and 0.9cm,
   caja/.style={rectangle, rounded corners=3pt, draw=principal, very thick,
-               fill=principal!8, minimum width=2.6cm, minimum height=1.25cm,
+               fill=principal!8, minimum width=2.7cm, minimum height=1.25cm,
                align=center, font=\small},
-  llave/.style={rectangle, rounded corners=3pt, draw=acento, thick, fill=acento!10,
-               font=\small\bfseries, align=center},
-  flecha/.style={-{Stealth[length=3mm]}, thick, principal}
+  juego/.style={rectangle, rounded corners=3pt, draw=acento, very thick,
+               fill=acento!10, minimum width=2.7cm, minimum height=1.1cm,
+               align=center, font=\small},
+  llave/.style={font=\small\bfseries, text=acento},
+  flecha/.style={-{Stealth[length=3mm]}, thick, principal},
+  ida/.style={-{Stealth[length=3mm]}, thick, acento}
 ]
-  \node[caja] (g0) {Genially\\Narrativa y teoría};
-  \node[caja, right=of g0] (j1) {Juego 1\\Clasifica\\y ordena};
-  \node[caja, right=of j1] (j2) {Juego 2\\¿Qué devuelve\\la consulta?};
-  \node[caja, right=of j2] (j3) {Juego 3\\Terminal de\\la Cooperativa};
-  \node[caja, below=1.6cm of j2, draw=acento, fill=acento!10] (fin) {Genially\\Caja fuerte final};
-  \draw[flecha] (g0) -- (j1);
-  \draw[flecha] (j1) -- (j2);
-  \draw[flecha] (j2) -- (j3);
-  \node[llave, below=0.25cm of j1] (k1) {dígito 1};
-  \node[llave, below=0.25cm of j2] (k2) {dígito 2};
-  \node[llave, below=0.25cm of j3] (k3) {dígitos 3 y 4};
-  \draw[flecha, acento] (k1) |- (fin);
-  \draw[flecha, acento] (k2) -- (fin);
-  \draw[flecha, acento] (k3) |- (fin);
+  % Fila de Genially (eje de la actividad)
+  \node[caja] (g1) {\logoG\,\textbf{Genially}\\Misión, BD, SQL\\y consultas simples};
+  \node[caja, right=of g1] (g2) {\logoG\,\textbf{Genially}\\Resumen, varias\\tablas, subconsultas};
+  \node[caja, right=of g2] (g3) {\logoG\,\textbf{Genially}\\Manipulación de\\datos y transacciones};
+  \node[caja, right=of g3] (g4) {\logoG\,\textbf{Genially}\\Caja fuerte\\final};
+  \draw[flecha] (g1) -- (g2);
+  \draw[flecha] (g2) -- (g3);
+  \draw[flecha] (g3) -- (g4);
+  % Juegos, a los que se accede desde Genially
+  \node[juego, below=1.5cm of g1] (j1) {Juego 1\\Clasifica y ordena};
+  \node[juego, below=1.5cm of g2] (j2) {Juego 2\\¿Qué devuelve\\la consulta?};
+  \node[juego, below=1.5cm of g3] (j3) {Juego 3\\Terminal de\\la Cooperativa};
+  \draw[ida] ([xshift=-0.5cm]g1.south) -- node[left, font=\scriptsize] {acceso} ([xshift=-0.5cm]j1.north);
+  \draw[ida] ([xshift=-0.5cm]g2.south) -- node[left, font=\scriptsize] {acceso} ([xshift=-0.5cm]j2.north);
+  \draw[ida] ([xshift=-0.5cm]g3.south) -- node[left, font=\scriptsize] {acceso} ([xshift=-0.5cm]j3.north);
+  \draw[ida] ([xshift=0.5cm]j1.north) -- node[right, llave] {dígito 1} ([xshift=0.5cm]g1.south);
+  \draw[ida] ([xshift=0.5cm]j2.north) -- node[right, llave] {dígito 2} ([xshift=0.5cm]g2.south);
+  \draw[ida] ([xshift=0.5cm]j3.north) -- node[right, llave] {dígitos 3 y 4} ([xshift=0.5cm]g3.south);
 \end{tikzpicture}
-\caption{Itinerario de la misión y obtención del código de la caja fuerte}
+\caption{Itinerario de la misión: Genially es el eje y de él se accede a cada juego, que devuelve su dígito de la caja fuerte}
+\label{fig:itinerario}
 \end{figure}
 
 \subsection{Base de datos de trabajo}
+\label{sec:bd}
 
 Todos los retos se resuelven sobre la misma base de datos, \texttt{cooperativa}, que el
-alumnado conoce en la presentación y que el juego~3 carga en el navegador. Tiene tres
+alumnado conoce en la presentación (\autoref{sec:genially}) y que el juego~3 carga en el navegador. Tiene tres
 tablas:
 
 \begin{itemize}
@@ -718,6 +737,7 @@ entregas (Lucía Gómez), útil para las composiciones externas; un producto sin
 \autoref{ap:script}.
 
 \subsection{Presentación interactiva (Genially)}
+\label{sec:genially}
 
 \begin{nota}
 \textbf{URL pública:} \url{\urlGenially}\\
@@ -727,9 +747,11 @@ entregas (Lucía Gómez), útil para las composiciones externas; un producto sin
 La presentación es el tablero de la misión. Combina diapositivas de narrativa,
 diapositivas de contenido con ejemplos interactivos (ventanas emergentes con el resultado de
 cada consulta y botones «¿Y si…?») y botones de acceso a cada juego. Su estructura de
-contenidos es la siguiente:
+contenidos se recoge en la \autoref{tab:genially}.
 
 \begin{longtable}{@{}p{0.2\linewidth}p{0.75\linewidth}@{}}
+\caption{Estructura de contenidos de la presentación en Genially}
+\label{tab:genially}\\
 \toprule
 \textbf{Sección} & \textbf{Contenido} \\
 \midrule
@@ -787,6 +809,7 @@ practicar en casa, créditos y bibliografía. \\
 \end{longtable}
 
 \subsection{Juegos digitales educativos}
+\label{sec:juegos}
 
 \begin{nota}
 Los tres juegos se publican juntos, en una única aplicación de GitHub Pages:\\
@@ -794,12 +817,15 @@ Los tres juegos se publican juntos, en una única aplicación de GitHub Pages:\\
 \textbf{Página índice de los juegos:} \url{\urlJuegos}
 \end{nota}
 
+Todos se juegan sobre la base de datos del \autoref{sec:bd} y se reparten en las sesiones del
+\autoref{sec:secuencia}.
+
 Los juegos forman una \textbf{aplicación web común} con \textbf{tres juegos diferenciados}.
 La aplicación ofrece la interfaz, la narrativa y las mecánicas de gamificación
 compartidas: perfil del equipo, marcador global de puntos, insignias, mapa del itinerario y
 registro de los dígitos de la llave. Cada juego es un juego independiente, con su propia
-naturaleza, mecánica y forma de interacción. No son fases de un mismo juego. El
-itinerario es progresivo: cada juego trabaja un nivel de complejidad mayor que el anterior
+naturaleza, mecánica y forma de interacción. No son fases de un mismo juego
+(\autoref{tab:juegos}). El itinerario es progresivo: cada juego trabaja un nivel de complejidad mayor que el anterior
 y se desbloquea al superar el previo, aunque todos se pueden volver a jugar por separado.
 
 \begin{table}[H]
@@ -821,6 +847,7 @@ resuelven problemas reales (\emph{aplicar y crear}) \\
 \bottomrule
 \end{tabularx}
 \caption{Naturaleza diferenciada de los tres juegos}
+\label{tab:juegos}
 \end{table}
 
 La aplicación está formada por páginas web estáticas (HTML5, CSS y JavaScript sin servidor),
@@ -833,6 +860,7 @@ con retroalimentación inmediata y pantalla final con puntuación, insignia y d�
 
 % ---------------------------------------------------------------------
 \subsubsection{Juego 1: «Clasifica y ordena»}
+\label{sec:juego1}
 % ---------------------------------------------------------------------
 
 \begin{nota}
@@ -927,6 +955,7 @@ nivel~1 pertenecen al DCL?}
 
 % ---------------------------------------------------------------------
 \subsubsection{Juego 2: «¿Qué devuelve la consulta?»}
+\label{sec:juego2}
 % ---------------------------------------------------------------------
 
 \begin{nota}
@@ -1093,6 +1122,7 @@ a) 7 \quad b) 9 \ok \quad c) 0 \quad d) Error: no se puede borrar
 
 % ---------------------------------------------------------------------
 \subsubsection{Juego 3: «Terminal de la Cooperativa»}
+\label{sec:juego3}
 % ---------------------------------------------------------------------
 
 \begin{nota}
@@ -1243,8 +1273,12 @@ Hortaliza 1,65 (CE~4.c, 4.d, 4.f).
 \end{solucion}
 
 \subsection{Código de la caja fuerte}
+\label{sec:codigo}
 
-\begin{center}
+La \autoref{tab:codigo} recoge qué reto da cada dígito y el código resultante.
+
+\begin{table}[H]
+\centering
 \begin{tabular}{@{}lll c@{}}
 \toprule
 \textbf{Dígito} & \textbf{Juego} & \textbf{Reto} & \textbf{Valor} \\
@@ -1257,19 +1291,22 @@ Hortaliza 1,65 (CE~4.c, 4.d, 4.f).
 \multicolumn{3}{r}{\textbf{Código de la caja fuerte}} & \textbf{\Large 2931} \\
 \bottomrule
 \end{tabular}
-\end{center}
+\caption{Dígitos de la llave y código de la caja fuerte}
+\label{tab:codigo}
+\end{table}
 
 \subsection{Secuenciación y metodología}
+\label{sec:secuencia}
 
-La actividad está pensada para tres sesiones de 55 minutos, en el momento de la programación
+La actividad está pensada para tres sesiones de 55 minutos (la \autoref{fig:itinerario} muestra el itinerario), en el momento de la programación
 en que se empiezan a trabajar los RA3 y RA4:
 
 \begin{itemize}
   \item \textbf{Sesión 1}: presentación de la misión y de la base de datos, introducción a SQL,
-        \textbf{juego~1}, consultas simples y de resumen.
-  \item \textbf{Sesión 2}: composiciones, subconsultas y \textbf{juego~2} jugado en el aula
+        \textbf{juego~1} (\autoref{sec:juego1}), consultas simples y de resumen.
+  \item \textbf{Sesión 2}: composiciones, subconsultas y \textbf{juego~2} (\autoref{sec:juego2}) jugado en el aula
         por equipos con clasificación proyectada.
-  \item \textbf{Sesión 3}: manipulación de datos y transacciones, \textbf{juego~3} por
+  \item \textbf{Sesión 3}: manipulación de datos y transacciones, \textbf{juego~3} (\autoref{sec:juego3}) por
         parejas y apertura de la caja fuerte. Puesta en común y autoevaluación.
 \end{itemize}
 
