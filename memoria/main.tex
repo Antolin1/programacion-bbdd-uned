@@ -33,6 +33,16 @@
 
 \input{datos}
 
+% Nombres de \autoref en minúscula (se usan a mitad de frase: «la \autoref{tab:ra}» -> «la tabla 2»)
+\addto\extrasspanish{%
+  \def\tableautorefname{tabla}%
+  \def\figureautorefname{figura}%
+  \def\sectionautorefname{apartado}%
+  \def\subsectionautorefname{apartado}%
+  \def\subsubsectionautorefname{apartado}%
+  \def\appendixautorefname{apéndice}%
+  \def\equationautorefname{ecuación}}
+
 \hypersetup{
   linkcolor=tierra, citecolor=hoja, urlcolor=acequia,
   pdftitle={Misión SQL -- Memoria de la actividad},
@@ -210,36 +220,65 @@ su dominio es una competencia transversal y muy demandada por el tejido empresar
 encuesta anual de Stack Overflow lo sitúa de forma constante entre los lenguajes más
 utilizados por los profesionales del desarrollo de software \cite{stackoverflow2025}.
 
-Sin embargo, la investigación sobre la enseñanza de SQL muestra que su aprendizaje presenta
-dificultades recurrentes \cite{taipalus2020}. Los estudios que analizan las consultas
-escritas por estudiantes identifican errores sistemáticos tanto sintácticos como
-semánticos y lógicos \cite{taipalus2018}. Los más frecuentes aparecen en el agrupamiento
-(\texttt{GROUP BY}/\texttt{HAVING}), en las composiciones de varias tablas, en las
-composiciones externas y en las subconsultas \cite{ahadi2016,taipalus2018}. Influyen
-también la naturaleza declarativa del lenguaje, poco intuitiva para un alumnado que empieza a
-programar en lenguajes imperativos, y el hecho de que el orden lógico de evaluación de las
-cláusulas no coincide con el orden en que se escriben \cite{taipalus2018}.
+Sin embargo, la investigación sobre la enseñanza de SQL muestra que su
+aprendizaje presenta dificultades recurrentes \cite{taipalus2020}. Los
+estudios que analizan las consultas escritas por estudiantes identifican
+errores sistemáticos tanto sintácticos como semánticos y lógicos
+\cite{taipalus2018}. Los más frecuentes aparecen en el agrupamiento
+(\texttt{GROUP BY}/\texttt{HAVING}), en las composiciones de varias
+tablas, en las composiciones externas y en las subconsultas
+\cite{ahadi2016,taipalus2018}. Influyen también la naturaleza declarativa
+del lenguaje, poco intuitiva para un alumnado que empieza a programar en
+lenguajes imperativos, y el hecho de que el orden lógico de evaluación
+de las cláusulas no coincide con el orden en que se escriben
+\cite{taipalus2018}.
 
-Para superar estos errores no basta con conocer la sintaxis: el alumnado tiene que escribir
-consultas, comprobar su resultado y corregirlas. La retroalimentación sobre la propia tarea
-es uno de los factores con mayor influencia en el aprendizaje \cite{hattie2007}, y en la
-enseñanza de SQL una de las líneas de investigación más activas es el desarrollo de herramientas
-que evalúan automáticamente las consultas y devuelven retroalimentación inmediata
-\cite{taipalus2020}. Mantener la motivación durante
-esa práctica repetida es precisamente lo que busca la \textit{gamificación}, entendida como
-el uso de elementos de diseño de juegos en contextos que no son lúdicos \cite{deterding2011}.
-Elementos como los retos breves, la retroalimentación inmediata, la puntuación o una
-narrativa que da sentido a las tareas favorecen la implicación del alumnado en la actividad
-\cite{kapp2012,werbach2012}. Trabajos previos~\cite{hamari2014,dicheva2015,sailer2020}
-concluyen que la gamificación tiene, en general, efectos positivos sobre la motivación y el
-aprendizaje, especialmente en contextos educativos, aunque estos dependen del diseño
-concreto y del perfil de los usuarios.
+Estas dificultades ponen de manifiesto que aprender SQL no consiste
+únicamente en memorizar su sintaxis, sino también en desarrollar la
+capacidad de traducir problemas de consulta de datos a expresiones
+correctas. Para ello, resulta necesario que el alumnado se enfrente
+progresivamente a problemas de distinta complejidad, formule consultas,
+compruebe sus resultados e identifique y corrija sus errores. En este
+proceso, la retroalimentación desempeña un papel fundamental, ya que
+permite al estudiante reconocer sus errores y orientar sus siguientes
+intentos \cite{hattie2007}. De hecho, una de las líneas de investigación
+en la enseñanza de SQL se centra en el desarrollo de herramientas
+capaces de evaluar automáticamente las consultas y proporcionar
+retroalimentación inmediata \cite{taipalus2020}.
 
-En resumen, SQL es un contenido imprescindible para el perfil profesional del alumnado,
-plantea dificultades de aprendizaje bien documentadas y requiere una práctica intensa con
-retroalimentación, que es justo lo que la gamificación ayuda a sostener. Por estas razones,
-se han elegido las \emph{sentencias de consulta y de manipulación de datos} de SQL como eje
-de un recurso educativo gamificado.
+No obstante, disponer de oportunidades para practicar no garantiza
+que el alumnado las aproveche de forma continuada. La resolución
+reiterada de consultas, especialmente cuando estas presentan una
+dificultad creciente o requieren varios intentos, exige mantener
+la implicación y el esfuerzo durante el proceso de aprendizaje.
+Por tanto, además de proporcionar ejercicios y retroalimentación,
+resulta conveniente adoptar estrategias didácticas que favorezcan
+la participación activa y la persistencia del alumnado ante las
+dificultades.
+
+En este contexto, la gamificación constituye una posible respuesta
+a esta necesidad. Entendida como la incorporación de elementos de
+diseño de juegos en contextos no lúdicos \cite{deterding2011},
+permite organizar la práctica mediante retos progresivos, objetivos
+claros, sistemas de puntuación y mecanismos de progresión que hacen
+visible el avance del alumnado \cite{kapp2012,werbach2012}.
+Aplicados a la enseñanza de SQL, estos elementos permiten estructurar
+las actividades en niveles de dificultad creciente, reconocer los
+logros alcanzados y estimular nuevos intentos tras cometer errores.
+De este modo, la gamificación podríar proporcionar un marco para favorecer
+la participación y la continuidad de la práctica y retroalimentación en el contexto
+de la enseñanza de SQL.
+La investigación previa sobre gamificación educativa señala, en
+general, efectos positivos sobre la motivación, la participación
+y los resultados de aprendizaje \cite{hamari2014,dicheva2015,sailer2020}. 
+
+En resumen, las dificultades de aprendizaje de SQL justifican
+la necesidad de una práctica progresiva, continuada y acompañada
+de retroalimentación. A su vez, la gamificación ofrece una estrategia
+para fomentar la implicación del alumnado en ese proceso mediante
+retos, objetivos y mecanismos de progresión. Sobre esta base, se han
+seleccionado las \emph{sentencias de consulta y de manipulación de datos}
+de SQL como eje de un recurso educativo gamificado.
 
 \noindent\textbf{Valor añadido.} Además, para que la práctica tenga sentido para el alumnado, todos los retos se plantean
 sobre un caso cercano: una cooperativa agrícola ficticia de la Región de Murcia, con socios
@@ -254,13 +293,13 @@ características concretas del entorno socioeconómico, cultural y profesional»
 \subsection{Destinatarios y módulo profesional}
 
 El recurso está dirigido al alumnado de \textbf{primer curso} de los Ciclos Formativos de
-Grado Superior de \textbf{Desarrollo de Aplicaciones Multiplataforma (DAM)} y
+Grado Superior (CFGS) de \textbf{Desarrollo de Aplicaciones Multiplataforma (DAM)} y
 \textbf{Desarrollo de Aplicaciones Web (DAW)}, de la familia profesional Informática y
 Comunicaciones, que cursa el módulo profesional \textbf{0484 Bases de datos} en un centro de
 la Región de Murcia. Este módulo es común a ambos títulos \cite{rd450,rd686,rd405,rd500}.
 Sus elementos curriculares se fijan en el RD 405/2023 \cite{rd405} y su organización en la
 región, en la Orden de 21 de septiembre de 2026 \cite{murcia2026}. La
-tabla~\ref{tab:modulo} resume sus datos básicos.
+\autoref{tab:modulo} resume sus datos básicos.
 
 \begin{table}[H]
 \centering
@@ -274,7 +313,7 @@ Duración en la Región de Murcia & 175 horas, 5 horas semanales
                     \cite[anexos XLIV y XLV]{murcia2026} \\
 Duración mínima estatal & 105 horas \cite{rd405} \\
 Créditos ECTS & 12 \cite{rd405} \\
-Resultados de aprendizaje & 7 (tabla~\ref{tab:ra}) \\
+Resultados de aprendizaje & 7 (\autoref{tab:ra}) \\
 \bottomrule
 \end{tabularx}
 \caption{Datos básicos del módulo profesional 0484}
@@ -288,8 +327,8 @@ superior que regula la normativa de Formación Profesional \cite{lofp,rd659}), c
 conocimientos básicos de ofimática y que en paralelo inicia el módulo de Programación.
 
 \paragraph{Función del módulo y perfil profesional.} Según las orientaciones pedagógicas del
-RD 405/2023, el módulo «contiene la formación necesaria para desempeñar la función de
-programación de bases de datos», que incluye la planificación y realización del diseño
+RD 405/2023, el módulo \textit{contiene la formación necesaria para desempeñar la función de
+programación de bases de datos}, que incluye la planificación y realización del diseño
 lógico y físico de una base de datos, la normalización de esquemas, la inserción y
 manipulación de datos, la planificación y realización de consultas y la programación de
 procedimientos almacenados. Las actividades profesionales asociadas se aplican en la gestión
@@ -298,10 +337,10 @@ a ellas \cite{rd405}.
 
 En el título de DAM, el módulo contribuye a alcanzar los objetivos generales c), e), f), p)
 y t) del ciclo y las competencias b), c), e), p) y t) del título. Entre ellas destacan la
-competencia c), «Gestionar bases de datos, interpretando su diseño lógico y verificando
-integridad, consistencia, seguridad y accesibilidad de los datos», y la e), «Desarrollar
+competencia c), \textit{Gestionar bases de datos, interpretando su diseño lógico y verificando
+integridad, consistencia, seguridad y accesibilidad de los datos}, y la e), \textit{Desarrollar
 aplicaciones multiplataforma con acceso a bases de datos utilizando lenguajes, librerías y
-herramientas adecuados a las especificaciones». En el título de DAW contribuye a los
+herramientas adecuados a las especificaciones}. En el título de DAW contribuye a los
 objetivos generales e), f), g), p) y r) y a las competencias d), e) y p) \cite{rd405}.
 
 \paragraph{Estructura del módulo.} El módulo se organiza en siete resultados de aprendizaje,
@@ -316,14 +355,14 @@ datos}, \emph{Interpretación de diagramas entidad/relación} y \emph{Uso de bas
 relacionales} \cite{rd405}.
 
 \paragraph{Lugar de la actividad en el módulo.} El recurso se sitúa en el centro de esa
-secuencia. Se presupone que el alumnado ya ha trabajado el RA2, «Crea bases de datos
+secuencia. Se presupone que el alumnado ya ha trabajado el RA2, \textit{Crea bases de datos
 definiendo su estructura y las características de sus elementos según el modelo
-relacional», es decir, que conoce el modelo relacional y sabe crear tablas con sus claves y
+relacional}, es decir, que conoce el modelo relacional y sabe crear tablas con sus claves y
 restricciones. Con este recurso se inicia en la consulta y la modificación de datos con SQL
-(RA3 y RA4, apartado~\ref{sec:ra}), antes de pasar a la programación de procedimientos
-almacenados (RA5). Responde así a una de las líneas de actuación que las orientaciones
-pedagógicas proponen para el módulo: «la realización de operaciones de consulta y
-modificación sobre los datos almacenados» \cite{rd405}.
+(RA3 y RA4, \autoref{sec:ra}), antes de pasar a la programación de procedimientos
+almacenados (RA5). %Responde así a una de las líneas de actuación que las orientaciones
+%pedagógicas proponen para el módulo: «la realización de operaciones de consulta y
+%modificación sobre los datos almacenados» \cite{rd405}.
 
 \paragraph{Uso en otros módulos.} El recurso también se puede usar, con cambios menores, en
 el módulo \emph{0372 Gestión de bases de datos} (CFGS ASIR), también de primer curso
@@ -427,7 +466,7 @@ cooperativa hortofrutícola murciana, un sector económico clave en la región.
 El módulo 0484 \emph{Bases de datos} tiene siete resultados de aprendizaje (RA), con sus
 criterios de evaluación (CE), en la redacción dada por el Anexo~I del RD 405/2023
 \cite{rd405}. En la Región de Murcia son prescriptivos para el diseño de las programaciones y
-la evaluación \cite[art.~3]{murcia2026}. La tabla~\ref{tab:ra} los recoge todos y marca con
+la evaluación \cite[art.~3]{murcia2026}. La \autoref{tab:ra} los recoge todos y marca con
 \trab{} los criterios que trabaja esta actividad.
 
 \begin{longtable}{@{}p{0.27\linewidth}p{0.68\linewidth}@{}}
@@ -748,7 +787,7 @@ Los datos están pensados para que aparezcan casos didácticos concretos: una so
 entregas (Lucía Gómez), útil para las composiciones externas; un producto sin entregas
 (Albaricoque), útil para \texttt{NOT IN}; y dos socios del mismo municipio, útil para
 \texttt{DISTINCT}. El guion completo de creación se incluye en el
-apéndice~\ref{ap:script}.
+\autoref{ap:script}.
 
 \subsection{Presentación interactiva (Genially)}
 
@@ -973,7 +1012,7 @@ nivel~1 pertenecen al DCL?}
 (30~s por pregunta) y puntuación según rapidez (entre 500 y 1000 puntos por acierto, como en
 los concursos de televisión, más una bonificación de 100 puntos por racha a partir del tercer
 acierto seguido). Cada pregunta muestra una sentencia SQL sobre la base de datos de la
-tabla~\ref{tab:datos}, que se puede consultar en todo momento con el botón «Ver tablas». Tras
+\autoref{tab:datos}, que se puede consultar en todo momento con el botón «Ver tablas». Tras
 responder, el juego indica si la respuesta es correcta y muestra el resultado real de la
 consulta con una explicación. El docente puede proyectarlo en el aula para jugar por equipos
 o el alumnado puede jugarlo de forma individual. Al final se muestra la clasificación
