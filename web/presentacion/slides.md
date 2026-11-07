@@ -159,6 +159,7 @@ La presentación es el **tablero**: antes de cada juego se explica todo lo que v
 5. Resolver consultas con **subconsultas** y compararlas con una solución equivalente con `JOIN`.
 6. **Insertar, actualizar y borrar** datos respetando la integridad referencial.
 7. Entender las **transacciones**: `COMMIT`, `ROLLBACK` y `SAVEPOINT`.
+8. Tener **autonomía y constancia** ante los errores y colaborar con tu pareja.
 
 </div>
 </div>
