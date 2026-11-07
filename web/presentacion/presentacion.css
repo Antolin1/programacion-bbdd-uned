@@ -41,7 +41,7 @@ body.reveal-viewport { background-color: var(--bg); }
 .reveal .slides { text-align: left; }
 .reveal .slides > section {
   box-sizing: border-box; width: 1280px; height: 720px;
-  padding: 64px 80px 124px; text-align: left;
+  padding: 58px 80px 124px; text-align: left;
 }
 .reveal .slide-number a { text-decoration: none; color: inherit; }
 .reveal .slide-number {
@@ -181,21 +181,22 @@ body.fondo-verde .reveal .controls { color: var(--lemon); }
 /* ---------- Interactividad ---------- */
 .runner { margin: 0 0 0.6em; }
 .runner textarea {
-  display: block; width: 100%; box-sizing: border-box; padding: 12px 18px; resize: none; overflow: hidden;
+  display: block; width: 100%; box-sizing: border-box; padding: 10px 18px; resize: none; overflow: hidden;
   background: var(--panel-strong); border: 1.5px solid var(--border); border-radius: 14px;
   box-shadow: 0 8px 20px rgba(92, 64, 30, 0.1);
-  font-family: var(--mono); font-size: 22px; line-height: 1.45; color: var(--text);
+  font-family: var(--mono); font-size: 20px; line-height: 1.35; color: var(--text);
   font-variant-ligatures: none; tab-size: 2; white-space: pre; overflow-x: auto;
 }
 .runner textarea:focus { outline: 3px solid rgba(244, 196, 48, 0.7); }
-.runner-bar { display: flex; align-items: center; gap: 10px; margin: 8px 0; }
+.runner-bar { display: flex; align-items: center; gap: 10px; margin: 6px 0; }
+.runner-bar .filas { margin-left: auto; font-size: 18px; color: var(--muted); }
 .runner-bar .btn { padding: 4px 16px; font-size: 20px; box-shadow: 0 4px 0 color-mix(in srgb, var(--c) 60%, black); }
 .runner-bar .hint { font-size: 18px; color: var(--muted); }
-.runner-out { max-height: 250px; overflow: auto; font-size: 20px; }
+.runner-out { max-height: 205px; overflow: auto; font-size: 20px; }
 .runner-out .table-wrap { overflow: visible; }
-.runner-out .data-table { font-size: 20px; margin: 0; }
+.runner-out .data-table { font-size: 18px; margin: 0; }
 .runner-out .data-table th { padding: 3px 12px; background: var(--earth); }
-.runner-out .data-table td { padding: 2px 12px; }
+.runner-out .data-table td { padding: 1px 12px; }
 .runner-out p { margin: 0.3em 0; font-size: 20px; }
 .ok-msg { color: var(--green); font-weight: 600; }
 .err-msg { color: var(--red); font-weight: 600; }
@@ -247,4 +248,8 @@ body:not(.caja-abierta) .victoria .bloqueada { display: block; }
 .runner-out .table-wrap { display: inline-block; max-width: 100%; }
 .runner-out .data-table { width: auto; min-width: 380px; }
 
-.cols .runner textarea { font-size: 20px; }
+.cols .runner textarea { font-size: 19px; }
+
+/* Recordatorio de lo que se necesita para cada juego (columna derecha) */
+.reveal .necesitas { margin-top: 22px; padding: 10px 16px; text-align: left; font-size: 19px; line-height: 1.35; background: var(--panel-strong); border: 1.5px solid var(--border); border-radius: 14px; }
+.reveal .necesitas b { color: var(--orange); }

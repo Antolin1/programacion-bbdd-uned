@@ -609,7 +609,7 @@ formado por:
 ha contratado al alumnado como \emph{técnicos junior de bases de datos} para recuperar la
 información de socios, productos y entregas. El acceso a la copia de seguridad está protegido
 por una caja fuerte digital con un código de cuatro dígitos. Cada juego superado
-revela uno o dos dígitos, y solo el equipo que reúna los cuatro
+revela uno o dos dígitos, y solo la pareja que reúna los cuatro
 podrá abrir la caja fuerte en la última diapositiva y \textit{salvar la campaña}
 (los dígitos de cada juego se recogen en el \autoref{sec:codigo}).
 
@@ -620,11 +620,11 @@ elementos de juego de Werbach y Hunter \cite{werbach2012}, que distingue tres ni
 
 \begin{itemize}
   \item \textbf{Dinámicas}: narrativa, progresión por niveles (de lo sencillo a lo complejo),
-        sensación de logro y colaboración por equipos.
+        sensación de logro y colaboración por parejas.
   \item \textbf{Mecánicas}: retos, retroalimentación inmediata, recompensas (dígitos
-        de la llave), competición sana entre equipos y límite de tiempo en el juego 2.
+        de la llave), competición sana entre parejas y límite de tiempo en el juego 2.
   \item \textbf{Componentes}: puntos, insignias por juego (\textit{Clasificador},
-        \textit{Detective de consultas}, \textit{Maestro del DML}), tabla de clasificación y desbloqueo
+        \textit{Detective de consultas}, \textit{Maestro del DML}) y desbloqueo
         de la caja fuerte final.
 \end{itemize}
 
@@ -644,9 +644,9 @@ elementos de juego de Werbach y Hunter \cite{werbach2012}, que distingue tres ni
   ida/.style={-{Stealth[length=3mm]}, thick, acento}
 ]
   % Fila de Genially (eje de la actividad)
-  \node[caja] (g1) {\logoG\,\textbf{Genially}\\Misión, BD, SQL\\y consultas simples};
-  \node[caja, right=of g1] (g2) {\logoG\,\textbf{Genially}\\Resumen, varias\\tablas, subconsultas};
-  \node[caja, right=of g2] (g3) {\logoG\,\textbf{Genially}\\Manipulación de\\datos y transacciones};
+  \node[caja] (g1) {\logoG\,\textbf{Genially}\\Misión, BD, SQL\\y consultas};
+  \node[caja, right=of g1] (g2) {\logoG\,\textbf{Genially}\\Varias tablas, sub-\\consultas y DML};
+  \node[caja, right=of g2] (g3) {\logoG\,\textbf{Genially}\\Acceso al\\juego 3};
   \node[caja, right=of g3] (g4) {\logoG\,\textbf{Genially}\\Caja fuerte\\final};
   \draw[flecha] (g1) -- (g2);
   \draw[flecha] (g2) -- (g3);
@@ -749,6 +749,15 @@ diapositivas de contenido con ejemplos interactivos (ventanas emergentes con el 
 cada consulta y botones «¿Y si…?») y botones de acceso a cada juego. Su estructura de
 contenidos se recoge en la \autoref{tab:genially}.
 
+El orden de las diapositivas responde a un criterio: \textbf{todo lo que aparece en un juego
+se ha explicado antes en la presentación}. Por eso el acceso a cada juego cierra el bloque de
+teoría que lo prepara y recuerda los contenidos que se van a necesitar. El juego~1 llega tras
+las consultas simples y de resumen, porque además de clasificar sentencias pide ordenar las
+cláusulas de una consulta y reconocer operadores como \texttt{LIKE} o \texttt{BETWEEN}. El
+juego~2 llega tras la manipulación de datos y las transacciones, porque sus últimas preguntas
+tratan de \texttt{UPDATE}, de la integridad referencial y de \texttt{ROLLBACK}. El juego~3,
+que reúne todos los contenidos, va justo después.
+
 \begin{longtable}{@{}p{0.2\linewidth}p{0.75\linewidth}@{}}
 \caption{Estructura de contenidos de la presentación en Genially}
 \label{tab:genially}\\
@@ -757,10 +766,10 @@ contenidos se recoge en la \autoref{tab:genially}.
 \midrule
 \endhead
 Portada y misión & Título, presentación de la Cooperativa Huerta de Murcia, la tormenta
-y el encargo al equipo técnico. Normas del juego, formación de equipos y explicación de la
-caja fuerte. \\
+y el encargo al equipo técnico. Normas del juego, formación de parejas, puntos e insignias de cada juego,
+explicación de la caja fuerte, itinerario de la misión y reparto en sesiones. \\
 \addlinespace
-Objetivos & Qué vamos a aprender: objetivos O1–O8 en lenguaje cercano al alumnado. \\
+Objetivos & Qué vamos a aprender: objetivos O1–O7 en lenguaje cercano al alumnado. \\
 \addlinespace
 La base de datos & Esquema relacional de \texttt{cooperativa} con claves primarias y
 ajenas; ventanas emergentes con el contenido de cada tabla. \\
@@ -768,36 +777,38 @@ ajenas; ventanas emergentes con el contenido de cada tabla. \\
 ¿Qué es SQL? & Historia breve, estándar ISO/IEC 9075, SGBD habituales (MySQL/MariaDB,
 PostgreSQL, Oracle, SQLite). Sublenguajes DDL, DML, DCL y TCL con ejemplos. \\
 \addlinespace
-\textbf{Acceso al juego 1} & Botón «Clasifica y ordena» y casilla para anotar el
-\emph{dígito~1}. \\
-\addlinespace
 Consultas simples & Estructura de \texttt{SELECT}; proyección, alias, \texttt{DISTINCT};
-\texttt{WHERE} con operadores de comparación y lógicos; \texttt{BETWEEN}, \texttt{IN},
-\texttt{LIKE}, \texttt{IS NULL}; \texttt{ORDER BY}. Orden de escritura frente a orden lógico
+\texttt{WHERE} con operadores de comparación y lógicos; comparación de fechas; \texttt{BETWEEN},
+\texttt{IN}, \texttt{LIKE} (comodines \texttt{\%} y \texttt{\_}), \texttt{IS NULL}; \texttt{ORDER BY}. Orden de escritura frente a orden lógico
 de evaluación de las cláusulas. \\
 \addlinespace
 Consultas de resumen & Funciones de agregado; \texttt{GROUP BY}; diferencia entre
 \texttt{WHERE} y \texttt{HAVING}, con una animación de cómo se forman los grupos. \\
 \addlinespace
+\textbf{Acceso al juego 1} & Botón «Clasifica y ordena», recordatorio de los contenidos que
+se necesitan y casilla para anotar el \emph{dígito~1}. \\
+\addlinespace
 Varias tablas & Producto cartesiano; \texttt{INNER JOIN}; \texttt{LEFT}/\texttt{RIGHT JOIN}
-con diagramas de conjuntos; ejemplo de la socia sin entregas. \\
+con diagramas de conjuntos; ejemplo de la socia sin entregas; composición de tres tablas y
+columnas calculadas. \\
 \addlinespace
 Subconsultas & Subconsultas escalares, con \texttt{IN}/\texttt{NOT IN} y
 \texttt{EXISTS}; comparación entre una subconsulta y un \texttt{JOIN} equivalente
 (CE~3.h). \\
-\addlinespace
-\textbf{Acceso al juego 2} & Botón «¿Qué devuelve la consulta?» y casilla del
-\emph{dígito~2}. \\
 \addlinespace
 Manipulación de datos & \texttt{INSERT} (incluido \texttt{INSERT \ldots{} SELECT}),
 \texttt{UPDATE}, \texttt{DELETE}; peligro de olvidar el \texttt{WHERE}; errores de
 integridad referencial y opciones \texttt{ON DELETE}/\texttt{ON UPDATE}. \\
 \addlinespace
 Transacciones & Propiedades ACID; \texttt{START TRANSACTION}, \texttt{COMMIT},
-\texttt{ROLLBACK}, \texttt{SAVEPOINT}; nociones de bloqueo y acceso concurrente. \\
+\texttt{ROLLBACK}, \texttt{SAVEPOINT} y \texttt{ROLLBACK TO SAVEPOINT}; nociones de bloqueo y
+acceso concurrente. \\
 \addlinespace
-\textbf{Acceso al juego 3} & Botón «Terminal de la Cooperativa» y casillas de los
-\emph{dígitos~3 y~4}. \\
+\textbf{Acceso al juego 2} & Botón «¿Qué devuelve la consulta?», recordatorio de los
+contenidos que se necesitan y casilla del \emph{dígito~2}. \\
+\addlinespace
+\textbf{Acceso al juego 3} & Botón «Terminal de la Cooperativa», recordatorio de los
+contenidos que se necesitan y casillas de los \emph{dígitos~3 y~4}. \\
 \addlinespace
 Caja fuerte final & Teclado numérico interactivo: el código correcto muestra la pantalla
 de victoria y la insignia final; un código erróneo devuelve una pista sobre el juego que hay
@@ -966,14 +977,12 @@ nivel~1 pertenecen al DCL?}
 \end{nota}
 
 \paragraph{Descripción.} Concurso de preguntas de respuesta múltiple con cuenta atrás
-(30~s por pregunta) y puntuación según rapidez (entre 500 y 1000 puntos por acierto, como en
+(2~minutos por pregunta) y puntuación según rapidez (entre 500 y 1000 puntos por acierto, como en
 los concursos de televisión, más una bonificación de 100 puntos por racha a partir del tercer
 acierto seguido). Cada pregunta muestra una sentencia SQL sobre la base de datos de la
 \autoref{tab:datos}, que se puede consultar en todo momento con el botón «Ver tablas». Tras
 responder, el juego indica si la respuesta es correcta y muestra el resultado real de la
-consulta con una explicación. El docente puede proyectarlo en el aula para jugar por equipos
-o el alumnado puede jugarlo de forma individual. Al final se muestra la clasificación
-guardada en el navegador.
+consulta con una explicación. Se juega por parejas, como el resto de la actividad.
 
 A continuación figuran las doce preguntas con sus opciones (la correcta se marca con
 \textbf{\checkmark}).
@@ -1301,13 +1310,16 @@ La \autoref{tab:codigo} recoge qué reto da cada dígito y el código resultante
 La actividad está pensada para tres sesiones de 55 minutos (la \autoref{fig:itinerario} muestra el itinerario), en el momento de la programación
 en que se empiezan a trabajar los RA3 y RA4:
 
+Los tres juegos se juegan por parejas. Al terminar cada uno, la pareja envía al docente la
+puntuación que muestra la pantalla final; el recurso no incluye una clasificación compartida.
+
 \begin{itemize}
   \item \textbf{Sesión 1}: presentación de la misión y de la base de datos, introducción a SQL,
-        \textbf{juego~1} (\autoref{sec:juego1}), consultas simples y de resumen.
-  \item \textbf{Sesión 2}: composiciones, subconsultas y \textbf{juego~2} (\autoref{sec:juego2}) jugado en el aula
-        por equipos con clasificación proyectada.
-  \item \textbf{Sesión 3}: manipulación de datos y transacciones, \textbf{juego~3} (\autoref{sec:juego3}) por
-        parejas y apertura de la caja fuerte. Puesta en común y autoevaluación.
+        consultas simples y de resumen, y \textbf{juego~1} (\autoref{sec:juego1}).
+  \item \textbf{Sesión 2}: composiciones, subconsultas, manipulación de datos y transacciones, y
+        \textbf{juego~2} (\autoref{sec:juego2}).
+  \item \textbf{Sesión 3}: \textbf{juego~3} (\autoref{sec:juego3}) y apertura de la caja
+        fuerte. Puesta en común y autoevaluación.
 \end{itemize}
 
 Se usa una metodología activa que combina la explicación interactiva con la

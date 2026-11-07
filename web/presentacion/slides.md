@@ -63,11 +63,10 @@ En la última parte introduce el código y **salva la campaña**.
 <div class="cols">
 <div>
 
-- Formad **equipos**; cada uno tiene su perfil.
-- Marcador, insignias y dígitos **se guardan en tu navegador**.
+- Se juega **por parejas**; cada pareja es un equipo con su perfil.
+- Ganaréis **puntos**, **insignias** y los **dígitos** de la llave.
 - Los juegos se desbloquean **en orden**.
 - Puedes **repetirlos** cuando quieras.
-- No hay registro ni se recogen datos personales.
 
 </div>
 <div class="card" id="panel-equipo">
@@ -93,7 +92,7 @@ En la última parte introduce el código y **salva la campaña**.
 | Juego | Cómo se puntúa |
 |---|---|
 | **1** · Clasifica y ordena | **+10** por acierto, **−2** por fallo (con una explicación breve) |
-| **2** · ¿Qué devuelve la consulta? | **500–1000** por acierto, según la rapidez (30 s por pregunta). **+100** de bonificación por racha a partir del 3.er acierto seguido |
+| **2** · ¿Qué devuelve la consulta? | **500–1000** por acierto, según la rapidez (2 minutos por pregunta). **+100** de bonificación por racha a partir del 3.er acierto seguido |
 | **3** · Terminal de la Cooperativa | **500** por incidencia. Cada pista (máximo 2) resta **100** y cada comprobación fallida, **25**. Mínimo **150** |
 
 </div>
@@ -105,22 +104,22 @@ Insignias que puedes ganar: <span class="pill">Clasificador</span> <span class="
 # El itinerario de la misión
 
 <div class="ruta">
-<div>Presentación<br><b>Misión, base de datos y SQL</b></div>
+<div>Presentación<br><b>Misión, base de datos y consultas</b></div>
 <div class="f">›</div>
 <div class="j">Juego 1<br><b>Clasifica y ordena</b><br>dígito 1</div>
 <div class="f">›</div>
-<div>Presentación<br><b>Consultas, resumen, varias tablas y subconsultas</b></div>
+<div>Presentación<br><b>Varias tablas, subconsultas y modificar datos</b></div>
 <div class="f">›</div>
 <div class="j">Juego 2<br><b>¿Qué devuelve la consulta?</b><br>dígito 2</div>
 <div class="f">›</div>
-<div>Presentación<br><b>Manipulación de datos y transacciones</b></div>
-<div class="f">›</div>
 <div class="j">Juego 3<br><b>Terminal de la Cooperativa</b><br>dígitos 3 y 4</div>
+<div class="f">›</div>
+<div>Presentación<br><b>Caja fuerte</b></div>
 </div>
 
 <div class="nota" style="margin-top: 28px">
 
-La presentación es el **tablero**: desde aquí se accede a cada juego y aquí se vuelve con el dígito de la llave. Al final, la **caja fuerte**.
+La presentación es el **tablero**: antes de cada juego se explica todo lo que vas a necesitar en él, y aquí se vuelve con el dígito de la llave. Al final, la **caja fuerte**.
 
 </div>
 
@@ -135,31 +134,31 @@ La presentación es el **tablero**: desde aquí se accede a cada juego y aquí s
 
 - Misión y base de datos
 - Introducción a SQL
-- **Juego 1**
 - Consultas simples y de resumen
+- **Juego 1**
 
 </div>
 <div class="card">
 
 ### Sesión 2
 
-- Varias tablas: composiciones
-- Subconsultas
-- **Juego 2**, por equipos y con clasificación proyectada
+- Varias tablas y subconsultas
+- Modificar datos y transacciones
+- **Juego 2**
 
 </div>
 <div class="card">
 
 ### Sesión 3
 
-- Manipulación de datos
-- Transacciones
-- **Juego 3**, por parejas
+- **Juego 3**
 - Apertura de la **caja fuerte**
 - Puesta en común y autoevaluación
 
 </div>
 </div>
+
+<p class="s muted centro" style="margin-top: 16px">Todos los juegos se juegan <b>por parejas</b>.</p>
 
 ---
 
@@ -179,7 +178,6 @@ La presentación es el **tablero**: desde aquí se accede a cada juego y aquí s
 5. Resolver consultas con **subconsultas** y compararlas con una solución equivalente con `JOIN`.
 6. **Insertar, actualizar y borrar** datos respetando la integridad referencial.
 7. Entender las **transacciones**: `COMMIT`, `ROLLBACK` y `SAVEPOINT`.
-8. Tener **autonomía y constancia** ante los errores, y colaborar con tu equipo.
 
 </div>
 </div>
@@ -225,8 +223,6 @@ Todos los retos se resuelven sobre la misma base de datos, con **tres tablas**:
 </div>
 
 <p class="s" style="margin-top: 18px">Un <b>socio</b> hace muchas <b>entregas</b> y un <b>producto</b> aparece en muchas <b>entregas</b>. Las claves primarias van <u>subrayadas</u>; <span class="pill a">FK</span> = clave ajena.</p>
-
-<p class="s"><button class="btn ghost small ver-tablas" type="button">▦ Ver el contenido de las tablas</button></p>
 
 ---
 
@@ -300,7 +296,7 @@ Todos los retos se resuelven sobre la misma base de datos, con **tres tablas**:
 - **MySQL** / **MariaDB**
 - **PostgreSQL**
 - **Oracle**
-- **SQLite**: el que usa el juego 3, y esta presentación, dentro de tu navegador
+- **SQLite**
 
 </div>
 </div>
@@ -343,37 +339,6 @@ COMMIT;                                                                 -- TCL
 
 ---
 
-<!-- .slide: class="juego" -->
-
-# <span class="n">Juego 1 ·</span> Clasifica y ordena
-
-<div class="cols">
-<div>
-
-Puzle de **arrastrar y soltar** en tres niveles. Hay que superar uno para desbloquear el siguiente.
-
-1. **Clasificación** de sentencias en DDL, DML, DCL o TCL.
-2. **Ordena las cláusulas** de una consulta.
-3. **Relaciona** cada expresión con su significado.
-
-<span class="pill">+10 por acierto</span> <span class="pill n">−2 por fallo</span> <span class="pill v">10–15 min</span>
-
-</div>
-<div class="centro">
-
-<a class="btn orange big" href="../juego1/" target="_blank" rel="noopener">▶ Jugar</a>
-
-<p class="s" style="margin-top: 34px">Al terminar, tu llave aparece aquí:</p>
-
-<span class="llave" data-digit="1">?</span>
-
-<p class="t muted">Dígito 1</p>
-
-</div>
-</div>
-
----
-
 <!-- .slide: class="bloque" -->
 
 ## Segunda parte
@@ -392,7 +357,7 @@ SELECT nombre, municipio    -- qué columnas quiero (proyección)
 FROM socio;                 -- de qué tabla
 ```
 
-<p class="s muted">Todas las consultas de esta presentación se ejecutan de verdad sobre la base de datos. Prueba a cambiarlas.</p>
+<p class="s muted">Puedes cambiar las consultas de la presentación y volver a ejecutarlas.</p>
 
 ---
 
@@ -455,6 +420,21 @@ WHERE categoria = 'Hortaliza'
 
 ---
 
+# Comparar fechas
+
+Las fechas se escriben y se comparan como texto en formato **`'AAAA-MM-DD'`**, así que el orden alfabético coincide con el orden de las fechas:
+
+```sql
+--run
+SELECT id_entrega, fecha, kilos
+FROM entrega
+WHERE fecha >= '2026-06-01';
+```
+
+<p class="s muted">Entregas de junio de 2026 en adelante. Prueba con <code>fecha &lt; '2026-03-06'</code>.</p>
+
+---
+
 # <code>BETWEEN</code> e <code>IN</code>
 
 <div class="cols">
@@ -509,13 +489,16 @@ WHERE fecha_alta IS NULL;
 
 <div class="nota">
 
-`LIKE '%ez'` devuelve los apellidos que acaban en *ez*, pero no Ruiz. Para comprobar si un valor falta usa **`IS NULL`**, nunca `= NULL`.
+`%` sustituye a cualquier número de caracteres y `_` a **exactamente uno**: `'%ez'` son los nombres que acaban en *ez* (Ruiz no) y `'_o%'`, los que tienen una «o» en segunda posición. Para comprobar si un valor falta usa **`IS NULL`**, nunca `= NULL`.
 
 </div>
 
 ---
 
 # <code>ORDER BY</code>: ordenar el resultado
+
+<div class="cols">
+<div>
 
 ```sql
 --run
@@ -524,10 +507,14 @@ FROM producto
 ORDER BY precio_kg DESC;
 ```
 
+</div>
 <div class="card">
 
-`ASC` ordena de menor a mayor (es lo que se hace si no dices nada). `DESC`, de mayor a menor. Se puede ordenar por **varias columnas**: `ORDER BY categoria, precio_kg DESC`.
+`ASC` ordena de menor a mayor (es lo que se hace si no dices nada). `DESC`, de mayor a menor.
 
+Se puede ordenar por **varias columnas**: `ORDER BY categoria, precio_kg DESC`.
+
+</div>
 </div>
 
 ---
@@ -609,7 +596,7 @@ Se forma **un grupo por cada valor** de `id_socio` y la función de agregado se 
 
 Filtra **filas**, *antes* de agrupar.
 
-<p class="s"><code>WHERE kilos &gt; 200</code> descarta las entregas pequeñas y después se agrupa: socio 1 pasa a sumar 850.</p>
+<p class="s"><code>WHERE kilos &gt; 200</code>: el socio 1 pasa a sumar 850.</p>
 
 </div>
 <div class="card">
@@ -618,7 +605,7 @@ Filtra **filas**, *antes* de agrupar.
 
 Filtra **grupos**, *después* de agrupar.
 
-<p class="s"><code>HAVING SUM(kilos) &gt; 700</code> se queda con los socios que suman más de 700 kg.</p>
+<p class="s"><code>HAVING SUM(kilos) &gt; 700</code>: socios con más de 700 kg.</p>
 
 </div>
 </div>
@@ -655,6 +642,39 @@ La consulta anterior, paso a paso. Si no te sale un resultado, **recorre las fas
 
 ---
 
+<!-- .slide: class="juego" -->
+
+# <span class="n">Juego 1 ·</span> Clasifica y ordena
+
+<div class="cols">
+<div>
+
+Puzle de **arrastrar y soltar** en tres niveles. Hay que superar uno para desbloquear el siguiente.
+
+1. **Clasificación** de sentencias en DDL, DML, DCL o TCL.
+2. **Ordena las cláusulas** de una consulta.
+3. **Relaciona** cada expresión con su significado.
+
+<span class="pill">+10 por acierto</span> <span class="pill n">−2 por fallo</span> <span class="pill v">10–15 min</span>
+
+</div>
+<div class="centro">
+
+<a class="btn orange big" href="../juego1/" target="_blank" rel="noopener">▶ Jugar</a>
+
+<p class="s" style="margin-top: 34px">Al terminar, tu llave aparece aquí:</p>
+
+<span class="llave" data-digit="1">?</span>
+
+<p class="t muted">Dígito 1</p>
+
+<p class="necesitas"><b>Necesitarás:</b> los sublenguajes, las cláusulas de <code>SELECT</code> y su orden, <code>LIKE</code>, <code>IN</code>, <code>BETWEEN</code>, <code>IS NULL</code>, <code>DISTINCT</code> y los alias.</p>
+
+</div>
+</div>
+
+---
+
 <!-- .slide: class="bloque" -->
 
 ## Tercera parte
@@ -676,7 +696,7 @@ SELECT * FROM socio, entrega;     -- 5 socios × 9 entregas
 
 <div class="aviso">
 
-**45 filas**, casi todas sin sentido: la entrega 1 de Ana aparece emparejada con Pedro, con Lucía… Falta decir **qué fila de una tabla corresponde con qué fila de la otra**. Esa condición es la que añade el `JOIN`.
+**45 filas**, casi todas sin sentido (la entrega de Ana sale emparejada con Pedro, con Lucía…). Falta la condición que une cada fila con la suya: la añade el `JOIN`.
 
 </div>
 
@@ -756,6 +776,22 @@ GROUP BY s.id_socio, s.nombre;
 
 ---
 
+# Tres tablas y columnas calculadas
+
+```sql
+--run
+SELECT s.nombre, p.nombre AS producto, e.kilos,
+       e.kilos * p.precio_kg AS importe
+FROM socio s
+  INNER JOIN entrega e  ON s.id_socio = e.id_socio
+  INNER JOIN producto p ON e.id_producto = p.id_producto
+WHERE p.categoria = 'Cítrico';
+```
+
+<p class="s">Se pueden <b>encadenar</b> varios <code>JOIN</code>, cada uno con su condición. <code>importe</code> no está en ninguna tabla: se <b>calcula</b> fila a fila.</p>
+
+---
+
 # Subconsultas escalares
 
 Una subconsulta es una consulta **dentro de otra**. Si devuelve un solo valor, se puede usar en una comparación:
@@ -769,7 +805,7 @@ WHERE precio_kg > (SELECT AVG(precio_kg) FROM producto);
 
 <div class="nota">
 
-Primero se calcula el **precio medio** (1,275 €/kg) y después se buscan los productos que lo superan.
+Primero se calcula el **precio medio** (1,275 €/kg); después, los productos que lo superan.
 
 </div>
 
@@ -845,37 +881,6 @@ Las dos devuelven **Lucía Gómez**. Un mismo problema se puede resolver de **va
 
 ---
 
-<!-- .slide: class="juego" -->
-
-# <span class="n">Juego 2 ·</span> ¿Qué devuelve la consulta?
-
-<div class="cols">
-<div>
-
-**Concurso de preguntas** contrarreloj. Cada pregunta muestra una consulta SQL: elige qué devuelve.
-
-- **30 segundos** por pregunta.
-- Botón **«Ver tablas»** para consultar los datos.
-- Explicación y resultado real tras cada respuesta.
-
-<span class="pill">500–1000 puntos</span> <span class="pill n">+100 de racha</span> <span class="pill v">15–20 min</span>
-
-</div>
-<div class="centro">
-
-<a class="btn orange big" href="../juego2/" target="_blank" rel="noopener">▶ Jugar</a>
-
-<p class="s" style="margin-top: 34px">Al terminar, tu llave aparece aquí:</p>
-
-<span class="llave" data-digit="2">?</span>
-
-<p class="t muted">Dígito 2</p>
-
-</div>
-</div>
-
----
-
 <!-- .slide: class="bloque" -->
 
 ## Cuarta parte
@@ -939,7 +944,7 @@ WHERE id_entrega = 9;
 
 <div class="aviso">
 
-**Cuidado con el `WHERE`.** Si se te olvida, `UPDATE` cambia **todas** las filas y `DELETE` borra **todas** las filas de la tabla. Quítalo y mira qué pasa: no pasa nada irreversible, la base de datos se restaura cada vez.
+**Cuidado con el `WHERE`:** sin él, `UPDATE` y `DELETE` afectan a **todas** las filas. Quítalo y compruébalo: la base de datos se restaura cada vez.
 
 </div>
 
@@ -1018,18 +1023,14 @@ Una **transacción** agrupa varias sentencias que se ejecutan **como una sola op
 ```sql
 --run after: SELECT id_entrega, kilos FROM entrega WHERE id_entrega IN (1, 3)
 START TRANSACTION;
-
 UPDATE entrega SET kilos = kilos - 50 WHERE id_entrega = 3;
 SAVEPOINT tras_restar;
 UPDATE entrega SET kilos = kilos + 50 WHERE id_entrega = 1;
-
-ROLLBACK TO tras_restar;   -- deshace lo posterior al SAVEPOINT
-COMMIT;                    -- confirma lo que queda
+ROLLBACK TO SAVEPOINT tras_restar;  -- deshace lo posterior
+COMMIT;                             -- confirma lo que queda
 ```
 
-<p class="s"><b><code>COMMIT</code></b> confirma los cambios; <b><code>ROLLBACK</code></b> los anula, en parte (<code>TO</code>) o del todo.</p>
-
-<p class="t muted">SQLite escribe <code>BEGIN</code> en lugar de <code>START TRANSACTION</code>: la presentación lo traduce por ti.</p>
+<p class="s"><b><code>COMMIT</code></b> confirma; <b><code>ROLLBACK</code></b> anula, en parte (<code>TO SAVEPOINT</code>) o del todo.</p>
 
 ---
 
@@ -1063,12 +1064,45 @@ COMMIT;                    -- confirma lo que queda
 
 <!-- .slide: class="juego" -->
 
+# <span class="n">Juego 2 ·</span> ¿Qué devuelve la consulta?
+
+<div class="cols">
+<div>
+
+**Concurso de preguntas** contrarreloj. Cada pregunta muestra una consulta SQL: elige qué devuelve.
+
+- **2 minutos** por pregunta.
+- Botón **«Ver tablas»** para consultar los datos.
+- Explicación y resultado real tras cada respuesta.
+
+<span class="pill">500–1000 puntos</span> <span class="pill n">+100 de racha</span> <span class="pill v">15–20 min</span>
+
+</div>
+<div class="centro">
+
+<a class="btn orange big" href="../juego2/" target="_blank" rel="noopener">▶ Jugar</a>
+
+<p class="s" style="margin-top: 34px">Al terminar, tu llave aparece aquí:</p>
+
+<span class="llave" data-digit="2">?</span>
+
+<p class="t muted">Dígito 2</p>
+
+<p class="necesitas"><b>Necesitarás:</b> consultas simples y de resumen, <code>JOIN</code> de dos y tres tablas, subconsultas, <code>UPDATE</code>, la integridad referencial y <code>ROLLBACK</code>.</p>
+
+</div>
+</div>
+
+---
+
+<!-- .slide: class="juego" -->
+
 # <span class="n">Juego 3 ·</span> Terminal de la Cooperativa
 
 <div class="cols">
 <div>
 
-**Escape room** con una consola SQL **real**: editor con resaltado de sintaxis y SQLite funcionando en tu navegador.
+**Escape room** con una consola SQL **real**: escribes las sentencias y ves su resultado.
 
 - **Seis incidencias** de la cooperativa.
 - Escribe la sentencia y pulsa **Comprobar**.
@@ -1086,6 +1120,8 @@ COMMIT;                    -- confirma lo que queda
 <span class="llave" data-digit="3">?</span><span class="llave" data-digit="4">?</span>
 
 <p class="t muted">Dígitos 3 y 4</p>
+
+<p class="necesitas"><b>Necesitarás:</b> <code>JOIN</code> y columnas calculadas, <code>GROUP BY</code> y <code>HAVING</code>, <code>NOT IN</code> o <code>LEFT JOIN</code>, <code>INSERT</code>, fechas, transacciones con <code>SAVEPOINT</code> e <code>INSERT … SELECT</code>.</p>
 
 </div>
 </div>
@@ -1206,7 +1242,7 @@ Un mismo problema tiene **varias soluciones**: elige la más clara y la más efi
 
 <div class="nota">
 
-Y también: ¿has perseverado ante los errores y has colaborado con tu equipo?
+Y también: ¿has perseverado ante los errores y has colaborado con tu pareja?
 
 </div>
 
@@ -1255,7 +1291,7 @@ Los juegos son páginas web abiertas: puedes **repetirlos** tantas veces como qu
 
 Recurso educativo gamificado para el módulo 0484 *Bases de datos*.
 
-Presentación interactiva y tres juegos web propios (HTML, CSS y JavaScript). Tipografías **Fredoka** y **JetBrains Mono**; **sql.js** (SQLite en WebAssembly) y **Reveal.js**.
+Presentación interactiva y tres juegos propios.
 
 </div>
 <div class="t">

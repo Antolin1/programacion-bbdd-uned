@@ -18,13 +18,13 @@ web/                          Aplicación web (se publica tal cual)
   juego1/ juego2/ juego3/     Los tres juegos
   presentacion/               Presentación interactiva (Reveal.js)
     index.html                Página; carga Reveal.js, sql.js y los estilos
-    slides.md                 Contenido de las 53 diapositivas (Markdown)
+    slides.md                 Contenido de las 55 diapositivas (Markdown)
     presentacion.css          Diseño de las diapositivas
     presentacion.js           Consultas ejecutables, llaves, caja fuerte y autoevaluación
 presentacion/                 Guion de la misma presentación en Marp (para PDF y PowerPoint)
-  mision-sql.md               Guion de las 51 diapositivas
+  mision-sql.md               Guion de las 53 diapositivas
   mision.css                  Tema (misma paleta y tipografía que la web y la memoria)
-  exportar.sh                 Exporta a PowerPoint editable con Docker
+  exportar.sh                 Exporta a PowerPoint con Docker (para importar en Genially)
 memoria/                      Memoria de la actividad en LaTeX
   main.tex                    Documento principal
   datos.tex                   Datos personales, URL y n.º de diapositivas (rellenar)
@@ -122,16 +122,19 @@ comentarios `<!-- … -->` de cada diapositiva son notas del presentador. Hace f
 hay navegador). Desde la carpeta `presentacion/`:
 
 ```bash
-# PowerPoint con textos editables (la primera vez construye la imagen: tarda unos minutos)
+# PowerPoint para importar en Genially (cada diapositiva es una imagen, igual que el PDF)
 ./exportar.sh
+
+# PowerPoint con textos editables (pierde buena parte del diseño)
+./exportar.sh --editable
 
 # PDF
 docker run --rm -v "$PWD":/home/marp/app marpteam/marp-cli mision-sql.md --pdf
 ```
 
-Resultado: `presentacion/mision-sql.pptx` (no se sube al repositorio, está en `.gitignore`) o
-`presentacion/mision-sql.pdf`. El modo editable del PowerPoint pierde parte del diseño y no
-incluye las notas del presentador.
+Resultado: `presentacion/mision-sql.pptx` (o `mision-sql-editable.pptx`; no se suben al repositorio,
+están en `.gitignore`) o `presentacion/mision-sql.pdf`. La versión normal incluye las notas del
+presentador; la editable, no.
 
 ## La memoria
 

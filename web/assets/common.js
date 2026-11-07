@@ -20,7 +20,6 @@
       games: { 1: null, 2: null, 3: null },
       digits: { 1: null, 2: null, 3: null, 4: null },
       badges: [],
-      ranking: [],
       unlockAll: false,
     };
   }
@@ -65,16 +64,8 @@
     };
     const badge = GAMES[n].badge;
     if (!state.badges.includes(badge)) state.badges.push(badge);
-    state.ranking.push({ team: state.team || "Equipo sin nombre", game: n, score, date: new Date().toISOString() });
     save();
     renderHeader();
-  }
-
-  function ranking(n) {
-    return state.ranking
-      .filter((r) => r.game === n)
-      .sort((a, b) => b.score - a.score)
-      .slice(0, 10);
   }
 
   function setTeam(name) {
@@ -346,7 +337,7 @@
   window.MS = {
     ROOT, GAMES,
     get state() { return state; },
-    save, totalScore, isUnlocked, setDigit, finishGame, ranking, setTeam, resetAll, setUnlockAll,
+    save, totalScore, isUnlocked, setDigit, finishGame, setTeam, resetAll, setUnlockAll,
     icon, refreshIcons, renderHeader,
     escapeHtml, shuffle, normalize, reducedMotion,
     toast, modal, confetti: confettiBurst, originOf, sound, shake: shakeEl, countUp, initParticles,

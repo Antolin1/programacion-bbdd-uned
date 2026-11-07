@@ -116,6 +116,7 @@ pre {
   line-height: 1.45;
 }
 pre code {
+  font-variant-ligatures: none;
   font-size: 1em;
   padding: 0;
   background: none;
@@ -332,3 +333,16 @@ section.cierre h1 { color: var(--orange); }
 .check ul { padding-left: 0; list-style: none; }
 .check li { margin: 0.35em 0; }
 .check li::marker { content: ""; }
+
+/* Recordatorio de lo que se necesita para cada juego */
+.necesitas {
+  margin-top: 22px;
+  padding: 10px 16px;
+  text-align: left;
+  font-size: 19px;
+  line-height: 1.35;
+  background: var(--panel);
+  border: 1.5px solid var(--borde);
+  border-radius: 14px;
+}
+.necesitas b { color: var(--orange); }

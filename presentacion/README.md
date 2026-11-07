@@ -1,6 +1,6 @@
 # Presentación de Misión SQL (Marp)
 
-`mision-sql.md` es el guion completo de la presentación de Genially (51 diapositivas) con el
+`mision-sql.md` es el guion completo de la presentación de Genially (53 diapositivas) con el
 tema `mision.css`, que reutiliza la paleta de la huerta murciana, la tipografía (Fredoka y
 JetBrains Mono) y el paisaje de limoneros de la web de los juegos y de la memoria.
 
@@ -11,19 +11,20 @@ aparece en las notas de la diapositiva «Abre la caja fuerte».
 
 ## Exportar a PowerPoint
 
-La forma más sencilla, sin instalar navegador ni LibreOffice en WSL, es el script que usa Docker:
+Con Docker en marcha, desde esta carpeta:
 
 ```bash
-./exportar.sh        # genera mision-sql.pptx con los textos editables
+./exportar.sh              # mision-sql.pptx: igual que el PDF (para importar en Genially)
+./exportar.sh --editable   # mision-sql-editable.pptx: textos editables, pero pierde el diseño
 ```
 
-La primera vez construye una imagen con Marp, Chromium y LibreOffice (tarda unos minutos).
+- **Versión normal** (la recomendada): cada diapositiva es una imagen a 2560 × 1440, idéntica al
+  PDF, e incluye las notas del presentador. En Genially no se puede editar el texto, pero sí
+  poner encima botones, enlaces, ventanas emergentes y el teclado de la caja fuerte.
+- **Versión editable**: LibreOffice reconstruye cada elemento y se pierde buena parte del diseño
+  (sombras, degradados, alineaciones). No incluye las notas. La primera vez construye una imagen
+  de Docker con LibreOffice (tarda unos minutos).
 
-Alternativas: la extensión **Marp for VS Code** (*Export Slide Deck…* → PPTX) o, con Chrome o
-Edge instalados, `npx @marp-team/marp-cli@latest mision-sql.md --pptx --pptx-editable`
-(la opción `--pptx-editable` además exige LibreOffice). Sin `--pptx-editable` cada diapositiva
-queda como una imagen, y en Genially no podrías editar el texto ni añadir interactividad encima.
-En la versión editable **no se exportan las notas del presentador**: están en `mision-sql.md`.
 Las fuentes se cargan de Google Fonts, así que hace falta conexión al exportar.
 
 Para ver el resultado en HTML o PDF: `npx @marp-team/marp-cli@latest mision-sql.md --pdf`.

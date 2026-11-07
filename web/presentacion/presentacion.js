@@ -72,7 +72,7 @@
       r.dataset.after = marca[1] || "";
       r.innerHTML = `<textarea spellcheck="false" wrap="off" aria-label="Consulta SQL editable"></textarea>
         <div class="runner-bar"><button class="btn orange small" type="button">▶ Ejecutar</button>
-        <button class="btn ghost small" type="button">↺ Original</button><span class="hint">Edítala y pulsa Ctrl+Intro</span></div>
+        <button class="btn ghost small" type="button">↺ Original</button><span class="hint">Edítala y pulsa Ctrl+Intro</span><span class="filas"></span></div>
         <div class="runner-out"></div>`;
       const ta = r.querySelector("textarea");
       ta.value = sql;
@@ -93,6 +93,8 @@
   async function ejecutar(r) {
     const ta = r.querySelector("textarea");
     const out = r.querySelector(".runner-out");
+    const filas = r.querySelector(".filas");
+    filas.textContent = "";
     out.innerHTML = '<p class="muted">Ejecutando…</p>';
     let db;
     try {
@@ -103,7 +105,11 @@
       if (res.length) {
         const ult = res[res.length - 1];
         html += MS.resultTable(ult.columns, ult.values);
-        html += `<p class="muted">${ult.values.length} fila${ult.values.length === 1 ? "" : "s"}</p>`;
+        filas.textContent = `${ult.values.length} fila${ult.values.length === 1 ? "" : "s"}`;
+      } else if (!/\b(INSERT|UPDATE|DELETE|CREATE|DROP|ALTER|BEGIN|START|COMMIT|ROLLBACK|SAVEPOINT)\b/i.test(ta.value.replace(/--.*$/gm, ""))) {
+        // Un SELECT sin filas: sql.js no devuelve resultado y getRowsModified() conserva un valor anterior
+        html += '<p class="muted">La consulta no devuelve ninguna fila.</p>';
+        filas.textContent = "0 filas";
       } else {
         const n = db.getRowsModified();
         html += `<p class="ok-msg">✓ Sentencia ejecutada${n ? ` · ${n} fila${n === 1 ? "" : "s"} modificada${n === 1 ? "" : "s"}` : ""}.</p>`;

@@ -4,7 +4,8 @@
   const { icon } = MS;
   const $ = (s) => document.querySelector(s);
   const QUESTIONS = window.PREGUNTAS;
-  const TIME = 30;
+  const TIME = 120; // segundos por pregunta
+  const mmss = (s) => `${Math.floor(s / 60)}:${String(s % 60).padStart(2, "0")}`;
   const SHAPES = ["▲", "◆", "●", "■"];
 
   let idx = 0;
@@ -65,7 +66,7 @@
     startedAt = performance.now();
     const fill = $("#timer-fill");
     const label = $("#time");
-    label.textContent = TIME;
+    label.textContent = mmss(TIME);
     if (window.gsap) {
       gsap.set(fill, { scaleX: 1, backgroundPosition: "0% 0" });
       timerTween = gsap.to(fill, { scaleX: 0, backgroundPosition: "100% 0", duration: TIME, ease: "none" });
@@ -73,8 +74,8 @@
     ticker = setInterval(() => {
       const left = Math.max(0, TIME - (performance.now() - startedAt) / 1000);
       const shown = Math.ceil(left);
-      if (label.textContent !== String(shown)) {
-        label.textContent = shown;
+      if (label.textContent !== mmss(shown)) {
+        label.textContent = mmss(shown);
         if (shown <= 5 && shown > 0) MS.sound("tick");
       }
       if (left <= 0) answer(null);
@@ -188,8 +189,6 @@
     MS.confetti();
     MS.countUp($("#final-score"), score);
     $("#final-hits").textContent = `${hits} / ${QUESTIONS.length}`;
-    const rows = MS.ranking(2).map((r, i) => [i + 1, r.team, r.score, new Date(r.date).toLocaleDateString("es-ES")]);
-    $("#ranking").innerHTML = MS.resultTable(["#", "Equipo", "Puntos", "Fecha"], rows);
     if (window.gsap && !MS.reducedMotion()) {
       gsap.from("#digit", { rotateY: 180, scale: 0.3, opacity: 0, duration: 1, ease: "elastic.out(1, 0.5)" });
     }
