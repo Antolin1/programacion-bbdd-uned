@@ -1,6 +1,6 @@
 /* Misión SQL — presentación interactiva (Reveal.js)
    Reutiliza common.css (paleta, botones, modales, paisaje de limoneros) y añade el diseño de
-   las diapositivas, el mismo que el del tema de Marp de la carpeta /presentacion del repositorio. */
+   las diapositivas. */
 
 html, body { overflow: hidden; }
 body { padding: 0; min-height: 0; transition: background 0.5s; }

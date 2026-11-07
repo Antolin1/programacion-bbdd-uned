@@ -1,10 +1,9 @@
 # Misión SQL
 
 Recurso educativo gamificado para el módulo **0484 Bases de datos** (CFGS DAM y DAW, Región de
-Murcia). El repositorio contiene tres cosas:
+Murcia). El repositorio contiene dos cosas:
 
 - la **aplicación web**: un portal, los tres juegos y la presentación interactiva (`web/`);
-- el **guion de la presentación en Marp**, para exportarla a PDF o PowerPoint (`presentacion/`);
 - la **memoria** de la actividad en LaTeX (`memoria/`).
 
 ## Estructura
@@ -21,10 +20,6 @@ web/                          Aplicación web (se publica tal cual)
     slides.md                 Contenido de las 55 diapositivas (Markdown)
     presentacion.css          Diseño de las diapositivas
     presentacion.js           Consultas ejecutables, llaves, caja fuerte y autoevaluación
-presentacion/                 Guion de la misma presentación en Marp (para PDF y PowerPoint)
-  mision-sql.md               Guion de las 53 diapositivas
-  mision.css                  Tema (misma paleta y tipografía que la web y la memoria)
-  exportar.sh                 Exporta a PowerPoint con Docker (para importar en Genially)
 memoria/                      Memoria de la actividad en LaTeX
   main.tex                    Documento principal
   datos.tex                   Datos personales, URL y n.º de diapositivas (rellenar)
@@ -40,7 +35,6 @@ memoria/                      Memoria de la actividad en LaTeX
 |---|---|
 | Probar la web y la presentación | Python 3 (o cualquier servidor estático) y un navegador. **Conexión a Internet**: las librerías y las fuentes se cargan por CDN |
 | Compilar la memoria | Docker en marcha |
-| Exportar la presentación Marp | Docker en marcha (Marp y LibreOffice van dentro de la imagen) |
 
 ## La aplicación web
 
@@ -113,28 +107,6 @@ servidor, `Ctrl+C`.
 3. Cada `push` a `main` que cambie algo en `web/` ejecuta `.github/workflows/pages.yml` y publica
    la carpeta `web/` en `https://antolin1.github.io/programacion-bbdd-uned/` (también se puede lanzar a mano
    desde la pestaña *Actions*). La presentación queda en `…/presentacion/`.
-
-## La presentación en Marp (PDF y PowerPoint)
-
-`presentacion/mision-sql.md` es el mismo contenido en formato [Marp](https://marp.app/), con el tema
-`presentacion/mision.css`. Sirve para entregar un **PDF** o un **PowerPoint**; no es interactivo. Los
-comentarios `<!-- … -->` de cada diapositiva son notas del presentador. Hace falta Docker (en WSL no
-hay navegador). Desde la carpeta `presentacion/`:
-
-```bash
-# PowerPoint para importar en Genially (cada diapositiva es una imagen, igual que el PDF)
-./exportar.sh
-
-# PowerPoint con textos editables (pierde buena parte del diseño)
-./exportar.sh --editable
-
-# PDF
-docker run --rm -v "$PWD":/home/marp/app marpteam/marp-cli mision-sql.md --pdf
-```
-
-Resultado: `presentacion/mision-sql.pptx` (o `mision-sql-editable.pptx`; no se suben al repositorio,
-están en `.gitignore`) o `presentacion/mision-sql.pdf`. La versión normal incluye las notas del
-presentador; la editable, no.
 
 ## La memoria
 

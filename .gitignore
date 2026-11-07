@@ -19,5 +19,3 @@
 # PDF de la memoria: se genera con memoria/build.sh
 /memoria/main.pdf
 
-# Presentación exportada (se genera con presentacion/exportar.sh)
-presentacion/*.pptx
