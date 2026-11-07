@@ -91,7 +91,7 @@ En la última parte introduce el código y **salva la campaña**.
 
 | Juego | Cómo se puntúa |
 |---|---|
-| **1** · Clasifica y ordena | **+10** por acierto, **−2** por fallo (con una explicación breve) |
+| **1** · Clasifica y ordena | **+10** por acierto, **+30** por cada consulta bien ordenada y **+50** por la llave. **−2** por fallo (con una explicación breve) |
 | **2** · ¿Qué devuelve la consulta? | **500–1000** por acierto, según la rapidez (2 minutos por pregunta). **+100** de bonificación por racha a partir del 3.er acierto seguido |
 | **3** · Terminal de la Cooperativa | **500** por incidencia. Cada pista (máximo 2) resta **100** y cada comprobación fallida, **25**. Mínimo **150** |
 
@@ -125,40 +125,21 @@ La presentación es el **tablero**: antes de cada juego se explica todo lo que v
 
 ---
 
-# Las tres sesiones (55 minutos cada una)
+# Las cinco sesiones (una semana)
 
-<div class="cols3 pasos-fr">
-<div class="card">
+<div class="sm">
 
-### Sesión 1
-
-- Misión y base de datos
-- Introducción a SQL
-- Consultas simples y de resumen
-- **Juego 1**
-
-</div>
-<div class="card">
-
-### Sesión 2
-
-- Varias tablas y subconsultas
-- Modificar datos y transacciones
-- **Juego 2**
+| Sesión | Qué hacemos |
+|---|---|
+| **1** | Misión, base de datos, introducción a SQL y consultas simples |
+| **2** | Orden lógico, consultas de resumen y **juego 1** |
+| **3** | Varias tablas y subconsultas |
+| **4** | Modificar datos, transacciones y **juego 2** |
+| **5** | **Juego 3**, caja fuerte, puesta en común y autoevaluación |
 
 </div>
-<div class="card">
 
-### Sesión 3
-
-- **Juego 3**
-- Apertura de la **caja fuerte**
-- Puesta en común y autoevaluación
-
-</div>
-</div>
-
-<p class="s muted centro" style="margin-top: 16px">Todos los juegos se juegan <b>por parejas</b>.</p>
+<p class="s muted">Cada sesión dura 55 minutos. Todos los juegos se juegan <b>por parejas</b>.</p>
 
 ---
 
@@ -1276,7 +1257,7 @@ Los juegos son páginas web abiertas: puedes **repetirlos** tantas veces como qu
 </div>
 </div>
 
-<p class="s" style="margin-top: 18px">Portal de la misión: <a href="../">mapa, marcador y caja fuerte</a></p>
+<p class="s" style="margin-top: 18px">Portal de la misión: <a href="../">mapa, marcador y caja fuerte</a> · Base de datos para practicar: <a href="../data/cooperativa.sql" download>cooperativa.sql</a></p>
 
 <p class="s muted">En el juego 3 puedes probar las versiones alternativas de cada consulta.</p>
 

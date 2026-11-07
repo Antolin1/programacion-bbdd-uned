@@ -218,7 +218,7 @@ superior de la familia de Informática y Comunicaciones (aplicaciones web, móvi
 escritorio o servicios en red) acaba leyendo y escribiendo datos mediante SQL, por lo que
 su dominio es una competencia transversal y muy demandada por el tejido empresarial. La
 encuesta anual de Stack Overflow lo sitúa de forma constante entre los lenguajes más
-utilizados por los profesionales del desarrollo de software \cite{stackoverflow2025}.
+utilizados por los profesionales del desarrollo de software~\cite{stackoverflow2025}.
 
 Sin embargo, la investigación sobre la enseñanza de SQL muestra que su
 aprendizaje presenta dificultades recurrentes \cite{taipalus2020}. Los
@@ -284,11 +284,10 @@ de SQL como eje de un recurso educativo gamificado.
 sobre un caso cercano: una cooperativa agrícola ficticia de la Región de Murcia, con socios
 de Murcia, Lorca, Cartagena o Cieza y productos como limones, alcachofas o melocotones.
 Esta decisión es coherente con el currículo autonómico vigente, que establece que el
-currículo se implantará «teniendo en cuenta la realidad socioeconómica, las necesidades del
+currículo se implantará \textit{teniendo en cuenta la realidad socioeconómica, las necesidades del
 tejido empresarial y las características geográficas, socio-productivas y laborales propias
 del entorno» y reconoce a los centros autonomía pedagógica para adaptar las enseñanzas «a las
-características concretas del entorno socioeconómico, cultural y profesional»
-\cite[art.~4]{murcia2026}.
+características concretas del entorno socioeconómico, cultural y profesional}~\cite[art.~4]{murcia2026}.
 
 \subsection{Destinatarios y módulo profesional}
 
@@ -458,7 +457,7 @@ realidad socioeconómica y productiva del entorno \cite[art.~4]{murcia2026}. Sus
 XLIV (DAM) y XLV (DAW) sitúan el módulo 0484 en el primer curso, con 175 horas y
 5 horas semanales. Por ese motivo, el recurso toma como referencia los resultados de
 aprendizaje y criterios de evaluación del RD 405/2023 y usa como caso práctico una
-cooperativa hortofrutícola murciana, un sector económico clave en la región.
+cooperativa hortofrutícola murciana.
 
 \subsubsection{Resultados de aprendizaje y criterios de evaluación}
 \label{sec:ra}
@@ -670,7 +669,8 @@ elementos de juego de Werbach y Hunter \cite{werbach2012}, que distingue tres ni
 \label{sec:bd}
 
 Todos los retos se resuelven sobre la misma base de datos, \texttt{cooperativa}, que el
-alumnado conoce en la presentación (\autoref{sec:genially}) y que el juego~3 carga en el navegador. Tiene tres
+alumnado conoce en la presentación (\autoref{sec:genially}) y que los juegos cargan en el
+navegador para mostrar resultados reales. Tiene tres
 tablas:
 
 \begin{itemize}
@@ -814,8 +814,8 @@ Caja fuerte final & Teclado numérico interactivo: el código correcto muestra l
 de victoria y la insignia final; un código erróneo devuelve una pista sobre el juego que hay
 que revisar. \\
 \addlinespace
-Cierre & Resumen de lo aprendido, autoevaluación, enlace a la base de datos para
-practicar en casa, créditos y bibliografía. \\
+Cierre & Resumen de lo aprendido, autoevaluación, enlaces a los juegos y a la base de datos
+para practicar en casa, créditos y bibliografía. \\
 \bottomrule
 \end{longtable}
 
@@ -881,8 +881,9 @@ con retroalimentación inmediata y pantalla final con puntuación, insignia y d�
 \end{nota}
 
 \paragraph{Descripción.} Juego de arrastrar y soltar en tres niveles, implementado con la API
-\emph{Drag and Drop} de HTML5 (con alternativa táctil para móviles). Cada acierto suma 10
-puntos; cada fallo resta 2 y muestra una explicación breve. Hay que superar un nivel para
+\emph{Drag and Drop} de HTML5 (con alternativa táctil para móviles). En los niveles 1 y 3
+cada acierto suma 10 puntos; en el nivel 2, cada ordenación correcta suma 30, y acertar la
+llave final suma 50. Cada fallo resta 2 puntos y muestra una explicación breve. Hay que superar un nivel para
 desbloquear el siguiente.
 
 \begin{reto}{Nivel 1 -- Clasificación de sentencias}
@@ -982,7 +983,9 @@ los concursos de televisión, más una bonificación de 100 puntos por racha a p
 acierto seguido). Cada pregunta muestra una sentencia SQL sobre la base de datos de la
 \autoref{tab:datos}, que se puede consultar en todo momento con el botón «Ver tablas». Tras
 responder, el juego indica si la respuesta es correcta y muestra el resultado real de la
-consulta con una explicación. Se juega por parejas, como el resto de la actividad.
+consulta con una explicación. Al terminar las doce preguntas, una pantalla pide el número
+que devolvía la pregunta~2 (la llave del juego). Se juega por parejas, como el resto de la
+actividad.
 
 A continuación figuran las doce preguntas con sus opciones (la correcta se marca con
 \textbf{\checkmark}).
@@ -1152,7 +1155,11 @@ sentencia y pulsa \emph{Comprobar}. El juego ejecuta la sentencia, compara el re
 (o el estado de la tabla tras una modificación) con el esperado e informa del acierto o del
 error. Cada incidencia vale 500 puntos. Si se equivoca, puede pedir hasta dos pistas, que restan 100 puntos cada una, y cada comprobación fallida resta 25, con un mínimo de 150 puntos por incidencia resuelta. En las primeras incidencias
 se ofrecen plantillas con huecos para completar (modo guiado). En las últimas, el editor está
-vacío (modo libre). Un botón \emph{Reiniciar base de datos} restaura los datos originales.
+vacío (modo libre). \emph{Ejecutar} trabaja sobre una base de datos de trabajo, que el botón
+\emph{Reiniciar base de datos} devuelve a su estado original. \emph{Comprobar}, en cambio,
+ejecuta la solución sobre una copia nueva de los datos originales, así que el resultado no
+depende de lo que se haya hecho antes. El botón \emph{Mis soluciones} descarga en un fichero
+las sentencias de todas las incidencias.
 Al terminar, el juego muestra el resumen de puntos y la insignia «Maestro del DML».
 
 \begin{reto}{Incidencia 1 -- Liquidación por socio (modo guiado)}
@@ -1199,7 +1206,8 @@ hueso, 750 kg). \textbf{Dígito 4 = 1} (número de categorías obtenidas).
 
 \begin{reto}{Incidencia 3 -- Producto sin movimiento (modo libre)}
 Escribe una consulta que muestre los productos de los que no hay ninguna entrega.
-Después, escribe una segunda versión con otra técnica y explica cuál prefieres.
+Después, escribe una segunda versión con otra técnica: una con subconsulta y otra con
+composición externa. En la puesta en común se comenta cuál es preferible.
 \end{reto}
 \begin{solucion}
 \begin{lstlisting}
@@ -1236,9 +1244,8 @@ El orden importa: si se inserta primero la entrega, el SGBD la rechaza porque el
 \end{solucion}
 
 \begin{reto}{Incidencia 5 -- Limpieza de entregas antiguas (modo libre) \emph{(llave: dígito 3)}}
-\emph{Partiendo de la base de datos original (pulsa Reiniciar).} Dentro de una
-transacción, borra las entregas anteriores al 6 de marzo de 2026, comprueba cuántas filas
-se han borrado y confirma los cambios.
+Dentro de una transacción, borra las entregas anteriores al 6 de marzo de 2026, comprueba
+cuántas quedan y confirma los cambios. El número de filas borradas es la llave.
 \end{reto}
 \begin{solucion}
 \begin{lstlisting}
@@ -1307,20 +1314,31 @@ La \autoref{tab:codigo} recoge qué reto da cada dígito y el código resultante
 \subsection{Secuenciación y metodología}
 \label{sec:secuencia}
 
-La actividad está pensada para tres sesiones de 55 minutos (la \autoref{fig:itinerario} muestra el itinerario), en el momento de la programación
-en que se empiezan a trabajar los RA3 y RA4:
+La actividad ocupa una semana completa del módulo: cinco sesiones de 55 minutos, que
+corresponden a las 5 horas semanales que la normativa autonómica asigna al módulo 0484
+\cite[anexos XLIV y XLV]{murcia2026}. Se sitúa en el momento de la programación en que se
+empiezan a trabajar los RA3 y RA4, y cada juego se coloca al final del bloque de teoría que lo
+prepara (la \autoref{fig:itinerario} muestra el itinerario):
+
+\begin{itemize}
+  \item \textbf{Sesión 1}: presentación de la misión y de la base de datos, introducción a SQL y
+        sus sublenguajes, y consultas simples (selección, proyección, fechas, \texttt{BETWEEN},
+        \texttt{IN}, \texttt{LIKE}, \texttt{IS NULL} y \texttt{ORDER BY}).
+  \item \textbf{Sesión 2}: orden lógico de evaluación de las cláusulas, consultas de resumen
+        (\texttt{GROUP BY} y \texttt{HAVING}) y \textbf{juego~1} (\autoref{sec:juego1}).
+  \item \textbf{Sesión 3}: composiciones internas y externas (incluidas las de tres tablas) y
+        subconsultas.
+  \item \textbf{Sesión 4}: manipulación de datos, integridad referencial, transacciones y
+        \textbf{juego~2} (\autoref{sec:juego2}).
+  \item \textbf{Sesión 5}: \textbf{juego~3} (\autoref{sec:juego3}), apertura de la caja fuerte,
+        puesta en común y autoevaluación.
+\end{itemize}
+
+Si el centro agrupa horas (por ejemplo, en un bloque de dos horas), las sesiones 4 y 5 se
+pueden juntar sin problema.
 
 Los tres juegos se juegan por parejas. Al terminar cada uno, la pareja envía al docente la
 puntuación que muestra la pantalla final; el recurso no incluye una clasificación compartida.
-
-\begin{itemize}
-  \item \textbf{Sesión 1}: presentación de la misión y de la base de datos, introducción a SQL,
-        consultas simples y de resumen, y \textbf{juego~1} (\autoref{sec:juego1}).
-  \item \textbf{Sesión 2}: composiciones, subconsultas, manipulación de datos y transacciones, y
-        \textbf{juego~2} (\autoref{sec:juego2}).
-  \item \textbf{Sesión 3}: \textbf{juego~3} (\autoref{sec:juego3}) y apertura de la caja
-        fuerte. Puesta en común y autoevaluación.
-\end{itemize}
 
 Se usa una metodología activa que combina la explicación interactiva con la
 \emph{presentación}, el aprendizaje basado en retos y el trabajo cooperativo. Como los
