@@ -24,6 +24,7 @@
 \usepackage{listings}
 \usepackage[most]{tcolorbox}
 \usepackage{tikz}
+\usepackage{emoji}
 \usetikzlibrary{positioning,arrows.meta,shapes.geometric}
 \usepackage{csquotes}
 \usepackage[backend=biber,style=ieee]{biblatex}
@@ -80,7 +81,8 @@
 \colorlet{principal}{hoja}
 \colorlet{acento}{naranja}
 \definecolor{fondocodigo}{HTML}{FFFDF7}
-\newcommand{\trab}{\textcolor{verde}{\ensuremath{\checkmark}}}
+\newcommand{\trab}{\emoji{check-mark-button}}
+\newcommand{\intro}{\emoji{light-bulb}}
 
 \pagecolor{papel}
 \color{tierra}
@@ -412,7 +414,7 @@ Esta Orden condiciona el diseño del recurso en cuatro aspectos:
 El recurso está dirigido al alumnado de \textbf{primer curso} de los Ciclos Formativos de
 Grado Superior (CFGS) de \textbf{Desarrollo de Aplicaciones Multiplataforma (DAM)} y
 \textbf{Desarrollo de Aplicaciones Web (DAW)}, de la familia profesional Informática y
-Comunicaciones, que cursa el módulo profesional \textbf{0484 Bases de datos}, común a ambos
+Comunicaciones \cite{todofp}, que cursa el módulo profesional \textbf{0484 Bases de datos}, común a ambos
 títulos \cite{rd450,rd686,rd405,rd500}. La \autoref{tab:modulo} resume sus datos básicos.
 
 \begin{table}[H]
@@ -485,8 +487,9 @@ manipulación de datos son equivalentes, y como repaso al inicio del módulo
 
 La actividad trabaja el RA3 y el RA4 y repasa el RA2; los otros cuatro (RA1, RA5, RA6 y RA7)
 no se tratan. La \autoref{tab:ra} recoge esos tres resultados de aprendizaje con sus criterios
-de evaluación, en la redacción del Anexo~I del RD 405/2023 \cite{rd405}, y marca con \trab{}
-los criterios que se abordan.
+de evaluación, en la redacción del Anexo~I del RD 405/2023 \cite{rd405}. Se marcan con \trab{}
+los criterios que se trabajan y se evalúan en los juegos, y con \intro{} los que solo se
+repasan o se introducen de forma conceptual.
 
 \begin{longtable}{@{}p{0.27\linewidth}p{0.68\linewidth}@{}}
 \caption{Resultados de aprendizaje y criterios de evaluación del módulo 0484 (RD 405/2023) que se trabajan o repasan}
@@ -511,8 +514,8 @@ integridad referencial de los retos.
   \item Se ha analizado el formato de almacenamiento de la información.
   \item Se han creado las tablas y las relaciones entre ellas.
   \item Se han seleccionado los tipos de datos adecuados.
-  \item Se han definido los campos clave en las tablas. \trab
-  \item Se han implantado las restricciones reflejadas en el diseño lógico. \trab
+  \item Se han definido los campos clave en las tablas. \intro
+  \item Se han implantado las restricciones reflejadas en el diseño lógico. \intro
   \item Se han creado vistas.
   \item Se han creado los usuarios y se les han asignado privilegios.
   \item Se han utilizado asistentes, herramientas gráficas y los lenguajes de definición
@@ -551,21 +554,24 @@ asistentes, herramientas gráficas y el lenguaje de manipulación de datos.
   \item Se han anulado parcial o totalmente los cambios producidos por una transacción.
         \trab
   \item Se han identificado los efectos de las distintas políticas de bloqueo de
-        registros. \trab
+        registros. \intro
   \item Se han adoptado medidas para mantener la integridad y consistencia de la
         información. \trab
 \end{enumerate} \\
 \end{longtable}
 
-En resumen, la actividad se centra en los \textbf{RA3} y \textbf{RA4}. Trabaja todos sus
-criterios excepto el 3.g, y repasa los criterios 2.d y 2.e del \textbf{RA2}.
+En resumen, la actividad se centra en los \textbf{RA3} y \textbf{RA4}: trabaja y evalúa
+todos sus criterios excepto el 3.g, que no se aborda, y el 4.g (políticas de bloqueo), que se
+introduce de forma conceptual en la presentación. Del \textbf{RA2} repasa los criterios 2.d y
+2.e, sobre claves y restricciones, porque hacen falta para entender los errores de integridad.
 
 \subsection{Contenidos}
 \label{sec:contenidos}
 
 De los siete bloques de contenidos básicos del módulo \cite{rd405}, el recurso trabaja
 \emph{Realización de consultas}, \emph{Tratamiento de datos} y, del bloque \emph{Bases de datos
-relacionales}, solo los lenguajes de descripción (DDL) y de control de datos (DCL). La
+relacionales}, el repaso de los lenguajes de descripción (DDL) y el reconocimiento de los de control de datos
+(DCL). La
 \autoref{tab:contenidos} detalla los contenidos concretos.
 
 \begin{table}[H]
@@ -574,10 +580,11 @@ relacionales}, solo los lenguajes de descripción (DDL) y de control de datos (D
 \toprule
 \textbf{Bloque de contenidos} & \textbf{Contenidos concretos} \\
 \midrule
-Bases de datos relacionales (solo DDL y DCL) &
-Lenguajes de descripción de datos (\texttt{CREATE}, \texttt{ALTER}, \texttt{DROP}) y de control
-de datos (usuarios y privilegios), en la medida en que hacen falta para entender las
-restricciones y los errores de integridad de los retos. \\
+Bases de datos relacionales (repaso de DDL y reconocimiento de DCL) &
+Repaso de los lenguajes de descripción de datos (\texttt{CREATE}, \texttt{ALTER},
+\texttt{DROP}), claves y restricciones, en la medida en que hacen falta para entender los
+errores de integridad de los retos. Reconocimiento de las sentencias de control de datos
+(\texttt{GRANT}, \texttt{REVOKE}) al clasificar los sublenguajes. \\
 \addlinespace
 Realización de consultas &
 Proyección, selección y ordenación de registros (\texttt{SELECT}, \texttt{WHERE},
@@ -646,11 +653,11 @@ valorando distintas alternativas para resolver un mismo problema.
 formado por:
 
 \begin{enumerate}
-  \item Una \textbf{presentación interactiva} en Genially (\autoref{sec:genially}), que sirve
+  \item Una \textbf{presentación interactiva} en Genially \cite{genially} (\autoref{sec:genially}), que sirve
         de hilo conductor y donde se desarrollan la narrativa, los contenidos teóricos y la
         sala final.
   \item \textbf{Tres juegos digitales educativos}, desarrollados como páginas web propias
-        (HTML, CSS y JavaScript) y publicados con GitHub Pages (\autoref{sec:juegos}). La
+        (HTML, CSS y JavaScript) y publicados con GitHub Pages \cite{ghpages} (\autoref{sec:juegos}). La
         presentación los enlaza en el orden de la misión, como muestra la
         \autoref{fig:itinerario}.
 \end{enumerate}
@@ -920,7 +927,7 @@ con retroalimentación inmediata y pantalla final con puntuación, insignia y d�
 
 \begin{nota}
 \textbf{URL pública:} \url{\urlJuegoUno}\\
-\textbf{Objetivos:} O1, O2 \quad \textbf{CE:} 3.a, 4.a \quad
+\textbf{Objetivos:} O1, O2, O3 \quad \textbf{CE:} 3.a, 4.a \quad
 \textbf{Duración estimada:} 10–15 minutos
 \end{nota}
 
@@ -948,8 +955,9 @@ TCL & \texttt{COMMIT}, \texttt{ROLLBACK}, \texttt{SAVEPOINT} \\
 \end{tabularx}
 
 \smallskip
-\emph{Nota:} \texttt{TRUNCATE} se clasifica como DDL porque vacía la tabla
-redefiniéndola, sin borrar fila a fila, y en muchos SGBD no admite \texttt{ROLLBACK}.
+\emph{Nota:} \texttt{TRUNCATE} se clasifica habitualmente como DDL. Su comportamiento
+transaccional depende del SGBD, y SQLite, el motor que usan los juegos, no la implementa; aquí
+solo se clasifica, no se ejecuta.
 \end{solucion}
 
 \begin{reto}{Nivel 2 -- Ordena las cláusulas}
@@ -1018,7 +1026,7 @@ nivel~1 pertenecen al DCL?}
 \textbf{URL pública:} \url{\urlJuegoDos}\\
 \textbf{Objetivos:} O2, O3, O4, O5, O6, O7 \quad
 \textbf{CE:} 3.b, 3.c, 3.d, 3.e, 3.f, 4.b, 4.e, 4.h \quad
-\textbf{Duración estimada:} 15–20 minutos
+\textbf{Duración estimada:} 20–25 minutos (cada pregunta tiene un máximo de 2 minutos)
 \end{nota}
 
 \paragraph{Descripción.} Concurso de preguntas de respuesta múltiple con cuenta atrás
@@ -1190,7 +1198,7 @@ a) 7 \quad b) 9 \ok \quad c) 0 \quad d) Error: no se puede borrar
 
 \paragraph{Descripción.} Es el reto más exigente y el más parecido al trabajo real.
 La página simula la consola del servidor recuperado: incluye un editor de texto con resaltado
-de sintaxis y un motor SQLite compilado a WebAssembly (biblioteca \emph{sql.js}), que carga la
+de sintaxis y un motor SQLite compilado a WebAssembly (biblioteca \emph{sql.js} \cite{sqljs}), que carga la
 base de datos \texttt{cooperativa} en el navegador. Así el alumnado escribe y ejecuta
 \emph{sentencias SQL reales} sin instalar nada y sin depender de ningún servidor.
 
@@ -1251,7 +1259,10 @@ hueso, 750 kg). \textbf{Dígito 4 = 1} (número de categorías obtenidas).
 \begin{reto}{Incidencia 3 -- Producto sin movimiento (modo libre)}
 Escribe una consulta que muestre los productos de los que no hay ninguna entrega.
 Después, escribe una segunda versión con otra técnica: una con subconsulta y otra con
-composición externa. En la puesta en común se comenta cuál es preferible.
+composición externa. Al terminar el juego, el docente corrige esta incidencia en voz alta con
+todo el grupo y compara las dos soluciones: cuál se lee mejor, cuál funciona bien si hay
+valores nulos y cuál puede ser más eficiente (algo que depende del SGBD, de los índices y de
+cómo decide ejecutar la consulta).
 \end{reto}
 \begin{solucion}
 \begin{lstlisting}
@@ -1375,7 +1386,7 @@ prepara (la \autoref{fig:itinerario} muestra el itinerario):
   \item \textbf{Sesión 4}: manipulación de datos, integridad referencial, transacciones y
         \textbf{juego~2} (\autoref{sec:juego2}).
   \item \textbf{Sesión 5}: \textbf{juego~3} (\autoref{sec:juego3}), apertura de la caja fuerte,
-        puesta en común y autoevaluación.
+        corrección conjunta en clase y autoevaluación.
 \end{itemize}
 
 Si el centro agrupa horas (por ejemplo, en un bloque de dos horas), las sesiones 4 y 5 se
@@ -1394,7 +1405,7 @@ obtiene el mismo resultado.
 
 \paragraph{Evaluación.} Los juegos 1 y 2 tienen carácter formativo: dan
 retroalimentación inmediata al alumnado y permiten al docente detectar errores
-frecuentes, que se retoman en la puesta en común. En el juego~3, además de la
+frecuentes, que se retoman en la corrección conjunta en clase. En el juego~3, además de la
 puntuación, cada pareja envía al docente el fichero que genera el botón \textit{Mis
 soluciones}, con las sentencias que ha escrito para cada incidencia. Este fichero sirve como
 evidencia de los criterios 3.c–3.f, 3.h, 4.b–4.f y 4.h de la \autoref{tab:ra}. La
@@ -1405,7 +1416,6 @@ valorar el objetivo O8.
 \section{Bibliografía}
 % =====================================================================
 
-\nocite{*}
 \printbibliography[heading=none]
 
 % =====================================================================

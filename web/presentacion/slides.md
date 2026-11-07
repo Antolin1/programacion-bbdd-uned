@@ -135,7 +135,7 @@ La presentación es el **tablero**: antes de cada juego se explica todo lo que v
 | **2** | Orden lógico, consultas de resumen y **juego 1** |
 | **3** | Varias tablas y subconsultas |
 | **4** | Modificar datos, transacciones y **juego 2** |
-| **5** | **Juego 3**, caja fuerte, puesta en común y autoevaluación |
+| **5** | **Juego 3**, caja fuerte, corrección conjunta en clase y autoevaluación |
 
 </div>
 
