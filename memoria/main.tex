@@ -744,19 +744,10 @@ entregas (Lucía Gómez), útil para las composiciones externas; un producto sin
 \textbf{Número de diapositivas:} \numDiapositivas
 \end{nota}
 
-La presentación es el tablero de la misión. Combina diapositivas de narrativa,
-diapositivas de contenido con ejemplos interactivos (ventanas emergentes con el resultado de
-cada consulta y botones «¿Y si…?») y botones de acceso a cada juego. Su estructura de
+La presentación es el tablero de la misión. Combina diapositivas de narrativa y
+diapositivas de contenido teórico con ejemplos y botones de acceso a cada juego. Su estructura de
 contenidos se recoge en la \autoref{tab:genially}.
 
-El orden de las diapositivas responde a un criterio: \textbf{todo lo que aparece en un juego
-se ha explicado antes en la presentación}. Por eso el acceso a cada juego cierra el bloque de
-teoría que lo prepara y recuerda los contenidos que se van a necesitar. El juego~1 llega tras
-las consultas simples y de resumen, porque además de clasificar sentencias pide ordenar las
-cláusulas de una consulta y reconocer operadores como \texttt{LIKE} o \texttt{BETWEEN}. El
-juego~2 llega tras la manipulación de datos y las transacciones, porque sus últimas preguntas
-tratan de \texttt{UPDATE}, de la integridad referencial y de \texttt{ROLLBACK}. El juego~3,
-que reúne todos los contenidos, va justo después.
 
 \begin{longtable}{@{}p{0.2\linewidth}p{0.75\linewidth}@{}}
 \caption{Estructura de contenidos de la presentación en Genially}
@@ -785,8 +776,7 @@ de evaluación de las cláusulas. \\
 Consultas de resumen & Funciones de agregado; \texttt{GROUP BY}; diferencia entre
 \texttt{WHERE} y \texttt{HAVING}, con una animación de cómo se forman los grupos. \\
 \addlinespace
-\textbf{Acceso al juego 1} & Botón «Clasifica y ordena», recordatorio de los contenidos que
-se necesitan y casilla para anotar el \emph{dígito~1}. \\
+\textbf{Acceso al juego 1} & Juego para obtener el \emph{dígito~1}. \\
 \addlinespace
 Varias tablas & Producto cartesiano; \texttt{INNER JOIN}; \texttt{LEFT}/\texttt{RIGHT JOIN}
 con diagramas de conjuntos; ejemplo de la socia sin entregas; composición de tres tablas y
@@ -804,18 +794,16 @@ Transacciones & Propiedades ACID; \texttt{START TRANSACTION}, \texttt{COMMIT},
 \texttt{ROLLBACK}, \texttt{SAVEPOINT} y \texttt{ROLLBACK TO SAVEPOINT}; nociones de bloqueo y
 acceso concurrente. \\
 \addlinespace
-\textbf{Acceso al juego 2} & Botón «¿Qué devuelve la consulta?», recordatorio de los
-contenidos que se necesitan y casilla del \emph{dígito~2}. \\
+\textbf{Acceso al juego 2} & Juego para obtener el \emph{dígito~2}. \\
 \addlinespace
-\textbf{Acceso al juego 3} & Botón «Terminal de la Cooperativa», recordatorio de los
-contenidos que se necesitan y casillas de los \emph{dígitos~3 y~4}. \\
+\textbf{Acceso al juego 3} & Juego para obtener los \emph{dígitos~3 y~4}. \\
 \addlinespace
 Caja fuerte final & Teclado numérico interactivo: el código correcto muestra la pantalla
 de victoria y la insignia final; un código erróneo devuelve una pista sobre el juego que hay
 que revisar. \\
 \addlinespace
 Cierre & Resumen de lo aprendido, autoevaluación, enlaces a los juegos y a la base de datos
-para practicar en casa, créditos y bibliografía. \\
+para practicar en casa. \\
 \bottomrule
 \end{longtable}
 
@@ -835,8 +823,7 @@ Los juegos forman una \textbf{aplicación web común} con \textbf{tres juegos di
 La aplicación ofrece la interfaz, la narrativa y las mecánicas de gamificación
 compartidas: perfil del equipo, marcador global de puntos, insignias, mapa del itinerario y
 registro de los dígitos de la llave. Cada juego es un juego independiente, con su propia
-naturaleza, mecánica y forma de interacción. No son fases de un mismo juego
-(\autoref{tab:juegos}). El itinerario es progresivo: cada juego trabaja un nivel de complejidad mayor que el anterior
+naturaleza, mecánica y forma de interacción. El itinerario es progresivo: cada juego trabaja un nivel de complejidad mayor que el anterior
 y se desbloquea al superar el previo, aunque todos se pueden volver a jugar por separado.
 
 \begin{table}[H]
@@ -870,7 +857,7 @@ pantalla de inicio con la parte de la narrativa que corresponde, instrucciones, 
 con retroalimentación inmediata y pantalla final con puntuación, insignia y dígito de la llave.
 
 % ---------------------------------------------------------------------
-\subsubsection{Juego 1: «Clasifica y ordena»}
+\subsubsection{Juego 1: Clasifica y ordena}
 \label{sec:juego1}
 % ---------------------------------------------------------------------
 
@@ -926,8 +913,8 @@ GROUP BY id_socio
 HAVING SUM(kilos) > 400
 ORDER BY total DESC;
 \end{lstlisting}
-Resultado: socio 1 (1050 kg), socio 2 (950 kg), socio 3 (700 kg). El socio 4
-(350 kg) no supera el filtro del \texttt{HAVING}.
+%Resultado: socio 1 (1050 kg), socio 2 (950 kg), socio 3 (700 kg). El socio 4
+%(350 kg) no supera el filtro del \texttt{HAVING}.
 
 \smallskip
 \emph{Pregunta adicional del nivel:} ordena las cláusulas según su orden \emph{lógico de
@@ -966,7 +953,7 @@ nivel~1 pertenecen al DCL?}
 \end{solucion}
 
 % ---------------------------------------------------------------------
-\subsubsection{Juego 2: «¿Qué devuelve la consulta?»}
+\subsubsection{Juego 2: ¿Qué devuelve la consulta?}
 \label{sec:juego2}
 % ---------------------------------------------------------------------
 
@@ -981,7 +968,7 @@ nivel~1 pertenecen al DCL?}
 (2~minutos por pregunta) y puntuación según rapidez (entre 500 y 1000 puntos por acierto, como en
 los concursos de televisión, más una bonificación de 100 puntos por racha a partir del tercer
 acierto seguido). Cada pregunta muestra una sentencia SQL sobre la base de datos de la
-\autoref{tab:datos}, que se puede consultar en todo momento con el botón «Ver tablas». Tras
+\autoref{tab:datos}, que se puede consultar en todo momento con el botón \textit{Ver tablas}. Tras
 responder, el juego indica si la respuesta es correcta y muestra el resultado real de la
 consulta con una explicación. Al terminar las doce preguntas, una pantalla pide el número
 que devolvía la pregunta~2 (la llave del juego). Se juega por parejas, como el resto de la
@@ -1133,7 +1120,7 @@ a) 7 \quad b) 9 \ok \quad c) 0 \quad d) Error: no se puede borrar
 \end{solucion}
 
 % ---------------------------------------------------------------------
-\subsubsection{Juego 3: «Terminal de la Cooperativa»}
+\subsubsection{Juego 3: Terminal de la Cooperativa}
 \label{sec:juego3}
 % ---------------------------------------------------------------------
 
@@ -1150,7 +1137,7 @@ de sintaxis y un motor SQLite compilado a WebAssembly (biblioteca \emph{sql.js})
 base de datos \texttt{cooperativa} en el navegador. Así el alumnado escribe y ejecuta
 \emph{sentencias SQL reales} sin instalar nada y sin depender de ningún servidor.
 
-El juego plantea seis «incidencias» de la cooperativa. En cada una, el alumnado escribe la
+El juego plantea seis incidencias de la cooperativa. En cada una, el alumnado escribe la
 sentencia y pulsa \emph{Comprobar}. El juego ejecuta la sentencia, compara el resultado
 (o el estado de la tabla tras una modificación) con el esperado e informa del acierto o del
 error. Cada incidencia vale 500 puntos. Si se equivoca, puede pedir hasta dos pistas, que restan 100 puntos cada una, y cada comprobación fallida resta 25, con un mínimo de 150 puntos por incidencia resuelta. En las primeras incidencias
@@ -1160,7 +1147,7 @@ vacío (modo libre). \emph{Ejecutar} trabaja sobre una base de datos de trabajo,
 ejecuta la solución sobre una copia nueva de los datos originales, así que el resultado no
 depende de lo que se haya hecho antes. El botón \emph{Mis soluciones} descarga en un fichero
 las sentencias de todas las incidencias.
-Al terminar, el juego muestra el resumen de puntos y la insignia «Maestro del DML».
+Al terminar, el juego muestra el resumen de puntos y la insignia \emph{Maestro del DML}.
 
 \begin{reto}{Incidencia 1 -- Liquidación por socio (modo guiado)}
 La gerencia necesita el importe que corresponde a cada socio (kilos $\times$ precio),
@@ -1343,10 +1330,10 @@ puntuación que muestra la pantalla final; el recurso no incluye una clasificaci
 Se usa una metodología activa que combina la explicación interactiva con la
 \emph{presentación}, el aprendizaje basado en retos y el trabajo cooperativo. Como los
 juegos son páginas web abiertas, el alumnado puede repetirlos fuera del aula tantas veces
-como quiera, lo que facilita la atención a la diversidad: quien necesita más práctica puede
-volver a jugarlos, y quien avanza rápido puede abordar en el juego~3 las versiones
-alternativas de cada consulta. Las páginas siguen pautas básicas de accesibilidad
-(contraste suficiente, navegación por teclado y textos alternativos).
+como quiera. Esto facilita la atención a la diversidad ya que quien necesita más práctica puede
+volver a jugarlos, y quien avanza rápido puede resolver las incidencias del juego~3 de más
+de una forma (por ejemplo, con subconsultas en lugar de composiciones) y comprobar que
+obtiene el mismo resultado. 
 
 \paragraph{Evaluación.} Los juegos 1 y 2 tienen carácter formativo: dan
 retroalimentación inmediata al alumnado y permiten al docente detectar errores

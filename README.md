@@ -17,7 +17,7 @@ web/                          Aplicación web (se publica tal cual)
   juego1/ juego2/ juego3/     Los tres juegos
   presentacion/               Presentación interactiva (Reveal.js)
     index.html                Página; carga Reveal.js, sql.js y los estilos
-    slides.md                 Contenido de las 55 diapositivas (Markdown)
+    slides.md                 Contenido de las 54 diapositivas (Markdown)
     presentacion.css          Diseño de las diapositivas
     presentacion.js           Consultas ejecutables, llaves, caja fuerte y autoevaluación
 memoria/                      Memoria de la actividad en LaTeX

@@ -1259,33 +1259,4 @@ Los juegos son páginas web abiertas: puedes **repetirlos** tantas veces como qu
 
 <p class="s" style="margin-top: 18px">Portal de la misión: <a href="../">mapa, marcador y caja fuerte</a> · Base de datos para practicar: <a href="../data/cooperativa.sql" download>cooperativa.sql</a></p>
 
-<p class="s muted">En el juego 3 puedes probar las versiones alternativas de cada consulta.</p>
-
----
-
-# Créditos y bibliografía
-
-<div class="cols">
-<div class="s">
-
-### Créditos
-
-Recurso educativo gamificado para el módulo 0484 *Bases de datos*.
-
-Presentación interactiva y tres juegos propios.
-
-</div>
-<div class="t">
-
-### Bibliografía
-
-- Codd, E. F. (1970). *A Relational Model of Data for Large Shared Data Banks*.
-- Chamberlin, D. D. y Boyce, R. F. (1974). *SEQUEL: A Structured English Query Language*.
-- ISO/IEC 9075 (SQL).
-- Silberschatz, Korth y Sudarshan. *Fundamentos de bases de datos*. McGraw-Hill.
-- Elmasri y Navathe. *Fundamentos de sistemas de bases de datos*. Pearson.
-- Werbach y Hunter (2012). *For the Win*. Wharton Digital Press.
-- Real Decreto 405/2023, de 29 de mayo.
-
-</div>
-</div>
+<p class="s muted">En el juego 3 puedes resolver las incidencias de más de una forma y comprobar que obtienes el mismo resultado.</p>

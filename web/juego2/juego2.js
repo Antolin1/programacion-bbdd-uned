@@ -55,8 +55,7 @@
     st.querySelector("span").textContent = `Racha ×${streak}`;
 
     if (window.gsap && !MS.reducedMotion()) {
-      gsap.from(".q-panel", { y: 20, opacity: 0, duration: 0.4, ease: "power3.out" });
-      gsap.from(".answer", { y: 30, opacity: 0, stagger: 0.07, duration: 0.4, ease: "back.out(1.7)" });
+      gsap.fromTo(".q-panel", { y: 20, opacity: 0 }, { y: 0, opacity: 1, duration: 0.4, ease: "power3.out", overwrite: true, clearProps: "opacity,transform" });
     }
     startTimer();
   }
