@@ -18,4 +18,6 @@
 
 # PDF de la memoria: se genera con memoria/build.sh
 /memoria/main.pdf
+# Copia que GitHub Actions publica en la web
+/web/memoria.pdf
 

@@ -107,6 +107,10 @@ servidor, `Ctrl+C`.
 3. Cada `push` a `main` que cambie algo en `web/` ejecuta `.github/workflows/pages.yml` y publica
    la carpeta `web/` en `https://antolin1.github.io/programacion-bbdd-uned/` (también se puede lanzar a mano
    desde la pestaña *Actions*). La presentación queda en `…/presentacion/`.
+4. El mismo flujo compila antes la memoria y la publica en `…/memoria.pdf`, enlazada desde el
+   portal. Esa versión se compila con `\def\versionweb{}` y **no incluye el DNI ni el correo**
+   de la portada; el PDF que genera `build.sh` para entregar sí los incluye. Los cambios en
+   `memoria/` también lanzan la publicación.
 
 ## La memoria
 

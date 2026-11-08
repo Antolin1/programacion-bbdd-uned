@@ -1,11 +1,12 @@
 # Publica la aplicación web (carpeta web/) en GitHub Pages cada vez que se sube un cambio a main.
+# Antes compila la memoria (sin DNI ni correo) y la deja en web/memoria.pdf para descargarla.
 # Requisito: en Settings → Pages, elegir «Source: GitHub Actions».
 name: Publicar en GitHub Pages
 
 on:
   push:
     branches: [main]
-    paths: ["web/**", ".github/workflows/pages.yml"]
+    paths: ["web/**", "memoria/**", ".github/workflows/pages.yml"]
   workflow_dispatch:
 
 permissions:
@@ -25,6 +26,13 @@ jobs:
       url: ${{ steps.deployment.outputs.page_url }}
     steps:
       - uses: actions/checkout@v4
+      - name: Compilar la memoria (versión web, sin datos personales)
+        run: |
+          docker run --rm -v "$PWD:/work" -w /work/memoria -u "$(id -u):$(id -g)" -e HOME=/tmp \
+            texlive/texlive:latest \
+            latexmk -lualatex -interaction=nonstopmode -halt-on-error \
+              -usepretex='\def\versionweb{}' main.tex
+          cp memoria/main.pdf web/memoria.pdf
       - uses: actions/configure-pages@v5
       - uses: actions/upload-pages-artifact@v3
         with:

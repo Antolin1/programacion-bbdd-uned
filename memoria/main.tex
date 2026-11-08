@@ -141,6 +141,14 @@
   arc=3mm, boxrule=0pt, borderline west={3pt}{0pt}{naranja}}
 
 % =====================================================================
+% Datos personales de la portada. La versión que se publica en la web se compila con
+% \def\versionweb{} (lo hace GitHub Actions) y no los incluye.
+\ifdefined\versionweb
+  \newcommand{\datospersonales}{}
+\else
+  \newcommand{\datospersonales}{DNI & \dni \\ Correo electrónico & \href{mailto:\email}{\email} \\}
+\fi
+
 \begin{document}
 % =====================================================================
 
@@ -190,8 +198,7 @@
   \vspace{0.5cm}
   \begin{tabularx}{\linewidth}{@{}>{\leavevmode\bfseries\color{hoja}}p{4.2cm}X@{}}
     Estudiante      & \alumno \\
-    DNI             & \dni \\
-    Correo electrónico & \href{mailto:\email}{\email} \\
+    \datospersonales
     Centro asociado & \centro \\
     Curso académico & \curso \\
   \end{tabularx}
