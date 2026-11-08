@@ -262,15 +262,19 @@ creciente, reconocer los logros alcanzados y estimular nuevos intentos tras come
 investigación sobre gamificación educativa señala, en general, efectos positivos sobre la
 motivación, la participación y los resultados de aprendizaje \cite{hamari2014,dicheva2015,sailer2020}.
 
-Sobre esta base, este trabajo presenta \emph{Misión SQL}, un recurso educativo gamificado
+Sobre esta base, este trabajo presenta \emph{Misión SQL: el enigma de la Cooperativa Huerta de Murcia}, 
+un recurso educativo gamificado
 centrado en las \emph{sentencias de consulta y de manipulación de datos} de SQL, para el
-módulo profesional 0484 \emph{Bases de datos} de los CFGS DAM y DAW. Combina una presentación
+módulo profesional 0484 \emph{Bases de datos} de los Ciclos Formativos de
+Grado Superior (CFGS) de Desarrollo de Aplicaciones Multiplataforma (DAM) y
+Desarrollo de Aplicaciones Web (DAW). Combina una presentación
 interactiva con tres juegos digitales, y todos sus retos se plantean sobre un caso cercano al
-alumnado: una cooperativa agrícola ficticia de la Región de Murcia, con socios de Murcia,
-Lorca, Cartagena o Cieza y productos como limones, alcachofas o melocotones. Esta decisión es
-coherente con el currículo autonómico, que se implanta \textit{teniendo en cuenta la realidad
-socioeconómica, las necesidades del tejido empresarial y las características geográficas,
-socio-productivas y laborales propias del entorno}~\cite[art.~4]{murcia2026}.
+alumnado de la Región de Murcia: una cooperativa agrícola ficticia de la Región de Murcia, con socios de Murcia,
+Lorca, Cartagena o Cieza y productos como limones, alcachofas o melocotones. 
+%Esta decisión es
+%coherente con el currículo autonómico, que se implanta \textit{teniendo en cuenta la realidad
+%socioeconómica, las necesidades del tejido empresarial y las características geográficas,
+%socio-productivas y laborales propias del entorno}~\cite[art.~4]{murcia2026}.
 
 \paragraph{Organización de la memoria.} La \autoref{sec:contexto} sitúa el recurso en su
 contexto curricular: el marco normativo, el módulo profesional y el alumnado al que se
@@ -366,11 +370,6 @@ módulo 0484, sobre el que se construye el recurso.
         reales decretos por los que se establecen títulos de Formación Profesional de grado
         superior y se fijan sus enseñanzas mínimas. Adapta los títulos de DAM, DAW y ASIR,
         entre otros, a la nueva ordenación del RD 659/2023 \cite{rd500}.
-  \item \textbf{Orden EDU/2000/2010, de 13 de julio}, por la que se establece el currículo
-        del ciclo formativo de grado superior de DAM \cite{ordenDAM}, y
-        \textbf{Orden EDU/2887/2010, de 2 de noviembre}, para el ciclo de DAW
-        \cite{ordenDAW}. Desarrollan el currículo en el ámbito de gestión del Ministerio,
-        por lo que no se aplican en la Región de Murcia; se citan solo como referencia.
 \end{itemize}
 
 \subsubsection{Normativa autonómica (Región de Murcia)}
@@ -411,10 +410,10 @@ Esta Orden condiciona el diseño del recurso en cuatro aspectos:
 \subsection{Módulo profesional y alumnado}
 \label{sec:modulo}
 
-El recurso está dirigido al alumnado de \textbf{primer curso} de los Ciclos Formativos de
-Grado Superior (CFGS) de \textbf{Desarrollo de Aplicaciones Multiplataforma (DAM)} y
-\textbf{Desarrollo de Aplicaciones Web (DAW)}, de la familia profesional Informática y
-Comunicaciones \cite{todofp}, que cursa el módulo profesional \textbf{0484 Bases de datos}, común a ambos
+El recurso está dirigido al alumnado de primer curso de los Ciclos Formativos de
+Grado Superior (CFGS) de Desarrollo de Aplicaciones Multiplataforma (DAM) y
+Desarrollo de Aplicaciones Web (DAW), de la familia profesional Informática y
+Comunicaciones \cite{todofp}, que cursa el módulo profesional 0484 Bases de datos, común a ambos
 títulos \cite{rd450,rd686,rd405,rd500}. La \autoref{tab:modulo} resume sus datos básicos.
 
 \begin{table}[H]
@@ -422,8 +421,7 @@ títulos \cite{rd450,rd686,rd405,rd500}. La \autoref{tab:modulo} resume sus dato
 \begin{tabularx}{\linewidth}{@{}>{\bfseries}p{0.3\linewidth}X@{}}
 \toprule
 Código y denominación & 0484 Bases de datos \\
-Ciclos formativos & CFGS Desarrollo de Aplicaciones Multiplataforma (DAM) y CFGS
-                    Desarrollo de Aplicaciones Web (DAW) \\
+Ciclos formativos & CFGS DAM y CFGS DAW \\
 Curso & Primero \cite[anexos XLIV y XLV]{murcia2026} \\
 Duración en la Región de Murcia & 175 horas, 5 horas semanales
                     \cite[anexos XLIV y XLV]{murcia2026} \\
@@ -452,12 +450,20 @@ de la información almacenada en bases de datos y en el desarrollo de aplicacion
 a ellas \cite{rd405}.
 
 En el título de DAM, el módulo contribuye a alcanzar los objetivos generales c), e), f), p)
-y t) del ciclo y las competencias b), c), e), p) y t) del título. Entre ellas destacan la
-competencia c), \textit{Gestionar bases de datos, interpretando su diseño lógico y verificando
-integridad, consistencia, seguridad y accesibilidad de los datos}, y la e), \textit{Desarrollar
-aplicaciones multiplataforma con acceso a bases de datos utilizando lenguajes, librerías y
-herramientas adecuados a las especificaciones}. En el título de DAW contribuye a los
-objetivos generales e), f), g), p) y r) y a las competencias d), e) y p) \cite{rd405}.
+y t) y las competencias b), c), e), p) y t); en el de DAW, los objetivos generales e), f), g),
+p) y r) y las competencias d), e) y p) \cite{rd405}. Las competencias más relacionadas con el
+recurso son dos, presentes en ambos títulos \cite{rd450,rd686}:
+\begin{itemize}
+  \item \textbf{Gestión de bases de datos} (competencia c) de DAM y d) de DAW, con la misma
+        redacción): \textit{Gestionar bases de datos, interpretando su diseño lógico y
+        verificando integridad, consistencia, seguridad y accesibilidad de los datos}.
+  \item \textbf{Desarrollo de aplicaciones con acceso a bases de datos} (competencia e) en
+        ambos títulos): en DAM, \textit{Desarrollar aplicaciones multiplataforma con acceso a
+        bases de datos utilizando lenguajes, librerías y herramientas adecuados a las
+        especificaciones}; en DAW, \textit{Desarrollar aplicaciones web con acceso a bases de
+        datos utilizando lenguajes, objetos de acceso y herramientas de mapeo adecuados a las
+        especificaciones}.
+\end{itemize}
 
 \paragraph{Estructura del módulo.} El módulo se organiza en siete resultados de aprendizaje,
 que recorren el ciclo completo de trabajo con bases de datos: reconocer los sistemas de
@@ -574,12 +580,20 @@ relacionales}, el repaso de los lenguajes de descripción (DDL) y el reconocimie
 (DCL). La
 \autoref{tab:contenidos} detalla los contenidos concretos.
 
-\begin{table}[H]
-\centering
-\begin{tabularx}{\linewidth}{@{}p{0.3\linewidth}X@{}}
+\begin{longtable}{@{}p{0.27\linewidth}p{0.68\linewidth}@{}}
+\caption{Contenidos trabajados en la actividad}
+\label{tab:contenidos}\\
 \toprule
 \textbf{Bloque de contenidos} & \textbf{Contenidos concretos} \\
 \midrule
+\endfirsthead
+\caption[]{Contenidos trabajados en la actividad (continuación)}\\
+\toprule
+\textbf{Bloque de contenidos} & \textbf{Contenidos concretos} \\
+\midrule
+\endhead
+\bottomrule
+\endfoot
 Bases de datos relacionales (repaso de DDL y reconocimiento de DCL) &
 Repaso de los lenguajes de descripción de datos (\texttt{CREATE}, \texttt{ALTER},
 \texttt{DROP}), claves y restricciones, en la medida en que hacen falta para entender los
@@ -599,11 +613,7 @@ Tratamiento de datos &
 Inserción, borrado y modificación de registros. Integridad referencial. Subconsultas y
 composiciones en órdenes de edición. Transacciones: \texttt{COMMIT}, \texttt{ROLLBACK},
 \texttt{SAVEPOINT}. Políticas de bloqueo y concurrencia (nociones). \\
-\bottomrule
-\end{tabularx}
-\caption{Contenidos trabajados en la actividad}
-\label{tab:contenidos}
-\end{table}
+\end{longtable}
 
 Además, de forma transversal se trabajan la resolución de problemas, el pensamiento
 computacional, el trabajo en equipo, la tolerancia al error y el conocimiento del entorno
@@ -612,8 +622,10 @@ productivo de la Región de Murcia.
 \subsection{Objetivos}
 \label{sec:objetivos}
 
-Los objetivos concretan, para esta actividad, los criterios de evaluación de la
-\autoref{tab:ra}.
+Los objetivos O1--O7 se derivan de los criterios de evaluación de la \autoref{tab:ra}. Cada
+uno indica lo que el alumnado será capaz de
+hacer al terminar la actividad, y entre paréntesis se indican los criterios de los que procede. El O8
+recoge las actitudes que se espera desarrollar durante los retos.
 
 \paragraph{Objetivo general.} Que el alumnado sea capaz de consultar y modificar la
 información de una base de datos relacional mediante sentencias SQL correctas y eficientes,
@@ -622,25 +634,26 @@ valorando distintas alternativas para resolver un mismo problema.
 \paragraph{Objetivos específicos.} Al finalizar la actividad, el alumnado será capaz de:
 \begin{enumerate}[label=\textbf{O\arabic*.}]
   \item Distinguir los sublenguajes de SQL (DDL, DML, DCL y control de transacciones) y
-        clasificar sus sentencias principales.
+        clasificar sus sentencias principales (CE~3.a y 4.a).
   \item Construir consultas simples sobre una tabla con selección (\texttt{WHERE}),
         proyección, ordenación (\texttt{ORDER BY}) y eliminación de duplicados
         (\texttt{DISTINCT}), usando operadores relacionales, lógicos, \texttt{BETWEEN},
-        \texttt{IN}, \texttt{LIKE} e \texttt{IS NULL}.
+        \texttt{IN}, \texttt{LIKE} e \texttt{IS NULL} (CE~3.b).
   \item Obtener valores de resumen con funciones de agregado, agrupando
-        (\texttt{GROUP BY}) y filtrando grupos (\texttt{HAVING}).
+        (\texttt{GROUP BY}) y filtrando grupos (\texttt{HAVING}) (CE~3.e).
   \item Combinar información de varias tablas mediante composiciones internas
-        (\texttt{INNER JOIN}) y externas (\texttt{LEFT}/\texttt{RIGHT JOIN}).
+        (\texttt{INNER JOIN}) y externas (\texttt{LEFT}/\texttt{RIGHT JOIN}) (CE~3.c y 3.d).
   \item Resolver consultas mediante subconsultas y compararlas con soluciones equivalentes
-        basadas en composiciones.
+        basadas en composiciones (CE~3.f y 3.h).
   \item Insertar, actualizar y borrar datos (\texttt{INSERT}, \texttt{UPDATE},
-        \texttt{DELETE}) respetando la integridad referencial.
+        \texttt{DELETE}), también a partir del resultado de una consulta, respetando la
+        integridad referencial (CE~4.b, 4.c y 4.h).
   \item Reconocer el funcionamiento de las transacciones (\texttt{START TRANSACTION},
-        \texttt{COMMIT}, \texttt{ROLLBACK}, \texttt{SAVEPOINT}).
+        \texttt{COMMIT}, \texttt{ROLLBACK}, \texttt{SAVEPOINT}) y usarlas en guiones de
+        sentencias (CE~4.d, 4.e, 4.f y 4.g).
   \item Mostrar autonomía, constancia y espíritu de superación ante los errores,
         y colaborar con su pareja durante los retos.
 \end{enumerate}
-
 
 % =====================================================================
 \section{Descripción de la actividad}
@@ -661,30 +674,6 @@ formado por:
         presentación los enlaza en el orden de la misión, como muestra la
         \autoref{fig:itinerario}.
 \end{enumerate}
-
-\paragraph{Narrativa.} Una tormenta de granizo ha dañado el servidor de la
-\emph{Cooperativa Huerta de Murcia} justo antes de la campaña de exportación. La gerencia
-ha contratado al alumnado como \emph{técnicos junior de bases de datos} para recuperar la
-información de socios, productos y entregas. El acceso a la copia de seguridad está protegido
-por una caja fuerte digital con un código de cuatro dígitos. Cada juego superado
-revela uno o dos dígitos, y solo la pareja que reúna los cuatro
-podrá abrir la caja fuerte en la última diapositiva y \textit{salvar la campaña}
-(los dígitos de cada juego se recogen en la \autoref{sec:codigo}).
-
-\paragraph{Elementos de gamificación.} El recurso se ha diseñado siguiendo la clasificación de
-elementos de juego de Werbach y Hunter \cite{werbach2012}, que distingue tres niveles: las
-\emph{dinámicas} (el porqué, lo que motiva), las \emph{mecánicas} (el cómo, las reglas) y los
-\emph{componentes} (el qué, lo que ve el jugador):
-
-\begin{itemize}
-  \item \textbf{Dinámicas}: narrativa, progresión por niveles (de lo sencillo a lo complejo),
-        sensación de logro y colaboración por parejas.
-  \item \textbf{Mecánicas}: retos, retroalimentación inmediata, recompensas (dígitos
-        de la llave), competición sana entre parejas y límite de tiempo en el juego 2.
-  \item \textbf{Componentes}: puntos, insignias por juego (\textit{Clasificador},
-        \textit{Detective de consultas}, \textit{Maestro del DML}) y desbloqueo
-        de la caja fuerte final.
-\end{itemize}
 
 \begin{figure}[H]
 \centering
@@ -723,6 +712,30 @@ elementos de juego de Werbach y Hunter \cite{werbach2012}, que distingue tres ni
 \caption{Itinerario de la misión: Genially es el eje y de él se accede a cada juego, que devuelve su dígito de la caja fuerte}
 \label{fig:itinerario}
 \end{figure}
+
+\paragraph{Narrativa.} Una tormenta de granizo ha dañado el servidor de la
+\emph{Cooperativa Huerta de Murcia} justo antes de la campaña de exportación. La gerencia
+ha contratado al alumnado como \emph{técnicos junior de bases de datos} para recuperar la
+información de socios, productos y entregas. El acceso a la copia de seguridad está protegido
+por una caja fuerte digital con un código de cuatro dígitos. Cada juego superado
+revela uno o dos dígitos, y solo la pareja que reúna los cuatro
+podrá abrir la caja fuerte en la última diapositiva y \textit{salvar la campaña}
+(los dígitos de cada juego se recogen en la \autoref{sec:codigo}).
+
+\paragraph{Elementos de gamificación.} El recurso se ha diseñado siguiendo la clasificación de
+elementos de juego de Werbach y Hunter \cite{werbach2012}, que distingue tres niveles: las
+\emph{dinámicas} (el porqué, lo que motiva), las \emph{mecánicas} (el cómo, las reglas) y los
+\emph{componentes} (el qué, lo que ve el jugador):
+
+\begin{itemize}
+  \item \textbf{Dinámicas}: narrativa, progresión por niveles (de lo sencillo a lo complejo),
+        sensación de logro y colaboración por parejas.
+  \item \textbf{Mecánicas}: retos, retroalimentación inmediata, recompensas (dígitos
+        de la llave), competición sana entre parejas y límite de tiempo en el juego 2.
+  \item \textbf{Componentes}: puntos, insignias por juego (\textit{Clasificador},
+        \textit{Detective de consultas}, \textit{Maestro del DML}) y desbloqueo
+        de la caja fuerte final.
+\end{itemize}
 
 \subsection{Base de datos de trabajo}
 \label{sec:bd}
@@ -806,7 +819,6 @@ entregas (Lucía Gómez), útil para las composiciones externas; un producto sin
 La presentación es el tablero de la misión. Combina diapositivas de narrativa y
 diapositivas de contenido teórico con ejemplos y botones de acceso a cada juego. Su estructura de
 contenidos se recoge en la \autoref{tab:genially}.
-
 
 \begin{longtable}{@{}p{0.2\linewidth}p{0.75\linewidth}@{}}
 \caption{Estructura de contenidos de la presentación en Genially}
@@ -1372,8 +1384,7 @@ La \autoref{tab:codigo} recoge qué reto da cada dígito y el código resultante
 La actividad ocupa una semana completa del módulo: cinco sesiones de 55 minutos, que
 corresponden a las 5 horas semanales que la normativa autonómica asigna al módulo 0484
 \cite[anexos XLIV y XLV]{murcia2026}. Se sitúa en el momento de la programación en que se
-empiezan a trabajar los RA3 y RA4, y cada juego se coloca al final del bloque de teoría que lo
-prepara (la \autoref{fig:itinerario} muestra el itinerario):
+empiezan a trabajar los RA3 y RA4. Las sesiones propuestas son:
 
 \begin{itemize}
   \item \textbf{Sesión 1}: presentación de la misión y de la base de datos, introducción a SQL y
