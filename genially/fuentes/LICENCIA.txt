@@ -1,0 +1,3 @@
+Nunito (Vernon Adams, Cyreal, Jacques Le Bailly) y Roboto Mono (Christian Robertson, Google) se
+distribuyen con la SIL Open Font License 1.1 (https://openfontlicense.org). Se incluyen solo para
+que generar_pptx.py mida el texto al componer las diapositivas.

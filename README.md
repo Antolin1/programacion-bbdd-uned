@@ -125,3 +125,19 @@ Workshop, la configuración de `.vscode/settings.json` compila al guardar y mues
 
 Antes de entregar, rellenar `memoria/datos.tex` (datos personales, URL de Genially y de GitHub
 Pages con el usuario real, y número de diapositivas).
+
+## Versión para Genially
+
+```bash
+pip install python-pptx pillow
+python3 genially/generar_pptx.py
+```
+
+Genera `genially/mision-sql-presentacion.pptx` a partir de `web/presentacion/slides.md`: las 54
+diapositivas con el mismo diseño, pero como objetos editables (cuadros de texto, formas y tablas)
+para importarlas en Genially (*Crear → Importar PowerPoint*) y añadir allí las animaciones.
+Las consultas ejecutables se muestran con su resultado real (se calculan con SQLite al generar el
+fichero); lo interactivo de la web (caja fuerte, llaves, autoevaluación) queda descrito en las notas
+del orador de cada diapositiva, junto con las URL de los enlaces. Las fuentes son Nunito y Roboto Mono
+(las más parecidas a Fredoka y JetBrains Mono que tiene Genially); las copias de `genially/fuentes/`
+solo sirven para medir el texto. Los tres fondos están en `web/presentacion/fondos/`.
